@@ -17,9 +17,7 @@
 
 <body class="antialiased font-sans">
     <main class="">
-        <div class="max-w-96 mr-auto ml-auto mt-[50%] bg-[#1f2937] px-6 py-4 rounded-lg">
-            @include('livewire/pages/auth/login')
-        </div>
+
     </main>
 
     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
