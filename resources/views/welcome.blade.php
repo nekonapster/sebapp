@@ -13,6 +13,8 @@
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <html data-theme="cupcake"></html>
 </head>
 
 <body class="antialiased font-sans">

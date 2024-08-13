@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -9,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
+use \App\Models\User as UsuarioEnMongo;
 
 class LoginForm extends Form
 {
@@ -29,16 +31,43 @@ class LoginForm extends Form
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
+        
 
-        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
-            RateLimiter::hit($this->throttleKey());
-
+        try {
+            // Verificar si el email existe en la base de datos
+            $user = UsuarioEnMongo::where('email', $this->email)->first();
+    
+            if (!$user) {
+                // Si el email no existe, aumentar el contador de RateLimiter y lanzar una excepción
+                RateLimiter::hit($this->throttleKey());
+    
+                throw ValidationException::withMessages([
+                    'form.email' => trans('auth.failed'), // Mensaje de error si el email no existe
+                ]);
+            }
+    
+            // Si el usuario existe, verificar la contraseña
+            if (!Hash::check($this->password, $user->password)) {
+                // Si la contraseña es incorrecta, lanzar una excepción
+                RateLimiter::hit($this->throttleKey());
+    
+                throw ValidationException::withMessages([
+                    'form.password' => trans('auth.password'), // Mensaje de error si la contraseña es incorrecta
+                ]);
+            }
+    
+            // Si el email y la contraseña son correctos, iniciar sesión
+            Auth::login($user, $this->remember);
+    
+            // Limpiar el RateLimiter para este usuario
+            RateLimiter::clear($this->throttleKey());
+    
+        } catch (\Exception $e) {
+            // Manejar cualquier otra excepción que ocurra durante el proceso
             throw ValidationException::withMessages([
-                'form.email' => trans('auth.failed'),
+                'form.email' => trans('auth.failed'), // Mensaje genérico de error
             ]);
         }
-
-        RateLimiter::clear($this->throttleKey());
     }
 
     /**
