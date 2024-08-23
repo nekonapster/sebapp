@@ -14,11 +14,9 @@ new #[Layout('layouts.guest')] class extends Component {
     public string $role = '';
     public string $password = '';
     public string $password_confirmation = '';
+
     // si el email aparece en esta lista entonces los roles seran "admin" para el resto "guest"
-    private array $adminEmails = [
-        "sebastian@admin.com",
-        "martin@admin.com",
-        ];
+    public array $adminEmails = ['sebastian@admin.com', 'martin@admin.com'];
 
     /**
      * Handle an incoming registration request.
@@ -33,7 +31,7 @@ new #[Layout('layouts.guest')] class extends Component {
         ]);
 
         // si el email aparecen en el array entonces se asigna el role a $validated['role']
-        $validated['role'] = in_array($validated['email'], $this->adminEmails) ? "admin" : "guest";
+        $validated['role'] = in_array($validated['email'], $this->adminEmails) ? 'admin' : 'guest';
 
         $validated['password'] = Hash::make($validated['password']);
 
