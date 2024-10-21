@@ -1,0 +1,4 @@
+<todo>
+1. Revisar que cuando se logea con otro usario no va directo a la pagina principal 
+2. Los "guest" no puede entrar al panel completo (excluir zona "usuarios" para guest)
+

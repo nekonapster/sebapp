@@ -9,26 +9,27 @@
 
     <!-- modal, using ID.showModal() method -->
 
-    <dialog id="my_modal_4" class="modal">
-        <div class="modal-box w-11/12 max-w-5xl lg:h-auto xl:min-h-full xl:min-w-[96%]">
+    <dialog id="my_modal_4" class="modal max-w-fill">
+        {{-- <div class="modal-box w-11/12 max-w-5xl lg:h-auto xl:min-h-full xl:min-w-[96%]"> --}}
+        <div class="modal-box">
             <h3 class="text-3xl font-bold mb-6">Crear nuevo usuario</h3>
 
-            <label for="nombre" class="text-2xl">Nombre <br>
-            <span class="text-xs  font-thin">El nombre proporcionado solo sirve para visualizarlo en la tabla de usuarios, no se utilizara para loguearse.</span>
+            <label for="nombre" class="text-2xl">Nombre
                 <input type="text" placeholder="nombre" id="nombre"
-                    class="w-full input input-sm border border-primary mt-1 mb-3">
+                class="w-full input input-sm border border-primary mt-1 mb-3">
             </label>
-            <label for="email" class="text-2xl">Email <br>
-            <span class="text-xs  font-thin">El email es un campo importante ya que es el que se usara para loguearse.</span>
+            <p class="text-xs  font-thin mb-5">*El nombre proporcionado solo sirve para visualizarlo en la tabla de usuarios, no se utilizara para loguearse.</p>
+            <label for="email" class="text-2xl">Email
                 <input type="text" placeholder="email" id="email"
-                    class="w-full input input-sm border border-primary mt-1 mb-3">
+                class="w-full input input-sm border border-primary mt-1 mb-3">
             </label>
-            <label for="pass" class="text-2xl">Password <br>
-            <span class="text-xs font-thin">La password puede ser de cualquier tipo siempre que tenga mas de 8 digitos.</span>
+            <p class="text-xs  font-thin mb-5">*El email es un campo importante ya que es el que se usara para loguearse.</p>
+            <label for="pass" class="text-2xl mt-5">Password
                 <input type="text" placeholder="pass" id="pass"
-                    class="w-full input input-sm border border-primary mt-1 mb-3">
+                class="w-full input input-sm border border-primary mt-1 mb-3">
             </label>
-            <label class="flex items-center mt-10">
+            <p class="text-xs font-thin mb-5">*La password puede ser de cualquier tipo siempre que tenga mas de 8 digitos.</p>
+            <label class="flex items-center mt-1">
                 <input type="checkbox" name="admin" id="admin" class="checkbox checkbox-primary mr-3">
                 Admin?
             </label>
