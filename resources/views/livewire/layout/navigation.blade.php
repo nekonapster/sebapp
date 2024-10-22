@@ -31,7 +31,9 @@ new class extends Component {
                     <x-nav-link :href="route('saldos')" :active="request()->routeIs('saldos')" wire:navigate>
                         {{ __('Saldos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')" wire:navigate>
+                    <x-nav-link :href="!auth()->guest() && auth()->user()->role !== 'guest' ? route('users') : '#'"
+                        :class="auth()->guest() || auth()->user()->role === 'guest' ? 'opacity-25' : ''"
+                        :active="request()->routeIs('users')" wire:navigate>
                         {{ __('Users') }}
                     </x-nav-link>
                 </div>
@@ -99,8 +101,8 @@ new class extends Component {
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t">
             <div class="px-4">
-                <div class="font-medium text-base" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
-                    x-on:profile-updated.window="name = $event.detail.name"></div>
+                <div class="font-medium text-base" x-data="{{ json_encode(['name' => auth()->user()->name]) }}"
+                    x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
                 <div class="font-medium text-sm">{{ auth()->user()->email }}</div>
             </div>
 

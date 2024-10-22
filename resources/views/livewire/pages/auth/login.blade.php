@@ -19,7 +19,7 @@ new #[Layout('layouts.guest')] class extends Component {
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true); //revisar este trozo
+        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: false);
     }
 };
 ?>
