@@ -1,3 +1,4 @@
+{{-- COMPONENTE DE USUARIOS --}}
 <x-app-layout>
     <div class="py-5 bg-neutral mx-10 rounded-xl">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-4">
@@ -12,8 +13,8 @@
                 <div>
                     {{-- tabla de los usuarios creados --}}
                     @livewire('tabla-usuario-component')
-                    
                 </div>
+
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+{{-- COMPONENTE DEL PANEL --}}
 <x-app-layout>
     <div class="bg-neutral mx-10 rounded-lg">
         <div class="overflow-x-auto">

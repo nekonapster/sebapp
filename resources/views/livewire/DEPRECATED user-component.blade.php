@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
    <dialog id="my_modal_4" class="modal">
         <div class="modal-box w-11/12 max-w-5xl h-full">
             <h3 class="text-4xl font-bold mb-6">Crear nuevo usuario</h3>
@@ -26,4 +26,4 @@
             </div>
         </div>
     </dialog>
-</div>
+</div> --}}

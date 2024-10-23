@@ -1,4 +1,7 @@
 <todo>
-1. Revisar que cuando se logea con otro usario no va directo a la pagina principal - OK
-2. Los "guest" no puede entrar al panel completo (excluir zona "usuarios" para guest) - 
+OK 1. Revisar que cuando se logea con otro usario no va directo a la pagina principal
+OK 2. Los "guest" no puede entrar al panel completo (excluir zona "usuarios" para guest)
+3. pdt funcionamiento boton borrar en modal-crear-usuarios-componente.blade.php
+4. pdt funcionamiento editar borrar en modal-crear-usuarios-componente.blade.php
+5. pdt funcionamiento crear usuario borrar en modal-crear-usuarios-componente.blade.php
 

@@ -1,3 +1,4 @@
+{{-- VISTA DE INVITADO, TABLA DE LOS DATOS --}}
 <div class="overflow-x-auto">
     <div class="flex justify-end mb-3 items-center">
         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

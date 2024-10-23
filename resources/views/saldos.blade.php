@@ -1,3 +1,4 @@
+{{-- COMPONENTE DE SALDOS --}}
 <x-app-layout class="">
     <div class="mx-10 bg-neutral rounded-xl p-5">
         <div class="flex">
