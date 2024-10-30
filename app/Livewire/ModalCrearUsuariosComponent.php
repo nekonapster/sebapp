@@ -3,29 +3,50 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Illuminate\Validation\Rules;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
 
 class ModalCrearUsuariosComponent extends Component
 {
 
-    public $name;
-    public $email;
-    public $password;
-    public $role;
-    
-    
+    #[Validate('required|min:5|max:255')]
+    public $name = '';
 
-function crearUsuario(){
-    User::create([
-        'name'=> $this->name,
-        'email'=> $this->email,
-        'password'=> $this->password,
-        'role'=> ($this->role == 1) ? "admin" : "guest"
-    ]);
-}
+    #[Validate('required|email|unique:users,email')]
+    public $email = '';
+
+    #[Validate('required|min:8',  message: 'la pass es obligatoria')]
+    public $password;
+
+    public $role;
+
+    public $emit;
+
+    function crearUsuario()
+    {
+
+        $this->validate();
+
+
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'role' => ($this->role == 1) ? "admin" : "guest"
+        ]);
+
+
+        $this->reset(['name', 'email', 'password']);
+
+        session()->flash('msg', 'El usuario se ha creado correctamente');
+
+        $this->dispatch('alerta');
+    }
+    
+    public function cerrarModal()
+    {
+        $this->dispatch('modalClosed');
+    }
 
     public function render()
     {

@@ -9,43 +9,90 @@
 
 
     <!-- modal, using ID.showModal() method -->
-    <dialog id="my_modal_4" class="modal max-w-fill">
-        <div class="modal-box">
-            <h3 class="text-3xl font-bold mb-6">Crear nuevo usuario</h3>
+    <form wire:submit.prevent="crearUsuario">
+        <dialog id="my_modal_4" class="modal max-w-fill" wire:ignore.self>
+
+            <div class="modal-box">
+                <h3 class="text-3xl font-bold mb-6">Crear nuevo usuario</h3>
+
+                @if (session('msg'))
+                    <div role="alert" class="alert alert-success flex justify-center" id="alert-message">
+                        {{session('msg')}}
+                    </div>
+
+                    @script
+                        <script>
+                            $wire.on('alerta', () => { 
+                                setTimeout(() => {
+                                    document.getElementById('alert-message').style.display = 'none';
+                                    }, 3000);
+                                });
+                        </script>
+                    @endscript
+                @endif
 
 
-            <form>
+
                 <label for="nombre" class="text-2xl">Nombre
-                    <input wire:model='name' type="text" placeholder="nombre" id="nombre"
-                        class="w-full input input-sm border border-primary mt-1 mb-3">
+                    <input wire:model='name' type="text" placeholder="El nombre no se utilizara para loguearse."
+                        id="nombre" class="w-full input input-sm border border-primary mt-1 mb-3">
                 </label>
-                <p class="text-xs  font-thin mb-5">*El nombre proporcionado solo sirve para visualizarlo en la tabla de
-                    usuarios, no se utilizara para loguearse.</p>
+
+                <div class="text-red-500 text-sm">
+                    @error('name'){{$message}}@enderror
+                </div>
+
+                <p class="text-xs  font-thin mb-5"></p>
                 <label for="email" class="text-2xl">Email
-                    <input wire:model='email' type="text" placeholder="email" id="email"
+                    <input wire:model='email' type="text"
+                        placeholder="El email es un campo importante ya que se usará para loguearse." id="email"
                         class="w-full input input-sm border border-primary mt-1 mb-3">
+
+                    <div class="text-red-500 text-sm">
+                        @error('email') {{$message}} @enderror
+                    </div>
+
                 </label>
-                <p class="text-xs  font-thin mb-5">*El email es un campo importante ya que es el que se usara para
-                    loguearse.</p>
+                <p class="text-xs  font-thin mb-5"></p>
                 <label for="pass" class="text-2xl mt-5">Password
-                    <input wire:model='password' type="text" placeholder="pass" id="pass"
-                        class="w-full input input-sm border border-primary mt-1 mb-3">
+                    <input wire:model='password' type="text" placeholder="La password puede ser de cualquier tipo siempre que tenga mas de 8
+                    digitos." id="pass" class="w-full input input-sm border border-primary mt-1 mb-3">
                 </label>
-                <p class="text-xs font-thin mb-5">*La password puede ser de cualquier tipo siempre que tenga mas de 8
-                    digitos.</p>
+
+                <div class="text-red-500 text-sm">
+                    @error('password') {{ $message }} @enderror
+                </div>
+
+                <p class="text-xs font-thin mb-5"></p>
                 <label class="flex items-center mt-1">
                     <input wire:model='role' type="checkbox" name="admin" id="admin"
                         class="checkbox checkbox-primary mr-3">
                     Admin?
                 </label>
                 <p class="mt-3 font-thin text-xs">
-                    (Si activa esta opcion el email sera asociado a un administrador. Solo activar esta casilla si tiene
-                    confianza en el usaurio a crear).
+                    (Si activa esta opcion el email sera asociado a un administrador. Solo activar esta casilla si tiene confianza en el usuario a crear).
                 </p>
                 <div class="modal-action">
                     <!-- if there is a button, it will close the modal -->
-                    <button wire:click='crearUsuario' class="btn btn-success px-10">Crear</button>
-            </form>
-        </div>
-    </dialog>
+                    <button type="submit" class="btn btn-success px-10">Crear</button>
+                </div>
+        </dialog>
+    </form>
+
+
 </div>
+
+@script
+<script>
+    //detectamos el cierre de la pagina mediante la tecla ESC
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                $wire.cerrarModal(); // Llama a la función en el componente de Livewire
+            }
+        });
+        //recargamos la pagina cuando cerramos el modal con esc
+        $wire.on('modalClosed', () => {
+                location.reload();
+        });
+</script>
+@endscript

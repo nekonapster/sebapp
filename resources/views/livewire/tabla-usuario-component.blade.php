@@ -1,6 +1,7 @@
 {{-- TABLAS PARA CRUD EN USUARIOS ZONA DE EDITAR Y BORRAR--}}
 <div>
-    <div class="px-6 py-4 grid gap-3 md:flex md:justify- md:items-center border-b border-gray-200 dark:border-neutral-700">
+    <div
+        class="px-6 py-4 grid gap-3 md:flex md:justify- md:items-center border-b border-gray-200 dark:border-neutral-700">
         <!-- Input -->
         <div class="sm:col-span-1">
             <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
@@ -49,13 +50,20 @@
                     <tbody class="divide-y divide-gray-200 text-center dark:divide-neutral-700">
                         @foreach ($listaUsuarios as $listaUsuario)
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-start text-sm text-gray-800 dark:text-neutral-200">{{$listaUsuario->name}}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{$listaUsuario->role}}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{$listaUsuario->email}}</td>
+                            <td
+                                class="px-6 py-4 whitespace-nowrap text-start text-sm text-gray-800 dark:text-neutral-200">
+                                {{$listaUsuario->name}}</td>
+                            <td
+                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                                {{$listaUsuario->role}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                                {{$listaUsuario->email}}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-sm btn-primary w-16 whitespace-nowrap" type="button">Editar</button>
-                                <button class="btn btn-sm btn-secondary w-16 whitespace-nowrap" type="button">Borrar</button>
+                                <button class="btn btn-sm btn-primary w-16 whitespace-nowrap"
+                                    type="button">Editar</button>
+                                <button class="btn btn-sm btn-secondary w-16 whitespace-nowrap"
+                                    type="button">Borrar</button>
                             </td>
                         </tr>
                         @endforeach
