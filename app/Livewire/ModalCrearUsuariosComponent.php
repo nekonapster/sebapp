@@ -17,9 +17,7 @@ class ModalCrearUsuariosComponent extends Component
 
     #[Validate('required|min:8',  message: 'la pass es obligatoria')]
     public $password;
-
     public $role;
-
     public $emit;
 
     function crearUsuario()
@@ -37,9 +35,7 @@ class ModalCrearUsuariosComponent extends Component
 
 
         $this->reset(['name', 'email', 'password']);
-
         session()->flash('msg', 'El usuario se ha creado correctamente');
-
         $this->dispatch('alerta');
     }
     
@@ -50,6 +46,7 @@ class ModalCrearUsuariosComponent extends Component
 
     public function render()
     {
+               
         return view('livewire.modal-crear-usuarios-component');
     }
 }
