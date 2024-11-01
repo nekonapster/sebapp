@@ -59,12 +59,12 @@
                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                                 {{$listaUsuario->role}}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                {{$listaUsuario->email}}</td>
+                                {{$listaUsuario->id}}</td>
 
                             <td class="text-center">
                                 <button class="btn btn-sm btn-primary w-16 whitespace-nowrap"
                                     type="button">Editar</button>
-                                <button class="btn btn-sm btn-secondary w-16 whitespace-nowrap"
+                                <button wire:click="borrarUsuario({{ $listaUsuario->id }})" class="btn btn-sm btn-secondary w-16 whitespace-nowrap"
                                     type="button">Borrar</button>
                             </td>
                         </tr>

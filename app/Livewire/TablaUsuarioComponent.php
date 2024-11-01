@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
-use phpDocumentor\Reflection\Types\This;
 
 class TablaUsuarioComponent extends Component
 {
@@ -12,13 +11,17 @@ class TablaUsuarioComponent extends Component
     public $search='';
 
 
+    public function borrarUsuario($id){
+        $this->listaUsuarios = User::findOrFail($id)->delete();
+    }
+
+
+
     public function render()
     {
     
         $this->listaUsuarios = User::where('name', 'like', '%'.$this->search.'%')->get(); 
         
-        $users = User::where('name', 'like', '%'.$this->search.'%')->get(); 
-
         return view('livewire.tabla-usuario-component',[
             'listaUsuarios'=>$this->listaUsuarios,
         ]
