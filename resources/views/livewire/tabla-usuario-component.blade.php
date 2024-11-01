@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <!-- End Input -->
     </div>
@@ -51,21 +51,29 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200 text-center dark:divide-neutral-700">
                         @foreach ($listaUsuarios as $listaUsuario)
-                        <tr>
+                        <tr wire:key="{{$listaUsuario->id}}">
                             <td
                                 class="px-6 py-4 whitespace-nowrap text-start text-sm text-gray-800 dark:text-neutral-200">
                                 {{$listaUsuario->name}}</td>
+
                             <td
                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                                 {{$listaUsuario->role}}</td>
+
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                {{$listaUsuario->id}}</td>
+                                {{$listaUsuario->_id}}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-sm btn-primary w-16 whitespace-nowrap"
-                                    type="button">Editar</button>
-                                <button wire:click="borrarUsuario({{ $listaUsuario->id }})" class="btn btn-sm btn-secondary w-16 whitespace-nowrap"
-                                    type="button">Borrar</button>
+                                {{-- <button class="btn btn-sm btn-primary w-16 whitespace-nowrap"
+                                    type="button">Editar</button> --}}
+                                <button
+                                    wire:click="borrarUsuario('{{$listaUsuario->_id}}')"
+                                    wire:confirm="Estas a punto de borrar al usuario: ({{$listaUsuario->name}}), estas seguro?"
+                                    class="btn btn-sm btn-secondary w-16 whitespace-nowrap" 
+                                    type="button"
+                                    {{$listaUsuario->name === 'nekonapster' ? 'disabled' : '' }}>
+                                    Borrar
+                                </button>
                             </td>
                         </tr>
                         @endforeach

@@ -8,23 +8,27 @@ use Livewire\Component;
 class TablaUsuarioComponent extends Component
 {
     public $listaUsuarios;
-    public $search='';
-
-
-    public function borrarUsuario($id){
-        $this->listaUsuarios = User::findOrFail($id)->delete();
+    public $search = '';
+    public $alertaAdmin;
+    
+    public function borrarUsuario($id)
+    {
+            $usuario = User::findOrFail($id);
+            $usuario->delete();
+            $this->listaUsuarios = User::all();
     }
-
-
-
+    
+    
     public function render()
     {
-    
-        $this->listaUsuarios = User::where('name', 'like', '%'.$this->search.'%')->get(); 
+
+        $this->listaUsuarios = User::where('name', 'like', '%' . $this->search . '%')->get();
         
-        return view('livewire.tabla-usuario-component',[
-            'listaUsuarios'=>$this->listaUsuarios,
-        ]
-    );
+        return view('livewire.tabla-usuario-component',
+            [
+               'listaUsuarios' => $this->listaUsuarios,
+               'alertaAdmin' => $this->alertaAdmin,
+            ]
+        );
     }
 }
