@@ -64,13 +64,14 @@
                                 {{$listaUsuario->_id}}</td>
 
                             <td class="text-center">
-                                {{-- <button class="btn btn-sm btn-primary w-16 whitespace-nowrap"
-                                    type="button">Editar</button> --}}
-                                <button
-                                    wire:click="borrarUsuario('{{$listaUsuario->_id}}')"
+                                <button wire:click="editar('{{$listaUsuario->_id}}')"
+                                    onclick="my_modal_5.showModal()"
+                                    class="btn btn-sm btn-primary w-16 whitespace-nowrap" type="button">Editar</button>
+
+
+                                <button wire:click="borrarUsuario('{{$listaUsuario->_id}}')"
                                     wire:confirm="Estas a punto de borrar al usuario: ({{$listaUsuario->name}}), estas seguro?"
-                                    class="btn btn-sm btn-secondary w-16 whitespace-nowrap" 
-                                    type="button"
+                                    class="btn btn-sm btn-secondary w-16 whitespace-nowrap" type="button"
                                     {{$listaUsuario->name === 'nekonapster' ? 'disabled' : '' }}>
                                     Borrar
                                 </button>
@@ -82,4 +83,9 @@
             </div>
         </div>
     </div>
+
+
+    {{-- modal EDIT --}}
+    @livewire('modal-editar-usuario-component')
+    {{-- fin modal EDIT --}}
 </div>

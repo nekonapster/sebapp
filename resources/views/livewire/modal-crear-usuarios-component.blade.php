@@ -74,7 +74,7 @@
                 </p>
                 <div class="modal-action">
                     <!-- if there is a button, it will close the modal -->
-                    <button type="submit" class="btn btn-success px-10">Crear</button>
+                    <button type="submit" class="btn btn-success px-3">Crear</button>
                 </div>
         </dialog>
     </form>
