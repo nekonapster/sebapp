@@ -5,24 +5,6 @@
             <div class="modal-box">
                 <h3 class="text-3xl font-bold mb-6">Editar usuario</h3>
 
-                {{-- @if (session('msg'))
-                <div role="alert" class="alert alert-success flex justify-center" id="alert-message">
-                    {{session('msg')}}
-                </div>
-
-                @script
-                <script>
-                    $wire.on('alerta', () => { 
-                        setTimeout(() => {
-                            document.getElementById('alert-message').style.display = 'none';
-                        }, 3000);
-                    });
-                </script>
-                @endscript
-                @endif --}}
-
-
-
                 <label for="nombre" class="text-2xl">Nombre
                     <input wire:model.defer='name' type="text" id="nombre"
                         class="w-full input input-sm border border-primary mt-1 mb-3">

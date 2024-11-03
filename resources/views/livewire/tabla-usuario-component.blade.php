@@ -66,7 +66,9 @@
                             <td class="text-center">
                                 <button wire:click="editar('{{$listaUsuario->_id}}')"
                                     onclick="my_modal_5.showModal()"
-                                    class="btn btn-sm btn-primary w-16 whitespace-nowrap" type="button">Editar</button>
+                                    class="btn btn-sm btn-primary w-16 whitespace-nowrap" type="button"
+                                    {{$listaUsuario->name === 'nekonapster' ? 'disabled' : '' }}
+                                    >Editar</button>
 
 
                                 <button wire:click="borrarUsuario('{{$listaUsuario->_id}}')"
