@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="editarUsuarioConfirmado">
+    <form wire:submit.prevent="editarUsuario">
         <dialog id="my_modal_5" class="modal max-w-fill" wire:ignore.self>
 
             <div class="modal-box">
@@ -40,32 +40,32 @@
                     <div class="text-red-500 text-sm">
                         @error('email') {{$message}} @enderror
                     </div>
-
-                </label>
-                <p class="text-xs  font-thin mb-5"></p>
-                <label for="pass" class="text-2xl mt-5">Password
-                    <input wire:model='password' type="text" id="pass"
-                        class="w-full input input-sm border border-primary mt-1 mb-3">
                 </label>
 
-                <div class="text-red-500 text-sm">
-                    @error('password') {{ $message }} @enderror
+                <div class="flex items-center pt-5">
+                    <span class="pr-5 text-xl">Admin</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input  wire:model="isAdmin" type="checkbox" class="sr-only peer">
+                        <div class="w-10 h-6 bg-slate-900 rounded-full peer-focus:ring-4 peer-focus:ring-primary transition-all 
+        peer-checked:bg-none"></div>
+                        <div class="absolute left-1 top-1 w-4 h-4 bg-gray-700 rounded-full transition-transform 
+        peer-checked:translate-x-4 peer-checked:bg-violet-600"></div>
+                    </label>
                 </div>
 
-                {{-- <p class="text-xs font-thin mb-5"></p>
-                <label class="flex items-center mt-1">
-                    <input wire:model='role' type="checkbox" name="admin" id="admin"
-                        class="checkbox checkbox-primary mr-3">
-                    Admin?
-                </label>
-                <p class="mt-3 font-thin text-xs">
-                    (Si activa esta opcion el email sera asociado a un administrador. Solo activar esta casilla si tiene
-                    confianza en el usuario a crear).
-                </p> --}}
+
+
+
+
                 <div class="modal-action">
                     <!-- if there is a button, it will close the modal -->
-                    <button type="submit" class="btn btn-success px-3">Guardar cambios</button>
+                    <button type="submit" class="btn btn-success px-3"
+                        wire:confirm='Seguro que desea modificar el/los campos?'>Guardar cambios</button>
                 </div>
         </dialog>
     </form>
 </div>
+
+
+
+

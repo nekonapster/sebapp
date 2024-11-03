@@ -8,45 +8,45 @@ use Livewire\Component;
 
 class ModalEditarUsuarioComponent extends Component
 {
-    public $listaUsuarios;
     public $name;
     public $email;
-    public $password;
-    public $role;
-    
+    public $isAdmin;
+    public $_id;
+
     #[On('editarUsuario')]
     public function loadUsers($_id)
     {
-        $usuario = User::find($_id); //busco al usuario por el _id
-        
+        $usuario = User::find($_id);
+
         if ($usuario) {
-            // Asigna los valores del usuario a las propiedades del componente
-            $this->name = $usuario->name;
-            $this->email = $usuario->email;
-            $this->password = ''; // No se recomienda prellenar la contraseña
-            $this->role = $usuario->role;
+            $this->fill([
+                'name' => $usuario->name,
+                'email' => $usuario->email,
+                'isAdmin' => $usuario->role === 'admin',
+                '_id' => $_id,
+            ]);
         }   
     }
+    
+    public function editarUsuario()
+    {
+        $usuario = User::find($this->_id);
 
-    // public function editarUsuario($id) {
-    //     $this->listaUsuarios = User::find($id);
-    //     $this->update();
-    // }
+        if ($usuario) {
+            $usuario->update([
+                'name' => strtolower($this->name),
+                'email' => strtolower($this->email),
+                'role' => $this->isAdmin ? 'admin' : 'guest',
+            ]);
 
-    // public function update()
-    // {
-    //     // $this->validate();
-
-    //     $this->listaUsuarios->save();
-    //     $this->listaUsuarios;
-
-    //     // session()->flash('msg', 'Usuario actualizado correctamente.');
-    // }
+      
+            return redirect(request()->header('Referer'));
+        }
+    }
 
     public function render()
     {
-        return view('livewire.modal-editar-usuario-component',
-        [
-        ]);
+        return view('livewire.modal-editar-usuario-component');
     }
 }
+

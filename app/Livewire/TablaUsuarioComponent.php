@@ -17,8 +17,9 @@ class TablaUsuarioComponent extends Component
         $usuario->delete();
         $this->listaUsuarios = User::all();
     }
-    
-    public function editar($_id){
+
+    public function editar($_id)
+    {
         $this->dispatch('editarUsuario', $_id);
     }
 
