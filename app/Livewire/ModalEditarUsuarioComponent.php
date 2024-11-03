@@ -4,11 +4,14 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ModalEditarUsuarioComponent extends Component
 {
+    #[Validate('required|min:4|max:255')]
     public $name;
+    #[Validate('required|email')]
     public $email;
     public $isAdmin;
     public $_id;
@@ -30,6 +33,7 @@ class ModalEditarUsuarioComponent extends Component
     
     public function editarUsuario()
     {
+        $this->validate();
         $usuario = User::find($this->_id);
 
         if ($usuario) {
