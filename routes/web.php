@@ -1,32 +1,30 @@
 <?php
 
+use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::view('/dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('profile', 'profile')->name('profile');
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::view('/general', 'general')->name('baseGeneral');
+    Route::view('/saldos', 'saldos')->name('saldos');
+});
 
-Route::view('/general', 'general')
-    ->middleware(['auth', 'verified'])
-    ->name('baseGeneral');
+// si el rol no es admin, no se puede entrar a users
+Route::view('/users', 'users')
+    ->middleware([CheckRole::class, 'auth'])
+    ->name('users');
 
-Route::view('/saldos', 'saldos')
-    ->middleware(['auth', 'verified'])
-    ->name('saldos');
+    Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
 Route::view('/invitado', 'layouts.invitado')
     ->name('invitado');
 
-Route::view('/users', 'users')
-    ->middleware(['auth', 'verified'])
-    ->name('users');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
 
 require __DIR__ . '/auth.php';
