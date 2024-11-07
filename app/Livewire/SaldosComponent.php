@@ -2,10 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Models\Saldo;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class SaldosComponent extends Component
 {
+
     public $fechaSaldos;
 
     public $provincia = [
@@ -38,6 +41,14 @@ class SaldosComponent extends Component
     public $conjuntoSaldos;
     public $mostrarTotal;
 
+    public $rules = [ 
+        'provincia.a893' => 'required',
+    ];
+    
+    public $messages = [
+        'provincia.a893.required' => 'El campo no puede estar vacio',
+    ];
+    
 
     public function calcularTotal() {
         // unifico todos los array
@@ -45,44 +56,27 @@ class SaldosComponent extends Component
 
         // sumo los valores del array unificado
         $this->mostrarTotal= round(array_sum($this->conjuntoSaldos), 3);
-
-
-        // reset de los campos
-        $this->provincia = [
-            'a893' => '',
-            'a430' => '',
-            'parroquia' => '',
-            'adm' => ''
-        ];
-
-        $this->santander = [
-            'sant1' => '',
-            'sant2' => '',
-            'sant3' => '',
-        ];
-        $this->santanderP = [
-            '893' => '',
-            '430' => '',
-            '1486' => '',
-        ];
-        $this->fci = [
-            'fciA' => '',
-            'fciPlus' => '',
-        ];
-        $this->digital = [
-            'mercadoPago' => '',
-        ];
-        $this->efectivo = [
-            'caja' => '',
-        ];
-    
-       
+        
     }
 
-    
     public function aBd() {
+
+      
+        $this->validate();
+
         //logica para subir el total a bd
- 
+        Saldo::create([
+            'calcularTotal' => $this->mostrarTotal,
+            'bancoProvincia' => $this->provincia,
+            'santander' => $this->santander,
+            'santanderP' => $this->santanderP,
+            'fci' => $this->fci,
+            'digital' => $this->digital,
+            'efectivo' => $this->efectivo,
+        ]);
+
+        
+        return redirect('/saldos');
     }
     
     public function render()
