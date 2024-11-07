@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit='aBd'>
+    <form wire:submit='toBd'>
         <div class="flex">
             <input wire:model='fechaSaldos' type="text" placeholder=" {{ __('Date') }} " class="input input-sm input-bordered w-40 mb-3 ml-7"
                 onfocus="(this.type='date')" />

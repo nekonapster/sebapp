@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Saldo;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class SaldosComponent extends Component
@@ -41,6 +40,7 @@ class SaldosComponent extends Component
     public $conjuntoSaldos;
     public $mostrarTotal;
 
+    // reglas de validacion////
     public $rules = [ 
         'provincia.a893' => 'required',
     ];
@@ -48,7 +48,7 @@ class SaldosComponent extends Component
     public $messages = [
         'provincia.a893.required' => 'El campo no puede estar vacio',
     ];
-    
+    //////////////////////////
 
     public function calcularTotal() {
         // unifico todos los array
@@ -59,8 +59,7 @@ class SaldosComponent extends Component
         
     }
 
-    public function aBd() {
-
+    public function toBd() {
       
         $this->validate();
 
