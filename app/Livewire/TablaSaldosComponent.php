@@ -15,7 +15,12 @@ class TablaSaldosComponent extends Component
     {
         $this->testTablas = Saldo::all();
     }
-
+    
+    public function toExcel()
+    {
+        return redirect()->route('export-excel');
+    }
+    
     public function render()
     {
         $this->listarTabla();

@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExportController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -26,5 +27,6 @@ Route::view('/users', 'users')
 Route::view('/invitado', 'layouts.invitado')
     ->name('invitado');
 
+    Route::get('export-excel', [ExportController::class, 'exportToExcel'])->name('export-excel');
 
 require __DIR__ . '/auth.php';

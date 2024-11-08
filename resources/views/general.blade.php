@@ -266,12 +266,13 @@
     </div>
 
 
-    {{-- ! modal para creacion de cuenta contable --}}
+    {{-- ! modal para creacion de CC cuenta contable --}}
     <dialog id="my_modal_5" class="modal">
         <div class="card bg-base-100 w-96 shadow-xl">
             <div class="card-body items-center">
                 <div>
-                    <p class="mx-10 text-center my-5">Nueva Cuenta Contable</p>
+                    <p class="mb-5 text-center text-2xl w-full">Nueva Cuenta Contable</p>
+                    <div class="divider"></div>
                     <form action="" class="w-80">
                         <span class="label-text">Rubro</span>
                         <Select class="select w-full select-bordered mb-5">
@@ -285,26 +286,7 @@
                             <option value="">Servicios</option>
                             <option value="">Personal</option>
                         </Select>
-                        {{-- <select name="" id="" class="select w-full select-bordered mb-5">
-                            <option value="">Enseñanzas extra programatica</option>
-                            <option value="">Reincorporaciones</option>
-                            <option value="">Suscripciones publicas</option>
-                            <option value="">Suscripciones publicas</option>
-                            <option value="">Egresos servicios de comedor</option>
-                            <option value="">Mantenimiento Inst.Mueble y Utiles Materiales</option>
-                            <option value="">Aporte GCBA</option>
-                            <option value="">Refrigerios</option>
-                            <option value="">Seguros</option>
-                            <option value="">Equipos de computacion</option>
-                            <option value="">Contables</option>
-                            <option value="">Agua</option>
-                            <option value="">Libros de texto</option>
-                            <option value="">Insumo y acc de computacion</option>
-                            <option value="">Muebles y utiles</option>
-                            <option value="">Cargas sociales</option>
-                            <option value="">ETC</option>
-                        </select> --}}
-                        
+
                         <span class="label-text">Descripcion</span>
                         <input type="text" placeholder="Description" class="input input-bordered w-full mb-5">
                         
@@ -326,8 +308,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="card-actions">
-                    <button class="btn btn-primary btn-block">Crear</button>
+                <div class="card-actions w-full">
+                    <button class="btn w-full mt-5 btn-primary ">Crear</button>
                 </div>
             </div>
         </div>
