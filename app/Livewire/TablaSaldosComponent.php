@@ -8,13 +8,13 @@ use Livewire\Component;
 class TablaSaldosComponent extends Component
 {
 
-public $testTablas;
+    public $testTablas;
 
 
- public function listarTabla(){
-     $this->testTablas = Saldo::all();
- }
-
+    public function listarTabla()
+    {
+        $this->testTablas = Saldo::all();
+    }
 
     public function render()
     {

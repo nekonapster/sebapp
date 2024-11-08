@@ -11,6 +11,7 @@ class Saldo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'userName',
         'bancoProvincia',
         'santander',
         'santanderP',
@@ -18,7 +19,7 @@ class Saldo extends Model
         'digital',
         'efectivo',
         'calcularTotal',
-        'fecha'
+        'fechaSaldos'
     ];
 
     protected $casts = [
