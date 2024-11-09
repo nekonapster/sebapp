@@ -37,9 +37,9 @@ class SaldosComponent extends Component
         'caja' => '',
     ];
 
+    
     public $conjuntoSaldos;
     public $mostrarTotal;
-
     // reglas de validacion////
     public $rules = [
         'provincia.a893' => 'required',
@@ -83,6 +83,7 @@ class SaldosComponent extends Component
 
         // sumo los valores del array unificado
         $this->mostrarTotal = round(array_sum($this->conjuntoSaldos), 3);
+        ds($this->mostrarTotal);
     }
 
     public function toBd()

@@ -26,7 +26,6 @@ class TablaUsuarioComponent extends Component
 
     public function render()
     {
-
         $this->listaUsuarios = User::where('name', 'like', '%' . $this->search . '%')->get();
 
         return view(

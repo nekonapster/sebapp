@@ -79,8 +79,9 @@
 
             <div class="flex justify-between">
                 <div>
-                    <button class="btn btn-primary" onclick="my_modal_4.showModal()">Nuevo Proveedor</button>
-                    <button class="btn btn-info ml-3" onclick="my_modal_6.showModal()">Nuevo Banco</button>
+                    <button class="btn btn-accent btn-outline" onclick="my_modal_4.showModal()">Nuevo Proveedor</button>
+                    <button class="btn btn-accent btn-outline ml-3" onclick="my_modal_6.showModal()">Nuevo
+                        Banco</button>
                 </div>
                 <div>
                     <button class="btn btn-accent">Guardar</button>
@@ -92,7 +93,7 @@
                     <div class="modal-box max-w-6xl">
                         <h3 class="font-bold text-lg">Proveedor</h3>
 
-                        <div class="card-body card-bordered">
+                        <div class="card-body card-bordered px-3">
                             <div class="grid grid-cols-4 gap-2">
                                 <input type="text" placeholder="ID" class="input input-sm input-bordered w-full"
                                     value="BUE001" />
@@ -113,10 +114,10 @@
                                     <input list="cc" placeholder="Cuenta Contable"
                                         class="select select-bordered select-sm text-xs w-72">
                                     <datalist name="" id="cc">
-                                        <option value="5,1420006"></option>
-                                        <option value="5,1420007"></option>
-                                        <option value="5,1510003"></option>
-                                        <option value="5,1520003"></option>
+                                        <option value="5.1420006"></option>
+                                        <option value="5.1420007"></option>
+                                        <option value="5.1510003"></option>
+                                        <option value="5.1520003"></option>
                                         <option value="11130001"></option>
                                         <option value="11130002"></option>
                                         <option value="11130003"></option>
@@ -196,18 +197,32 @@
                                             onclick="my_modal_5.showModal()">CC</button>
                                     </div>
                                 </div>
-
-                                <div class="card-actions justify-start py-3">
+                            </div>
+                            <div class="flex justify-between mt-5">
+                                <div class="">
+                                    <button class="btn btn-sm btn-outline btn-accent" onclick="upload1.showModal()">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-teal-500" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd"
+                                                d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        Cargar</button>
+                                </div>
+                                <div class="">
                                     <button class="btn btn-sm btn-primary">Modificar</button>
-                                    <button class="btn btn-sm btn-secondary">Agregar</button>
+                                    <button class="btn btn-sm btn-secondary">Guardar</button>
                                 </div>
                             </div>
 
+                            <div class="divider"></div>
+
                             <!-- tabla dentro del modal ↓ -->
                             <div class="mt-2">
-                                <table class="table text-center" id="myTable">
+                                <table class="table table-xs text-center" id="myTable">
                                     <!-- head -->
-                                    <thead>
+                                    <thead class="text-center">
                                         <tr>
                                             <th class="px-0"></th>
                                             <th class="px-0">ID</th>
@@ -218,42 +233,81 @@
                                             <th class="px-0">PROVEEDOR</th>
                                             <th class="px-0">CONTACTO</th>
                                             <th class="px-0">CORREO</th>
+                                            <th class="px-0" colspan="2">ACCION</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-xs">
+                                    <tbody class="text-xs text-center">
                                         <tr class="">
                                             <td class="px-0">1</td>
-                                            <td class="px-0">BUE001</td>
+                                            <td class="px-0">bue001</td>
                                             <td class="px-0">51420003</td>
-                                            <td class="px-0">REFRIGERIOS</td>
-                                            <td class="px-0">MATERIALES Y SUMINISTROS</td>
+                                            <td class="px-0">refrigerios</td>
+                                            <td class="px-0">materiales y suministros</td>
                                             <td class="px-0">1125-037551</td>
-                                            <td class="px-0">AQUALINE 00</td>
-                                            <td class="px-0">PEDRO DUARTE</td>
-                                            <td class="px-0">AQUALINE@MAIL.COM</td>
+                                            <td class="px-0">aqualine 00</td>
+                                            <td class="px-0">pedro duarte</td>
+                                            <td class="px-0">aqualine@mail.com</td>
+                                            <td class="px-0"><button class="btn btn-success btn-xs">Sel</button>
+                                            </td>
+                                            <td class="px-0"><button class="btn btn-secondary btn-xs">Del</button></td>
                                         </tr>
-                                        <tr>
-                                            <td class="px-0">2</td>
-                                            <td class="px-0">BUE002</td>
-                                            <td class="px-0">73542005</td>
-                                            <td class="px-0">SNACKS</td>
-                                            <td class="px-0">MATERIALES Y SUMINISTROS</td>
-                                            <td class="px-0">1125-059873</td>
-                                            <td class="px-0">SNACKDELIGHT 02</td>
-                                            <td class="px-0">JUAN PEREZ</td>
-                                            <td class="px-0">JUAN.PEREZ@MAIL.COM</td>
+                                        <tr class="">
+                                            <td class="px-0">1</td>
+                                            <td class="px-0">bue001</td>
+                                            <td class="px-0">51420003</td>
+                                            <td class="px-0">refrigerios</td>
+                                            <td class="px-0">materiales y suministros</td>
+                                            <td class="px-0">1125-037551</td>
+                                            <td class="px-0">aqualine 00</td>
+                                            <td class="px-0">pedro duarte</td>
+                                            <td class="px-0">aqualine@mail.com</td>
+                                            <td class="px-0"><button class="btn btn-success btn-xs">Sel</button>
+                                            </td>
+                                            <td class="px-0"><button class="btn btn-secondary btn-xs">Del</button></td>
                                         </tr>
-                                        <tr>
-                                            <td class="px-0">3</td>
-                                            <td class="px-0">BUE003</td>
-                                            <td class="px-0">84653006</td>
-                                            <td class="px-0">ALMUERZOS</td>
-                                            <td class="px-0">MATERIALES Y SUMINISTROS</td>
-                                            <td class="px-0">1125-070984</td>
-                                            <td class="px-0">LUNCHBOX 03</td>
-                                            <td class="px-0">ANA GARCIA</td>
-                                            <td class="px-0">ANA.GARCIA@MAIL.COM</td>
+                                        <tr class="">
+                                            <td class="px-0">1</td>
+                                            <td class="px-0">bue001</td>
+                                            <td class="px-0">51420003</td>
+                                            <td class="px-0">refrigerios</td>
+                                            <td class="px-0">materiales y suministros</td>
+                                            <td class="px-0">1125-037551</td>
+                                            <td class="px-0">aqualine 00</td>
+                                            <td class="px-0">pedro duarte</td>
+                                            <td class="px-0">aqualine@mail.com</td>
+                                            <td class="px-0"><button class="btn btn-success btn-xs">Sel</button>
+                                            </td>
+                                            <td class="px-0"><button class="btn btn-secondary btn-xs">Del</button></td>
                                         </tr>
+                                        <tr class="">
+                                            <td class="px-0">1</td>
+                                            <td class="px-0">bue001</td>
+                                            <td class="px-0">51420003</td>
+                                            <td class="px-0">refrigerios</td>
+                                            <td class="px-0">materiales y suministros</td>
+                                            <td class="px-0">1125-037551</td>
+                                            <td class="px-0">aqualine 00</td>
+                                            <td class="px-0">pedro duarte</td>
+                                            <td class="px-0">aqualine@mail.com</td>
+                                            <td class="px-0"><button class="btn btn-success btn-xs">Sel</button>
+                                            </td>
+                                            <td class="px-0"><button class="btn btn-secondary btn-xs">Del</button></td>
+                                        </tr>
+                                        <tr class="">
+                                            <td class="px-0">1</td>
+                                            <td class="px-0">bue001</td>
+                                            <td class="px-0">51420003</td>
+                                            <td class="px-0">refrigerios</td>
+                                            <td class="px-0">materiales y suministros</td>
+                                            <td class="px-0">1125-037551</td>
+                                            <td class="px-0">aqualine 00</td>
+                                            <td class="px-0">pedro duarte</td>
+                                            <td class="px-0">aqualine@mail.com</td>
+                                            <td class="px-0"><button class="btn btn-success btn-xs">Sel</button>
+                                            </td>
+                                            <td class="px-0"><button class="btn btn-secondary btn-xs">Del</button></td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -327,15 +381,37 @@
                     <div class="divider"></div>
                     <form action="" class="w-80">
                         <span class="label-text">Nombre del Banco</span>
-                        <input type="text" class="input w-full select-bordered mb-5" />
-
+                        <input type="text" class="input input-sm w-full select-bordered mb-5" />
                         <span class="label-text">Cuenta asociada</span>
-                        <input type="text" placeholder="Nº Cuenta" class="input input-bordered w-full mb-5">
+                        <input type="text" class="input input-sm input-bordered w-full mb-5">
                     </form>
                 </div>
                 <div class="card-actions w-full">
                     <button class="btn w-full mt-5 btn-primary ">Crear</button>
                 </div>
+            </div>
+        </div>
+    </dialog>
+    {{-- ! modal para 'Carga masiva de datos' --}}
+    <dialog id="upload1" class="modal">
+        <div class="card bg-base-100 shadow-xl">
+            <p class="px-5 mt-3 text-2xl">Carga de proveedores <br><span class="text-xs">Puedes subir archivos xls y las
+                columnas tienen que tener encabezados</span></p>
+                <div class="card-body items-center w-[500px] ">
+                <figure>
+                    <img class="w-full"
+                      src="{{ asset('build/assets/img/ejemploTabla.png') }}"
+                      alt="example table" />
+                  </figure>
+                <form action="" class="w-full">
+                    <div class="w-full">
+                        <input type="file"
+                            class="file-input file-input-sm file-input-bordered file-input-accent text-lg w-full" />
+                    </div>
+                    <div class="card-actions w-full">
+                        <button class="btn btn-primary btn-sm mt-5 w-full ">Subir</button>
+                    </div>
+                </form>
             </div>
         </div>
     </dialog>
