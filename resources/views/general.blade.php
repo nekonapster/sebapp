@@ -4,7 +4,7 @@
         <div class="card-body bg-neutral rounded-xl mx-10">
             <div class="primerDiv flex items-center justify-between ">
                 <input type="text" placeholder="ID" class="input input-sm input-bordered max-w-xs w-40" />
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-full text-xs">
+                <select name="" id="" class="select select-bordered select-sm max-w-xs w-48 text-xs">
                     <option value="0">PROVEEDOR</option>
                     <option value="1">MARTIN</option>
                     <option value="2">SEBASTIAN</option>
@@ -14,9 +14,9 @@
                     <option value="5">ANTONIO</option>
                 </select>
 
-                <input type="text" placeholder="Fecha de factura" name="" id=""
+                <input type="text" placeholder="Fecha factura" name="" id=""
                     class="input input-sm input-bordered max-w-xs w-40" onfocus="(this.type='date')" />
-                <input type="text" placeholder="Fecha de vencimiento" name="" id=""
+                <input type="text" placeholder="Fecha vencimiento" name="" id=""
                     class="input input-sm input-bordered max-w-xs w-40" onfocus="(this.type='date')" />
                 <input type="text" placeholder="Auxiliar" class="input input-sm input-bordered max-w-xs w-40" />
             </div>
@@ -29,13 +29,13 @@
                 <input type="number" step="0.1" class="input input-sm input-bordered max-w-xs w-40"
                     placeholder="Importe" />
 
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-48 text-xs">
+                <select name="" id="" class="select select-bordered select-sm max-w-xs w-24 text-xs">
                     <option value="">GASTOS</option>
                     <option value="">Gastos 1</option>
                     <option value="">Gastos 2</option>
                     <option value="">Gastos 3</option>
                 </select>
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-48 text-xs">
+                <select name="" id="" class="select select-bordered select-sm max-w-xs w-36 text-xs">
                     <option value="">PROYECTO</option>
                     <option value="">Proyecto 1</option>
                     <option value="">Proyecto 2</option>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="tercerDIV flex items-center justify-between mt-5">
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-48 text-xs">
+                <select name="" id="" class="select select-bordered select-sm max-w-xs w-20 text-xs">
                     <option value="">PAGO</option>
                     <option value="">pago 1</option>
                     <option value="">pago 2</option>
@@ -55,7 +55,7 @@
                 </select>
 
                 <input type="text" placeholder="Fecha de pago" name="" id=""
-                    class="input input-sm input-bordered max-w-xs w-40" onfocus="(this.type='date')" />
+                    class="input input-sm input-bordered max-w-xs w-32" onfocus="(this.type='date')" />
                 <select name="" id="" class="select select-bordered select-sm max-w-xs w-40 text-xs">
                     <option value="">BANCOS</option>
                     <option value="">Proincia</option>
@@ -63,11 +63,11 @@
                     <option value="">Itahu</option>
                     <option value="">Santander</option>
                 </select>
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-full text-xs">
+                <select name="" id="" class="select select-bordered select-sm max-w-xs w-48 text-xs">
                     <option value="">Cuenta de banco</option>
-                    <option value="">bue2424000314772024</option>
-                    <option value="">bue0909000314772024</option>
-                    <option value="">bue1515000314772024</option>
+                    <option value="">BUE2424000314772024</option>
+                    <option value="">BUE0909000314772024</option>
+                    <option value="">BUE1515000314772024</option>
                 </select>
                 <input type="text" class="input input-sm input-bordered max-w-xs w-40" placeholder="Nº Cheque" />
                 <input type="text" class="input input-sm input-bordered max-w-xs w-40" placeholder="Orden de Pago" />
@@ -78,11 +78,16 @@
             <div class="divider divider-primary mt-5"></div>
 
             <div class="flex justify-between">
-                <button class="btn btn-primary" onclick="my_modal_4.showModal()">Nuevo Proveedor</button>
-                <button class="btn btn-accent">Guardar</button>
+                <div>
+                    <button class="btn btn-primary" onclick="my_modal_4.showModal()">Nuevo Proveedor</button>
+                    <button class="btn btn-info ml-3" onclick="my_modal_6.showModal()">Nuevo Banco</button>
+                </div>
+                <div>
+                    <button class="btn btn-accent">Guardar</button>
+                </div>
 
 
-                {{-- ? MODAL BODY START --}}
+                {{-- ! modal 'nuevo proveedor' --}}
                 <dialog id="my_modal_4" class="modal">
                     <div class="modal-box max-w-6xl">
                         <h3 class="font-bold text-lg">Proveedor</h3>
@@ -91,21 +96,21 @@
                             <div class="grid grid-cols-4 gap-2">
                                 <input type="text" placeholder="ID" class="input input-sm input-bordered w-full"
                                     value="BUE001" />
-                                    
-                                    <input type="text" placeholder="DESCRIPCION"
+
+                                <input type="text" placeholder="DESCRIPCION"
                                     class="input input-sm input-bordered w-full" required />
-                                    <input type="text" placeholder="RUBRO" class="input input-sm input-bordered w-full"
+                                <input type="text" placeholder="RUBRO" class="input input-sm input-bordered w-full"
                                     required />
-                                    <input type="tel" placeholder="TEL" class="input input-sm input-bordered w-full"
+                                <input type="tel" placeholder="TEL" class="input input-sm input-bordered w-full"
                                     required />
-                                    <input type="text" placeholder="PROVEEDOR" class="input input-sm input-bordered w-full"
+                                <input type="text" placeholder="PROVEEDOR" class="input input-sm input-bordered w-full"
                                     required />
-                                    <input type="text" placeholder="CONTACTO" class="input input-sm input-bordered w-full"
+                                <input type="text" placeholder="CONTACTO" class="input input-sm input-bordered w-full"
                                     required />
-                                    <input type="email" placeholder="CORREO" class="input input-sm input-bordered w-full"
+                                <input type="email" placeholder="CORREO" class="input input-sm input-bordered w-full"
                                     required />
-                                    <div class="flex items-center gap-3">
-                                        <input list="cc" placeholder="Cuenta Contable"
+                                <div class="flex items-center gap-3">
+                                    <input list="cc" placeholder="Cuenta Contable"
                                         class="select select-bordered select-sm text-xs w-72">
                                     <datalist name="" id="cc">
                                         <option value="5,1420006"></option>
@@ -266,12 +271,12 @@
     </div>
 
 
-    {{-- ! modal para creacion de CC cuenta contable --}}
+    {{-- ! modal para creacion de 'CC' cuenta contable --}}
     <dialog id="my_modal_5" class="modal">
         <div class="card bg-base-100 w-96 shadow-xl">
             <div class="card-body items-center">
                 <div>
-                    <p class="mb-5 text-center text-2xl w-full">Nueva Cuenta Contable</p>
+                    <p class="mb-5 text-start text-2xl w-full">Nueva Cuenta Contable</p>
                     <div class="divider"></div>
                     <form action="" class="w-80">
                         <span class="label-text">Rubro</span>
@@ -289,8 +294,7 @@
 
                         <span class="label-text">Descripcion</span>
                         <input type="text" placeholder="Description" class="input input-bordered w-full mb-5">
-                        
-                        
+
                         <div class="flex justify-start w-full input input-bordered items-center">
                             <p>Tipo</p>
                             <div class="">
@@ -309,10 +313,30 @@
                     </form>
                 </div>
                 <div class="card-actions w-full">
+                    <button class="btn w-full mt-5 btn-primary">Crear</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    {{-- ! modal para 'Nuevo Banco' --}}
+    <dialog id="my_modal_6" class="modal">
+        <div class="card bg-base-100 w-96 shadow-xl">
+            <div class="card-body items-center">
+                <div>
+                    <p class="mb-5 text-start text-2xl w-full">Nueva Banco</p>
+                    <div class="divider"></div>
+                    <form action="" class="w-80">
+                        <span class="label-text">Nombre del Banco</span>
+                        <input type="text" class="input w-full select-bordered mb-5" />
+
+                        <span class="label-text">Cuenta asociada</span>
+                        <input type="text" placeholder="Nº Cuenta" class="input input-bordered w-full mb-5">
+                    </form>
+                </div>
+                <div class="card-actions w-full">
                     <button class="btn w-full mt-5 btn-primary ">Crear</button>
                 </div>
             </div>
         </div>
     </dialog>
-    {{-- ! modal para cuenta contable --}}
 </x-app-layout>
