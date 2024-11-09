@@ -20,6 +20,10 @@ class TablaSaldosComponent extends Component
     {
         return redirect()->route('export-excel');
     }
+    public function toPdf()
+    {
+        return redirect()->route('export-pdf');
+    }
     
     public function render()
     {

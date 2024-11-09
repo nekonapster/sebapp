@@ -28,5 +28,6 @@ Route::view('/invitado', 'layouts.invitado')
     ->name('invitado');
 
     Route::get('export-excel', [ExportController::class, 'exportToExcel'])->name('export-excel');
+    Route::get('export-pdf', [ExportController::class, 'exportToPdf'])->name('export-pdf');
 
 require __DIR__ . '/auth.php';
