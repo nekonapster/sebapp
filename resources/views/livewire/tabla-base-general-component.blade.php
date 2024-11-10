@@ -29,23 +29,23 @@
 					<thead class="text-center">
 						<tr>
 							<th scope="col" class="">ID</th>
-							<th scope="col" class="">PROV.</th>
-							<th scope="col" class="">FECHA FAC.</th>
-							<th scope="col" class="">FECHA VEN.</th>
-							<th scope="col" class="">AUXILIAR</th>
-							<th scope="col" class="">PTO.VENTA</th>
 							<th scope="col" class="">Nº FACTURA</th>
+							<th scope="col" class="">PROV.</th>
+							{{-- <th scope="col" class="">FECHA FAC.</th> --}}
+							<th scope="col" class="">VENCE</th>
+							{{-- <th scope="col" class="">AUXILIAR</th> --}}
+							{{-- <th scope="col" class="">PTO.VENTA</th> --}}
 							<th scope="col" class="">IMPORTE</th>
-							<th scope="col" class="">GASTOS</th>
-							<th scope="col" class="">PROYECTO</th>
-							<th scope="col" class="">ACTIVACION</th>
-							<th scope="col" class="">PAGO</th>
+							{{-- <th scope="col" class="">GASTOS</th> --}}
+							{{-- <th scope="col" class="">PROYECTO</th> --}}
+							{{-- <th scope="col" class="">ACTIVACION</th> --}}
+							{{-- <th scope="col" class="">PAGO</th> --}}
 							<th scope="col" class="">FECHA PAGO</th>
-							<th scope="col" class="">BANCO</th>
-							<th scope="col" class="">C. BANCO</th>
+							{{-- <th scope="col" class="">BANCO</th> --}}
+							{{-- <th scope="col" class="">C. BANCO</th> --}}
 							<th scope="col" class="">Nº CHEQUE</th>
 							<th scope="col" class="">ORDEN PAGO</th>
-							<th scope="col" class="" colspan="3">ACCION</th>
+							<th scope="col" class="">ACCION</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -55,23 +55,29 @@
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-
-							<td><button type=" button" class="btn btn-xs btn-primary">Select</button></td>
-							<td><button type=" button" class="btn btn-xs btn-primary" wire:confirm="Estas seguro?">Delete</button>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td class="py-1">
+								<button type=" button" class="btn btn-xs btn-primary mx-1">Select</button>
+								<button type=" button" class="btn btn-xs btn-primary mx-1" wire:confirm="Estas seguro?">Delete</button>
+								<button type=" button" class="btn btn-xs btn-primary mx-1" onclick="pagar.showModal()">Pagar</button>
 							</td>
-							<td><button type=" button" class="btn btn-xs btn-primary" onclick="pagar.showModal()">Pagar</button></td>
+						<tr>
+						<tr class="text-center">
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td class="py-1">
+								<button type=" button" class="btn btn-xs btn-primary mx-1">Select</button>
+								<button type=" button" class="btn btn-xs btn-primary mx-1" wire:confirm="Estas seguro?">Delete</button>
+								<button type=" button" class="btn btn-xs btn-primary mx-1" onclick="pagar.showModal()">Pagar</button>
+							</td>
 						<tr>
 					</tbody>
 				</table>
@@ -86,7 +92,7 @@
 			<h3 class="text-lg font-bold mb-4">Va a pagar una factura</h3>
 			<form method="dialog">
 				<div class="grid grid-cols-2 gap-4">
-					
+
 					<!-- Tipo de Pago -->
 					<div>
 						<label for="tipoPago" class="text-sm font-medium">Tipo de Pago</label>
@@ -97,22 +103,17 @@
 							<option value="pago3">Pago 3</option>
 						</select>
 					</div>
-					
+
 					<!-- Fecha de Pago -->
 					<div>
 						<label for="fechaPago" class="text-sm font-medium">Fecha de Pago</label>
-						<input
-							type="text"
-							id="fechaPago"
-							placeholder="Fecha de pago"
-							class="input input-sm pt-0 pb-0 input-bordered w-full"
-							onfocus="(this.type='date')"
-						/>
+						<input type="text" id="fechaPago" placeholder="Fecha de pago"
+							class="input input-sm pt-0 pb-0 input-bordered w-full" onfocus="(this.type='date')" />
 					</div>
-	
+
 					<!-- Banco -->
 					<div>
-						<label for="banco" class="text-xs font-medium">Banco</label>
+						<label for="banco" class="text-sm font-medium">Banco</label>
 						<select id="banco" name="banco" class="select select-bordered select-sm pt-0 w-full">
 							<option value="">Seleccionar</option>
 							<option value="provincia">Provincia</option>
@@ -121,7 +122,7 @@
 							<option value="santander">Santander</option>
 						</select>
 					</div>
-	
+
 					<!-- Cuenta de Banco -->
 					<div>
 						<label for="cuentaBanco" class="text-sm font-medium">Cuenta de Banco</label>
@@ -132,23 +133,24 @@
 							<option value="cuenta3">BUE1515000314772024</option>
 						</select>
 					</div>
-	
+
 					<!-- Nº Cheque -->
 					<div>
 						<label for="numCheque" class="text-sm font-medium">Nº Cheque</label>
 						<input type="text" id="numCheque" class="input input-sm input-bordered w-full" placeholder="Nº Cheque" />
 					</div>
-	
+
 					<!-- Orden de Pago -->
 					<div>
 						<label for="ordenPago" class="text-sm font-medium">Orden de Pago</label>
-						<input type="text" id="ordenPago" class="input input-sm input-bordered w-full" placeholder="Orden de Pago" />
+						<input type="text" id="ordenPago" class="input input-sm input-bordered w-full"
+							placeholder="Orden de Pago" />
 					</div>
 				</div>
-	
+
 				<!-- Modal Actions -->
 				<div class="modal-action mt-4">
-					<button type="submit" class="btn btn-primary">Pagar</button>
+					<button type="submit" class="btn btn-primary btn-block">Pagar</button>
 				</div>
 			</form>
 		</div>

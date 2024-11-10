@@ -46,9 +46,9 @@
                 </label>
             </div>
 
-           
 
-            <textarea placeholder="Observaciones" class="textarea textarea-bordered mt-3"></textarea>
+
+            <textarea placeholder="Notas" class="textarea textarea-bordered mt-3"></textarea>
 
             <div class="divider divider-primary mt-5"></div>
 
@@ -73,13 +73,13 @@
                                 <input type="text" placeholder="ID" class="input input-sm input-bordered w-full"
                                     value="BUE001" />
 
-                                <input type="text" placeholder="DESCRIPCION"
-                                    class="input input-sm input-bordered w-full" required />
+                                <input type="text" placeholder="NOMBRE" class="input input-sm input-bordered w-full"
+                                    required />
                                 <input type="text" placeholder="RUBRO" class="input input-sm input-bordered w-full"
                                     required />
+                                <input type="text" placeholder="DESCRIPCION"
+                                    class="input input-sm input-bordered w-full" required />
                                 <input type="tel" placeholder="TEL" class="input input-sm input-bordered w-full"
-                                    required />
-                                <input type="text" placeholder="PROVEEDOR" class="input input-sm input-bordered w-full"
                                     required />
                                 <input type="text" placeholder="CONTACTO" class="input input-sm input-bordered w-full"
                                     required />
@@ -371,17 +371,14 @@
     <dialog id="upload1" class="modal">
         <div class="card bg-base-100 shadow-xl">
             <p class="px-5 mt-3 text-2xl">Carga de proveedores <br><span class="text-xs">Puedes subir archivos xls y las
-                columnas tienen que tener encabezados</span></p>
-                <div class="card-body items-center w-[500px] ">
+                    columnas tienen que tener encabezados</span></p>
+            <div class="card-body items-center w-[500px] ">
                 <figure>
-                    <img class="w-full"
-                      src="{{ asset('build/assets/img/ejemploTabla.png') }}"
-                      alt="example table" />
-                  </figure>
+                    <img class="w-full" src="{{ asset('build/assets/img/ejemploTabla.png') }}" alt="example table" />
+                </figure>
                 <form action="" class="w-full">
                     <div class="w-full">
-                        <input type="file"
-                            class="file-input file-input-sm file-input-bordered file-input-accent text-lg w-full" />
+                        <input type="file" class="file-input file-input-bordered file-input-xs w-full" />
                     </div>
                     <div class="card-actions w-full">
                         <button class="btn btn-primary btn-sm mt-5 w-full ">Subir</button>
