@@ -46,32 +46,7 @@
                 </label>
             </div>
 
-            <div class="tercerDIV flex items-center justify-between mt-5">
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-20 text-xs">
-                    <option value="">PAGO</option>
-                    <option value="">pago 1</option>
-                    <option value="">pago 2</option>
-                    <option value="">pago 3</option>
-                </select>
-
-                <input type="text" placeholder="Fecha de pago" name="" id=""
-                    class="input input-sm input-bordered max-w-xs w-32" onfocus="(this.type='date')" />
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-40 text-xs">
-                    <option value="">BANCOS</option>
-                    <option value="">Proincia</option>
-                    <option value="">Frances</option>
-                    <option value="">Itahu</option>
-                    <option value="">Santander</option>
-                </select>
-                <select name="" id="" class="select select-bordered select-sm max-w-xs w-48 text-xs">
-                    <option value="">Cuenta de banco</option>
-                    <option value="">BUE2424000314772024</option>
-                    <option value="">BUE0909000314772024</option>
-                    <option value="">BUE1515000314772024</option>
-                </select>
-                <input type="text" class="input input-sm input-bordered max-w-xs w-40" placeholder="Nº Cheque" />
-                <input type="text" class="input input-sm input-bordered max-w-xs w-40" placeholder="Orden de Pago" />
-            </div>
+           
 
             <textarea placeholder="Observaciones" class="textarea textarea-bordered mt-3"></textarea>
 
@@ -415,4 +390,9 @@
             </div>
         </div>
     </dialog>
+
+    <div>
+        {{-- !TODO livewire table --}}
+        @livewire('tabla-base-general-component')
+    </div>
 </x-app-layout>
