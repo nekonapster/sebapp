@@ -109,7 +109,7 @@
 	</div>
 
 
-	{{--! MODAL 'PAGAR' --}}
+	{{--! MODAL 'PAGAR FACTURAS' --}}
 	<dialog id="pagar" class="modal">
 		<div class="modal-box">
 			<h3 class="text-lg font-bold mb-4">Va a pagar una factura</h3>
@@ -172,7 +172,7 @@
 				</div>
 
 				<!-- Modal Actions -->
-				<div class="modal-action mt-4">
+				<div class="modal-action mt-7">
 					<button type="submit" class="btn btn-primary btn-block">Pagar</button>
 				</div>
 			</form>
