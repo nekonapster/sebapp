@@ -89,7 +89,7 @@
                                     {{-- añado condicional; si el usuario es nekonapster que desabilite el boton --}}
                                     {{$listaUsuario->name === 'nekonapster' ? 'disabled' : '' }}>
                                     {{-- añado condicional; si el usuario es nekonapster que cambiel el color del boton --}}
-                                    <svg class="w-6 h-6 text-red-600 {{$listaUsuario->name === 'nekonapster' ? ' dark:text-gray-600' : '' }}" 
+                                    <svg class="w-6 h-6 text-red-500 {{$listaUsuario->name === 'nekonapster' ? ' dark:text-gray-600' : '' }}" 
                                         aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24"
