@@ -1,6 +1,6 @@
 {{-- MODAL DE NUEVO USUARIO EN PESTAÑA USUARIOS --}}
 <div>
-    <button class="btn btn-accent font-bold" onclick="my_modal_4.showModal()">
+    <button class="btn btn-accent font-bold mr-1" onclick="my_modal_4.showModal()">
         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
             viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
