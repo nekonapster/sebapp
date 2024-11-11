@@ -94,8 +94,8 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
-            'expire' => 60,
-            'throttle' => 60,
+            'expire' => 10, //tiempo de caducidad en minutos para reestablecel la pass una vez llega el mail
+            'throttle' => 3, //tiempo en segundos que deja enviar el mail para reestablecer pass
         ],
     ],
 
