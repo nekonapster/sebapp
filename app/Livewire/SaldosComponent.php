@@ -8,6 +8,7 @@ use Livewire\Component;
 class SaldosComponent extends Component
 {
 
+
     public $fechaSaldos;
 
     public $provincia = [

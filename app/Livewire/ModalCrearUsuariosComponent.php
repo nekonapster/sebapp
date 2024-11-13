@@ -9,6 +9,8 @@ use Livewire\Component;
 class ModalCrearUsuariosComponent extends Component
 {
 
+
+
     #[Validate('required|min:4|max:255')]
     public $name = '';
 
@@ -20,11 +22,9 @@ class ModalCrearUsuariosComponent extends Component
     public $role;
     public $emit;
 
-    function crearUsuario()
-    {
+    function crearUsuario(){
 
         $this->validate();
-
 
         User::create([
             'name' => strtolower($this->name),

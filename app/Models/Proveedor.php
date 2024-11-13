@@ -3,19 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Proveedor extends Model
 {
     use HasFactory;
-   
-    protected $fillable = [
+
+protected $collection = 'proveedores';
+    
+protected $fillable = [
+        'id_proveedor',
         'proveedor_name',
-        'descripcion',
-        'rubro',
-        'telefono',
-        'contacto',
-        'email',
-        'cc',
+        // 'tel',
+        // 'email',
+        // 'contacto',
+        // 'descripcion',
+        // 'rubro',
+        // 'cc',
     ];
 }

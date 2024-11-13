@@ -10,7 +10,6 @@ class TablaSaldosComponent extends Component
 
     public $testTablas;
 
-
     public function listarTabla()
     {
         $this->testTablas = Saldo::all();

@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class ModalEditarUsuarioComponent extends Component
 {
+
+
     #[Validate('required|min:4|max:255')]
     public $name;
     #[Validate('required|email')]
