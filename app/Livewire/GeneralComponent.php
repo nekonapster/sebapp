@@ -12,7 +12,7 @@ class GeneralComponent extends Component
     public $fechaFactura;
     public $fechaVencimiento;
     public $auxiliar;
-    public $activacion = false;
+    public $activacion;
     public $ptoVenta;
     public $nFactura;
     public $importe;
@@ -21,22 +21,24 @@ class GeneralComponent extends Component
     public $notas;
 
 
-    public function aBd()
+
+    public function datosBaseGeneral()
     {
         Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
             'proveedor_name' => $this->proveedor_name,
             'fechaFactura' => $this->fechaFactura,
             'fechaVencimiento' => $this->fechaVencimiento,
-            'auxiliar' => $this->auxiliar,
+            'auxiliar' => strtolower($this->auxiliar),
             'activacion' => $this->activacion,
-            'ptoVenta' => $this->ptoVenta,
-            'nFactura' => $this->nFactura,
+            'ptoVenta' => strtolower($this->ptoVenta),
+            'nFactura' => strtolower($this->nFactura),
             'importe' => $this->importe,
             'gastos' => $this->gastos,
             'proyecto' => $this->proyecto,
-            'notas' => $this->notas,
+            'notas' => strtolower($this->notas),
         ]);
+
         // refresco la pagina
         return redirect('/general');
     }

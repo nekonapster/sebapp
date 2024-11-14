@@ -2,28 +2,41 @@
 
 namespace App\Livewire;
 
+use App\Models\Base;
 use Livewire\Component;
+use Livewire\Volt\Compilers\Mount;
 
 class TablaBaseGeneralComponent extends Component
 {
 
-    // public $id="testFromComponent";
-    // public $proveedor;
-    // public $fechaFactura;
-    // public $fechaVencimiento;
-    // public $auxiliar;
-    // public $activacion= false;
-    // public $ptoVenta;
-    // public $nFactura;
-    // public $importe;
-    // public $gastos;
-    // public $proyecto;
-    // public $notas;
+    // baseGeneral_id
+    // proveedor_name
+    // fechaFactura
+    // fechaDePago
+    // fechaVencimiento
+    // auxiliar
+    // activacion
+    // ptoVenta
+    // nFactura
+    // importe
+    // gastos
+    // proyecto
+    // notas
+    public $fechaPago = '-';
+    public $nCheque = '-';
+    public $ordenPago = '-';
 
-
-
+    // public function capturoEvento(){
+    // }
+    
+    
+    
     public function render()
     {
-        return view('livewire.tabla-base-general-component');
+        $tablas = Base::all();
+        return view('livewire.tabla-base-general-component',[
+            'tablas'=>$tablas,
+            // dd($tablas[0]['proveedor_name']),
+        ]);
     }
 }

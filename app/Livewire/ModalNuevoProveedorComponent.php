@@ -29,6 +29,8 @@ public function crearProveedor(){
         'rubro' => strtolower($this->rubro),
         'cc' => $this->cc,
     ]);
+
+    return redirect('/general');
 }
 
     public function render()

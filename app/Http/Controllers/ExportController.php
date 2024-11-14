@@ -15,7 +15,7 @@ class ExportController extends Controller
 
         // Establecemos y formateamos fecha
         $currentDate = date('d-m-Y');
-
+        
         // Obtener todos los registros de la tabla 'saldos'
         $saldos = Saldo::all();
 
@@ -50,7 +50,7 @@ class ExportController extends Controller
         foreach ($saldos as $saldo) {
             $sheet->setCellValue('A' . $row, $saldo->userName);
             $sheet->setCellValue('B' . $row, $saldo->updated_at);
-            $sheet->setCellValue('C' . $row, $saldo->fecha);
+            $sheet->setCellValue('C' . $row, $saldo->fechaSaldos);
             $sheet->setCellValue('D' . $row, $saldo->bancoProvincia['a893']);
             $sheet->setCellValue('E' . $row, $saldo->bancoProvincia['a430']);
             $sheet->setCellValue('F' . $row, $saldo->bancoProvincia['parroquia']);
@@ -121,10 +121,13 @@ class ExportController extends Controller
 
         // Llenamos la tabla con los datos de la base de datos
         foreach ($saldos as $saldo) {
+        // formateo la fecha que viene de la base de datos (de la bd se devuelve un date)
+            $fechaCreacionFormateada = date_format($saldo->created_at, 'd-m-Y H:i:s');
+
             $html .= '<tr>
                     <td>' . $saldo->userName . '</td>
-                    <td>' . $saldo->updated_at . '</td>
-                    <td>' . $saldo->fecha . '</td>
+                    <td>' . $fechaCreacionFormateada . '</td>
+                    <td>' . $saldo->fechaSaldos . '</td>
                     <td>' . $saldo->bancoProvincia['a893'] . '</td>
                     <td>' . $saldo->bancoProvincia['a430'] . '</td>
                     <td>' . $saldo->bancoProvincia['parroquia'] . '</td>
@@ -139,7 +142,7 @@ class ExportController extends Controller
                     <td>' . $saldo->santanderP['1486'] . '</td>
                     <td>' . $saldo->digital['mercadoPago'] . '</td>
                     <td>' . $saldo->efectivo['caja'] . '</td>
-                    <td>' . $saldo->calcularTotal . '</td>
+                    <td><strong>' . $saldo->calcularTotal . '</strong></td>
                   </tr>';
         }
 

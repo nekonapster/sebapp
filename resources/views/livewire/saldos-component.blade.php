@@ -1,7 +1,7 @@
 <div>
     <form wire:submit='toBd'>
         <div class="flex">
-            <input wire:model='fechaSaldos' type="text" placeholder=" {{ __('Date') }} "
+            <input wire:model='fechaSaldos' type="date" placeholder=" {{ __('Date') }} "
                 class="input input-sm input-bordered w-40 mb-3 ml-1" onfocus="(this.type='date')" required />
         </div>
 
@@ -95,7 +95,8 @@
                 <div>
                     <button wire:click.prevent='calcularTotal' class="btn btn-sm btn-accent mr-3 ml-1">Calcular
                         total</button>
-                    <input wire:model='mostrarTotal' type="text" placeholder="CALCULADO"
+                    <input wire:model='mostrarTotal' type="number" placeholder="CALCULADO" 
+                    disabled
                         class="input input-sm input-bordered w-40" />
                     <span class="text-xl">$</span>
                 </div>

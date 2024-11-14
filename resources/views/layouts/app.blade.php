@@ -16,7 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
-    <html data-theme="">
+
+    <html data-theme="dark">
 
     </html>
 
@@ -28,9 +29,9 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="shadow">
-                {{-- {{ $header }} --}}
-            </header>
+        <header class="shadow">
+            {{-- {{ $header }} --}}
+        </header>
         @endif
 
         <!-- Page Content -->

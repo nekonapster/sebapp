@@ -8,7 +8,7 @@
             <div class="relative">
                 <input wire:model.live.debounce.300ms="search" type="text" id="hs-as-table-product-review-search"
                     name="hs-as-table-product-review-search"
-                    class="py-2 px-3 ps-11 block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    class="py-1 px-3 ps-11 input input-sm block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="Search">
                 <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
                     <svg class="flex-shrink-0 size-4 text-gray-400 dark:text-neutral-500"
@@ -28,11 +28,11 @@
     <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                <table class="table table-xs min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
                     <thead>
-                        <tr>
+                        <tr class="">
                             <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
                                 name
                             </th>
                             <th scope="col"
@@ -53,26 +53,26 @@
                         @foreach ($listaUsuarios as $listaUsuario)
                         <tr wire:key="{{$listaUsuario->id}}">
                             <td
-                                class="px-6 py-4 whitespace-nowrap text-start text-sm text-gray-800 dark:text-neutral-200">
+                                class="text-sm text-start">
                                 {{$listaUsuario->name}}</td>
 
                             <td
-                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                                class="text-sm">
                                 {{$listaUsuario->role}}</td>
 
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                            <td class="text-sm">
                                 {{$listaUsuario->email}}</td>
 
                             <td class="">
                                 <button 
                                     wire:click="editar('{{$listaUsuario->_id}}')"
-                                    onclick="my_modal_5.showModal()"
-                                    class="mr-5 mt-2" type="button"
+                                    onclick="editarUsuario.showModal()"
+                                    class="pr-3 mx-0 text-right" type="button"
                                     {{-- añado condicional; si el usuario es nekonapster que desabilite el boton --}}
                                     {{$listaUsuario->name === 'nekonapster' ? 'disabled' : '' }}>
                                     {{-- añado condicional; si el usuario es nekonapster que cambiel el color del boton --}}
                                         <svg 
-                                        class="w-6 h-6 text-emerald-600 {{$listaUsuario->name === 'nekonapster' ? ' dark:text-gray-600' : '' }}" 
+                                        class="w-5 h-5 text-yellow-500 {{$listaUsuario->name === 'nekonapster' ? ' dark:text-gray-600' : '' }}" 
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
                                         width="24" height="24" 
                                         fill="currentColor" 
@@ -85,11 +85,11 @@
                                 <button 
                                     wire:click="borrarUsuario('{{$listaUsuario->_id}}')"
                                     wire:confirm="Estas a punto de borrar al usuario: ({{$listaUsuario->name}}), estas seguro?"
-                                    class="" type="button"
+                                    class="pl-3 mx-0 text-left" type="button"
                                     {{-- añado condicional; si el usuario es nekonapster que desabilite el boton --}}
                                     {{$listaUsuario->name === 'nekonapster' ? 'disabled' : '' }}>
                                     {{-- añado condicional; si el usuario es nekonapster que cambiel el color del boton --}}
-                                    <svg class="w-6 h-6 text-red-500 {{$listaUsuario->name === 'nekonapster' ? ' dark:text-gray-600' : '' }}" 
+                                    <svg class="w-5 h-5 text-red-500 {{$listaUsuario->name === 'nekonapster' ? ' dark:text-gray-600' : '' }}" 
                                         aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24"

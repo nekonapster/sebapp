@@ -8,13 +8,14 @@ use Livewire\Component;
 class TablaSaldosComponent extends Component
 {
 
-    public $testTablas;
+    public $listarTablas;
+    public $msg;
 
     public function listarTabla()
     {
-        $this->testTablas = Saldo::all();
+        $this->listarTablas = Saldo::all();
     }
-    
+
     public function toExcel()
     {
         return redirect()->route('export-excel');
@@ -23,7 +24,19 @@ class TablaSaldosComponent extends Component
     {
         return redirect()->route('export-pdf');
     }
-    
+
+    public function vaciarTablaSaldo()
+    {
+        $usuario = auth()->user()->name;
+        // solo usuario especifico puede vaciar tablas
+        if ($usuario === "nekonapster") {
+            Saldo::truncate();
+            session()->flash('msg_ok', 'La tabla de saldos ha sido vaciada exitosamente.');
+        } else {
+            session()->flash('msg_nok', 'No tienes permisos para borrar la base de datos.');
+        }
+    }
+
     public function render()
     {
         $this->listarTabla();

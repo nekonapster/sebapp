@@ -1,7 +1,7 @@
 {{-- MODAL DE NUEVO USUARIO EN PESTAÑA USUARIOS --}}
 <div>
-    <button class="btn btn-accent font-bold mr-1" onclick="my_modal_4.showModal()">
-        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+    <button class="btn btn-accent font-bold mt-3 mr-1" onclick="my_modal_4.showModal()">
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
             viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M5 12h14m-7 7V5" />
@@ -9,14 +9,13 @@
 
 
     <!-- modal, using ID.showModal() method -->
-    <form wire:submit.prevent="crearUsuario">
         <dialog id="my_modal_4" class="modal max-w-fill" wire:ignore.self>
 
             <div class="modal-box">
                 <h3 class="text-3xl font-bold mb-6">Crear nuevo usuario</h3>
 
                 @if (session('msg'))
-                    <div role="alert" class="alert alert-success flex justify-center" id="alert-message">
+                    <div role="alert" class="alert alert-success flex justify-center mb-5" id="alert-message">
                         {{session('msg')}}
                     </div>
 
@@ -25,7 +24,7 @@
                             $wire.on('alerta', () => { 
                                 setTimeout(() => {
                                     document.getElementById('alert-message').style.display = 'none';
-                                    }, 3000);
+                                    }, 1000);
                                 });
                         </script>
                     @endscript
@@ -74,7 +73,7 @@
                 </p>
                 <div class="modal-action">
                     <!-- if there is a button, it will close the modal -->
-                    <button type="submit" class="btn btn-success px-3">Crear</button>
+                    <button wire:click="crearUsuario" class="btn btn-accent px-3">Crear</button>
                 </div>
         </dialog>
     </form>

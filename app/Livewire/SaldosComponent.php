@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class SaldosComponent extends Component
 {
-
-
     public $fechaSaldos;
 
     public $provincia = [
@@ -91,11 +89,19 @@ class SaldosComponent extends Component
     {
         $this->validate();
         
+        $this->calcularTotal();
+
         // capturo el usuario activo en la sesion
         $usuario = auth()->user();
 
         //logica para subir cada valor a la bd
         Saldo::create([
+            // convierto fecha string a fecha en formato carbon
+            $fechaConvertida = \Carbon\Carbon::parse($this->fechaSaldos),
+
+            // formateo la fecha a dia-mes-año
+            $fechaSaldos = date_format($fechaConvertida,'d-m-Y'),
+
             'userName' => $usuario->name,
             'calcularTotal' => $this->mostrarTotal,
             'bancoProvincia' => $this->provincia,
@@ -104,7 +110,7 @@ class SaldosComponent extends Component
             'fci' => $this->fci,
             'digital' => $this->digital,
             'efectivo' => $this->efectivo,
-            'fechaSaldos' => $this->fechaSaldos,
+            'fechaSaldos' => $fechaSaldos,
         ]);
 
         // refresco la pagina
