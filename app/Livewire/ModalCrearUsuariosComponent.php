@@ -35,6 +35,7 @@ class ModalCrearUsuariosComponent extends Component
 
 
         $this->reset(['name', 'email', 'password']);
+        
         session()->flash('msg', 'El usuario se ha creado correctamente');
         $this->dispatch('alerta');
     }

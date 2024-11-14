@@ -22,8 +22,10 @@
 						<input wire:model='cc' list="cc" placeholder="Cuenta Contable"
 							class="select select-bordered select-sm text-xs w-72">
 						<datalist name="cc" id="cc">
-							<option value="5.1420006"></option>
-							<option value="5.1420007"></option>
+							@foreach ($numerosCC as $numeroCC)
+								<option value="{{$numeroCC}}"></option>
+							@endforeach
+							{{-- <option value="5.1420007"></option>
 							<option value="5.1510003"></option>
 							<option value="5.1520003"></option>
 							<option value="11130001"></option>
@@ -97,7 +99,7 @@
 							<option value="51920001"></option>
 							<option value="51920002"></option>
 							<option value="41110002"></option>
-							<option value="41110004"></option>
+							<option value="41110004"></option> --}}
 						</datalist>
 						<div class="flex justify-start">
 							{{-- ! boton para modal de CC cuenta contable --}}

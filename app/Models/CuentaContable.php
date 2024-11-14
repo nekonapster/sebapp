@@ -11,6 +11,7 @@ class CuentaContable extends Model
     use HasFactory;
 
     protected $fillable = [
+        'numeroCC',
         'rubro',
         'descripcion',
         'tipo',
