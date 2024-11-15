@@ -1,31 +1,35 @@
 <div>
     <table class="table table-xs text-center" id="myTable">
         <!-- head -->
-        <thead class="text-center">
+        <thead class="">
             <tr>
-                <th class="px-0">ID</th>
-                <th class="px-0">PROVEEDOR</th>
-                <th class="px-0">TEL</th>
-                <th class="px-0">EMAIL</th>
-                <th class="px-0">CONTACTO</th>
-                <th class="px-0">DESCRIPCION</th>
-                <th class="px-0">RUBRO</th>
-                <th class="px-0">CC</th>
+                <th class="px-0 text-center">ID</th>
+                <th class="px-0 text-center">PROVEEDOR</th>
+                <th class="px-0 text-center">TEL</th>
+                <th class="px-0 text-center">EMAIL</th>
+                <th class="px-0 text-center">CONTACTO</th>
+                <th class="px-0 text-center">DESCRIPCION</th>
+                <th class="px-0 text-center">RUBRO</th>
+                <th class="px-0 text-center">CC</th>
                 <th class="px-0" colspan="2">ACCION</th>
             </tr>
         </thead>
         <tbody class="text-xs text-center">
+            @foreach ($proveedores as $proveedor)
             <tr class="">
+                <td class="px-0">{{$proveedor->_id}}</td>
+                <td class="px-0">{{$proveedor->proveedor_name}}</td>
+                <td class="px-0">{{$proveedor->tel}}</td>
+                <td class="px-0">{{$proveedor->email}}</td>
+                <td class="px-0">{{$proveedor->contacto}}</td>
+                <td class="px-0">{{$proveedor->descripcion}}</td>
+                <td class="px-0">{{$proveedor->rubro}}</td>
+                <td class="px-0">{{$proveedor->cc}}</td>
                 <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="px-0"></td>
-                <td class="pr-3 mx-0 text-right">
-                    <button type="button"><svg class="w-6 h-6 text-yellow-500 aria-hidden=true"
+                <td class="flex justify-between gap-3">
+                    <button 
+                            class=""
+                            type="button"><svg class="w-6 h-6 text-yellow-500 aria-hidden=true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -36,9 +40,9 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </button>
-                </td>
-                <td class="pl-3 mx-0 text-left">
-                    <button type="button"><svg class="w-6 h-6 text-red-500 aria-hidden=true"
+                    <button 
+                            class=""
+                            type="button"><svg class="w-6 h-6 text-red-500 aria-hidden=true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -47,7 +51,18 @@
                         </svg>
                     </button>
                 </td>
+                {{-- <td class="pl-3 mx-0 text-left">
+                    <button type="button"><svg class="w-6 h-6 text-red-500 aria-hidden=true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </td> --}}
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

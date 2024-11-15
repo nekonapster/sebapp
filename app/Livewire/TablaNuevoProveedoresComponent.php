@@ -2,12 +2,18 @@
 
 namespace App\Livewire;
 
+use App\Models\Proveedor;
 use Livewire\Component;
 
 class TablaNuevoProveedoresComponent extends Component
 {
+
     public function render()
     {
-        return view('livewire.tabla-nuevo-proveedores-component');
+
+        $proveedores = Proveedor::all();
+        return view('livewire.tabla-nuevo-proveedores-component',[
+            'proveedores'=> $proveedores,
+        ]);
     }
 }

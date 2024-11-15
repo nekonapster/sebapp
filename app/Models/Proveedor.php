@@ -13,7 +13,6 @@ class Proveedor extends Model
     protected $collection = 'my_custom_collection';
 
     protected $fillable = [
-        'id_proveedor',
         'proveedor_name',
         'tel',
         'email',

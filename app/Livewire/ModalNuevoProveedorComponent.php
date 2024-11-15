@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\CuentaContable;
 use App\Models\Proveedor;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ModalNuevoProveedorComponent extends Component
@@ -50,7 +49,7 @@ class ModalNuevoProveedorComponent extends Component
             'cc' => $this->cc,
         ]);
 
-        return redirect('/general');
+        // return redirect('/general');
     }
 
     public function render()
