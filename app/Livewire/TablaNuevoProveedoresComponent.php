@@ -19,6 +19,11 @@ class TablaNuevoProveedoresComponent extends Component
     }
 
 
+    public function editarProveedor($id){
+        $this->dispatch('editarProveedorId', $id);
+        // dd($id);
+        
+    }
 
 
     public function render()

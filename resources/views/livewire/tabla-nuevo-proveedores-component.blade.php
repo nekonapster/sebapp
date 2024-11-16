@@ -29,7 +29,7 @@
                 <td class="flex justify-evenly">
                     <button 
                             class="botonEditar"
-                           
+                           wire:click="editarProveedor('{{$proveedor->id}}')"
                             type="button"><svg class="w-6 h-6 text-yellow-500 aria-hidden=true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
