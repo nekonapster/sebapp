@@ -5,7 +5,6 @@
                 class="input input-sm input-bordered w-40 mb-3 ml-1" onfocus="(this.type='date')" required />
         </div>
 
-
         <div class="flex justify-evenly">
             <fieldset class="border border-gray-600 rounded-xl p-3 max-w-48">
                 <legend class="text-base">BANCO PROVINCIA</legend>

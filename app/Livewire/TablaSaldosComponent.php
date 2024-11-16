@@ -13,7 +13,7 @@ class TablaSaldosComponent extends Component
 
     public function listarTabla()
     {
-        $this->listarTablas = Saldo::all();
+        $this->listarTablas = Saldo::all() ?? collect([]);
     }
 
     public function toExcel()

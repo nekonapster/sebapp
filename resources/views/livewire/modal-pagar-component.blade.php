@@ -28,10 +28,10 @@
 					<div>
 						<label for="banco" class="text-sm font-medium">Banco</label>
 						<select id="banco" name="banco" class="select select-bordered select-sm pt-0 w-full">
-                            <option value="Seleccionar">Seleccionar</option>
-							@foreach ($bancos as $banco)
-							<option value="{{$banco->nombre_banco}}">{{$banco->nombre_banco}}</option>
-                            @endforeach
+									<option value="Seleccionar">Seleccionar</option>
+								@foreach ($bancos as $banco)
+									<option wire:key='{{$banco->id}}' value="{{$banco->nombre_banco}}">{{$banco->nombre_banco}}</option>
+								@endforeach
 						</select>
 					</div>
 
@@ -41,7 +41,7 @@
 						<select id="cuentaBanco" name="cuentaBanco" class="select select-bordered select-sm pt-0 w-full">
 							<option value="Seleccionar">Seleccionar</option>
                             @foreach ($bancos as $banco)
-							<option value="{{$banco->cuentaAsociada}}">{{$banco->cuentaAsociada}}</option>
+							<option wire:key='{{$banco->id}}' value="{{$banco->cuentaAsociada}}">{{$banco->cuentaAsociada}}</option>
                             @endforeach
 						</select>
 					</div>

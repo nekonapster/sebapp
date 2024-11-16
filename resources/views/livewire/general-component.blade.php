@@ -61,7 +61,7 @@
     <div class="flex justify-between mt-2">
         <div class="grid grid-cols-2">
             
-            {{-- ! modal modal nuevo proveedor --}}
+            {{-- !modal nuevo proveedor --}}
             @livewire('modal-nuevo-proveedor-component')
             
             {{-- ! modal modal nuevo banco --}}

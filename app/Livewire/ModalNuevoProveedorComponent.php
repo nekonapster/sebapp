@@ -49,9 +49,12 @@ class ModalNuevoProveedorComponent extends Component
             'cc' => $this->cc,
         ]);
 
-        // return redirect('/general');
+        $this->dispatch('recargarTablaNuevoProveedor');
+        $this->reset(['id_proveedor', 'proveedor_name', 'tel', 'email', 'contacto', 'descripcion', 'rubro', 'cc']);
+
     }
 
+    
     public function render()
     {
         return view('livewire.modal-nuevo-proveedor-component');

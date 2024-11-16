@@ -52,7 +52,7 @@
 					</thead>
 					<tbody>
 						@foreach ($tablas as $tabla)
-						<tr class="text-center">
+						<tr wire:key='{{$tabla->id}}' class="text-center">
 							<td class="text-start">{{$tabla['_id']}}</td>
 							<td>{{$tabla['fechaFactura']}}</td>
 							<td>{{$tabla['proveedor_name']}}</td>

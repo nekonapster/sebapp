@@ -1,10 +1,9 @@
 <div>
-	<button type="button" class="btn btn-accent btn-outline" onclick="nuevoProveedor.showModal()">Nuevo
-		Proveedor</button>
+	<button type="button" class="btn btn-accent btn-outline" onclick="nuevoProveedor.showModal()">Proveedor</button>
 
 	{{-- ! modal 'nuevo proveedor' --}}
 	<dialog id="nuevoProveedor" class="modal" wire:ignore.self>
-		<div class="modal-box max-w-6xl">
+		<div class="modal-box max-w-full w-screen max-h-screen h-screen">
 			<h3 class="font-bold text-lg">Proveedor</h3>
 			<div class="card-body card-bordered px-3">
 				<div class="grid grid-cols-4 gap-2">
@@ -23,7 +22,7 @@
 							class="select select-bordered select-sm text-xs w-72">
 						<datalist name="cc" id="cc">
 							@foreach ($numerosCC as $numeroCC)
-								<option value="{{$numeroCC}}"></option>
+								<option wire:key='{{$numeroCC->id}}' value="{{$numeroCC}}"></option>
 							@endforeach
 						</datalist>
 						<div class="flex justify-start">

@@ -60,7 +60,7 @@
             </thead>
             <tbody>
                 @foreach ($listarTablas as $listarTabla)
-                <tr class="text-center">
+                <tr wire:key='{{$listarTabla->id}}' class="text-center">
                     <th>{{$listarTabla->userName}}</th>
                     <th>{{$listarTabla->created_at}}</th>
                     <th>{{$listarTabla->fechaSaldos}}</th>
