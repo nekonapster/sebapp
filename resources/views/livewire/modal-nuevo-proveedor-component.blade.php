@@ -6,29 +6,52 @@
 		<div class="modal-box max-w-full w-screen max-h-screen h-screen">
 			<h3 class="font-bold text-lg">Proveedor</h3>
 			<div class="card-body card-bordered px-3">
-				<div class="grid grid-cols-4 gap-2">
-					<input wire:model='id_proveedor' type="text" placeholder="ID" class="input input-sm input-bordered w-full"
-						disabled />
-					<input wire:model='proveedor_name' type="text"
-						placeholder="@error('proveedor_name'){{ $message }} @else NOMBRE @enderror"
-						class="input input-sm input-bordered w-full @error('proveedor_name') border-red-500 text-red-500 @enderror" />
+				<div class="grid grid-cols-4 gap-3">
+					<label class="text-xs">ID
+						<input wire:model='id_proveedor' type="text" placeholder="ID" class="input input-sm input-bordered w-full"
+							disabled />
+					</label>
+					<label class="text-xs">Proveedor
+						<input wire:model='proveedor_name' type="text"
+							placeholder="@error('proveedor_name'){{ $message }} @else NOMBRE @enderror"
+							class="input input-sm input-bordered w-full @error('proveedor_name') border-red-500 text-red-500 @enderror" />
+					</label>
 
-					<input wire:model='tel' type="tel" placeholder="TELEFONO" class="input input-sm input-bordered w-full" />
-					<input wire:model='email' type="email" placeholder="EMAIL" class="input input-sm input-bordered w-full" />
-					<input wire:model='contacto' type="text" placeholder="CONTACTO"
-						class="input input-sm input-bordered w-full" />
-					<input wire:model='descripcion' type="text" placeholder="DESCRIPCION"
-						class="input input-sm input-bordered w-full" />
-					<input wire:model='rubro' type="text" placeholder="RUBRO" class="input input-sm input-bordered w-full" />
-					<div class="flex items-center gap-3">
-						<input wire:model='cc' list="cc" placeholder="Cuenta Contable"
-							class="select select-bordered select-sm text-xs w-72">
-						<datalist name="cc" id="cc">
-							@foreach ($numerosCC as $numeroCC)
-							<option {{-- wire:key='{{$numeroCC->id}}' --}}value="{{$numeroCC}}"></option>
-							@endforeach
-						</datalist>
-						<div class="flex justify-start">
+					<label class="text-xs">Telefono
+
+						<input wire:model='tel' type="tel" placeholder="@error('tel'){{ $message }} @else TELEFONO @enderror"
+							class="input input-sm input-bordered w-full @error('tel') border-red-500 text-red-500 @enderror" />
+					</label>
+					<label class="text-xs">Email
+						<input wire:model='email' type="email" placeholder="@error('email'){{ $message }} @else EMAIL @enderror"
+							class="input input-sm input-bordered w-full @error('email') border-red-500 text-red-500 @enderror" />
+					</label>
+					<label class="text-xs">Contacto
+						<input wire:model='contacto' type="text"
+							placeholder="@error('contactp'){{ $message }} @else CONTACTO @enderror"
+							class="input input-sm input-bordered w-full @error('contacto') border-red-500 text-red-500 @enderror" />
+					</label>
+					<label class="text-xs">Descripcion
+						<input wire:model='descripcion' type="text"
+							placeholder="@error('descripcion'){{ $message }} @else DESCRIPCION @enderror"
+							class="input input-sm input-bordered w-full @error('descripcion') border-red-500 text-red-500 @enderror" />
+					</label>
+					<label class="text-xs">Rubro
+						<input wire:model='rubro' type="text" placeholder="@error('rubro'){{ $message }} @else RUBRO @enderror"
+							class="input input-sm input-bordered w-full @error('rubro') border-red-500 text-red-500 @enderror" />
+					</label>
+
+					<div class="flex gap-3">
+							<label class="text-xs">CC
+								<input wire:model='cc' list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
+								class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
+							</label>
+								<datalist name="cc" id="cc">
+								@foreach ($numerosCC as $numeroCC)
+								<option {{-- wire:key='{{$numeroCC->id}}' --}}value="{{$numeroCC}}"></option>
+								@endforeach
+							</datalist>
+						<div class="mt-4">
 							{{-- ! boton para modal de CC cuenta contable --}}
 							@livewire('modal-nuevo-cc-component')
 						</div>

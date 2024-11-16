@@ -3,10 +3,13 @@
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportController;
+use App\Imports\ProveedorImport;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+// Route::get('/import-excel', [ProveedorImport::class, 'import-excel']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('profile', 'profile')->name('profile');

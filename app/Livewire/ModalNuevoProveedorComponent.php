@@ -43,14 +43,13 @@ class ModalNuevoProveedorComponent extends Component
     {
 
         $this->validate([
-            // 'id_proveedor' => 'required|string',
             'proveedor_name' => 'required|string|max:255',
-            // 'tel' => 'required|string|max:15',
-            // 'email' => 'required|email',
-            // 'contacto' => 'required|string|max:255',
-            // 'descripcion' => 'nullable|string',
-            // 'rubro' => 'required|string|max:255',
-            // 'cc' => 'required|string|max:255',
+            'tel' => 'required|string|max:24',
+            'email' => 'required|email',
+            'contacto' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'rubro' => 'required|string|max:255',
+            'cc' => 'required|string|max:255',
         ]);
 
         Proveedor::create([

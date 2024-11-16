@@ -17,15 +17,25 @@
                 <figure>
                     <img class="w-full" src="{{ asset('build/assets/img/ejemploTabla.png') }}" alt="example table" />
                 </figure>
-                <form wire:submi.preventt='cargaMasiva' class="w-full" enctype="multipart/form-data">
-                    @csrf
-                    <div class="w-full">
-                        <input type="file" class="file-input file-input-bordered file-input-xs w-full" accept=".xls, .xlsx, .ods"  />
-                    </div>
-                    <div class="card-actions w-full">
-                        <button type="button" class="btn btn-accent btn-sm mt-5 w-full ">Subir</button>
-                    </div>
-                </form>
+                <div class="w-full">
+                    <input wire:model="file" type="file" class="file-input file-input-bordered file-input-xs w-full" accept=".xls, .xlsx, .ods, .jpg" />
+                    
+                    <!-- Mensaje de éxito -->
+                    @error('file')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="card-actions w-full">
+                    <button wire:click='cargarMasivaProveedores' type="button"
+                        class="btn btn-accent btn-sm mt-5 w-full">Subir</button>
+                </div>
+
+                <!-- Mensaje de éxito -->
+                @if(session()->has('success'))
+                <div class="text-green-500 mt-2">
+                    {{ session('success') }}
+                </div>
+                @endif
             </div>
         </div>
     </dialog>
