@@ -1,5 +1,5 @@
-<div>
-    <table class="table table-xs text-center" id="myTable">
+<div class="">
+    <table class="table table-xs text-center table-pin-rows" id="myTable">
         <!-- head -->
         <thead class="">
             <tr>
@@ -17,7 +17,7 @@
         <tbody class="text-xs text-center">
             @foreach ($proveedores as $proveedor)
             <tr wire:key='{{$proveedor->id}}' class="">
-                <td class="px-0">{{$proveedor->_id}}</td>
+                <td class="px-0">{{$proveedor->id_corto}}</td>
                 <td class="px-0">{{$proveedor->proveedor_name}}</td>
                 <td class="px-0">{{$proveedor->tel}}</td>
                 <td class="px-0">{{$proveedor->email}}</td>
@@ -58,4 +58,5 @@
             @endforeach
         </tbody>
     </table>
+
 </div>

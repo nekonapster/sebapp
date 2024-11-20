@@ -42,15 +42,15 @@
 					</label>
 
 					<div class="flex gap-3">
-							<label class="text-xs">CC
-								<input wire:model='cc' list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
+						<label class="text-xs">CC
+							<input wire:model='cc' list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
 								class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
-							</label>
-								<datalist name="cc" id="cc">
-								@foreach ($numerosCC as $numeroCC)
-								<option {{-- wire:key='{{$numeroCC->id}}' --}}value="{{$numeroCC}}"></option>
-								@endforeach
-							</datalist>
+						</label>
+						<datalist name="cc" id="cc">
+							@foreach ($numerosCC as $numeroCC)
+							<option {{-- wire:key='{{$numeroCC->id}}' --}}value="{{$numeroCC}}"></option>
+							@endforeach
+						</datalist>
 						<div class="mt-4">
 							{{-- ! boton para modal de CC cuenta contable --}}
 							@livewire('modal-nuevo-cc-component')
@@ -72,10 +72,19 @@
 				<div class="divider"></div>
 
 				<!-- tabla dentro del modal ↓ -->
-				<div class="mt-2">
+				<div class="mt-2 overflow-y-auto h-96">
 					@livewire('tabla-nuevo-proveedores-component')
 				</div>
 
+				<!-- Botón para vaciar la tabla con confirmación -->
+				<div>
+					<button type="button" class="btn btn-sm btn-error mt-5" {{-- onclick="confirmarVaciado()" --}}
+						wire:click='vaciarTablaSaldo'
+						wire:confirm.prompt='Esta accion no es reversible, seguro que deseas continuar?|del'>
+						<x-lineawesome-skull-crossbones-solid class="w-6" />
+						Vaciar
+					</button>
+				</div>
 				<!-- tabla dentro del modal ↑ -->
 
 				{{-- ! retiro boton 'cancelar' por mejorar el espacio --}}
