@@ -2,33 +2,53 @@
 
 namespace App\Imports;
 
-use App\Models\Proveedor;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Collection;
+use MongoDB\Client;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ProveedorImport implements ToModel, WithHeadingRow
+class ProveedorImport implements ToCollection, WithHeadingRow
 {
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
-        return new Proveedor([
-            //'documento en la bd' => $row['cabecera del excel']
-            'proveedor_name' => $row['proveedor'] ?? null,
-            'tel' => $row['tel'] ?? null,
-            'email' => $row['email'] ?? null,
-            'contacto' => $row['contacto'] ?? null,
-            'descripcion' => $row['descripcion'] ?? null,
-            'rubro' => $row['rubro'] ?? null,
-            'cc' => $row['cc'] ?? null,
-        ]);
-    }
+        // Conectar a MongoDB
+        $client = new Client('mongodb://localhost:27017');
+        $database = $client->selectDatabase('sebapp');
 
-    public function batchSize(): int
-    {
-        return 1000;
-    }
+        // Acceder a las colecciones
+        $proveedoresCollection = $database->selectCollection('proveedors');
+        $cuentasContablesCollection = $database->selectCollection('cuenta_contables');
 
-    public function chunkSize(): int
-    {
-        return 1000;
+        // Insertar datos en la colección 'proveedors' y los números de cuenta en 'cuentas_contables'
+        foreach ($rows as $row) {
+            // Insertar en la colección 'proveedors'
+            $proveedoresCollection->insertOne([
+                'proveedor_name' => $row['proveedor'] ?? null,
+                'tel' => (string) $row['tel'] ?? null,
+                'email' => $row['email'] ?? null,
+                'contacto' => $row['contacto'] ?? null,
+                'descripcion' => $row['descripcion'] ?? null,
+                'rubro' => $row['rubro'] ?? null,
+                'numeroCC' => $row['cc'] ?? null,                    
+                'tipo' => $row['tipo'] ?? null,                
+            ]);
+
+            // Insertar solo el numeroCC en la colección 'cuentas_contables'
+            if ($row['cc']) {
+                $cuentasContablesCollection->updateOne(
+                    ['numeroCC' => $row['cc']], // Filtra por el numero de cuenta contable
+                    [
+                        '$set' => [
+                            'rubro' => $row['rubro'] ?? null,
+                            'descripcion' => $row['descripcion'] ?? null,
+                            'tipo' => $row['tipo'] ?? null,
+                            'numeroCC' => $row['cc'], // Aseguramos que 'numeroCC' se mantenga actualizado
+                        ]
+                    ], // Operación de actualización
+                    ['upsert' => true] // Si no existe, lo inserta
+                );
+            }
+            
+        }
     }
 }

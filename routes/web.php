@@ -3,13 +3,11 @@
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportController;
-use App\Imports\ProveedorImport;
+use App\Http\Controllers\ImportExcelController;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
-
-// Route::get('/import-excel', [ProveedorImport::class, 'import-excel']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('profile', 'profile')->name('profile');
@@ -30,6 +28,7 @@ Route::view('/users', 'users')
 Route::view('/invitado', 'layouts.invitado')
     ->name('invitado');
 
+    Route::post('/import-excel', [ImportExcelController::class, 'importExcel'])->name('import-excel');
     Route::get('export-excel', [ExportController::class, 'exportToExcel'])->name('export-excel');
     Route::get('export-pdf', [ExportController::class, 'exportToPdf'])->name('export-pdf');
 

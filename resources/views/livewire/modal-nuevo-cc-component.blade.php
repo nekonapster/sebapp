@@ -32,7 +32,6 @@
                     <input wire:model="numeroCC" type="text" class="input input-bordered w-full mb-5"
                         placeholder="Solo numeros con un decimal" maxlength="9">
 
-
                     <span class="label-text">Rubro</span>
                     <Select wire:model='rubro' class="select w-full select-bordered mb-5">
                         <option value="aranceles">Aranceles</option>

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\CuentaContable;
+use App\Models\Proveedor;
 use Livewire\Component;
 
 class ModalNuevoCcComponent extends Component
@@ -12,6 +13,8 @@ class ModalNuevoCcComponent extends Component
     public $rubro = 'aranceles';
     public $descripcion;
     public $tipo = 'in';
+
+
 
     public function crearCC(){
         

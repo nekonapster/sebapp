@@ -31,11 +31,12 @@ class ModalNuevoProveedorComponent extends Component
     public function mount()
     {
         $this->cargarCuentas();
+        
     }
 
     // 03. el siguiente metodo extrae un solo documento de la bd que es el que se le pasa por parametro ('numeroCC'), en la bd tenemos: numeroCC, rubro, descripcion y tipo. 
     public function cargarCuentas()
-    {
+    {   
         $this->numerosCC = CuentaContable::pluck('numeroCC');
     }
 
@@ -44,7 +45,7 @@ class ModalNuevoProveedorComponent extends Component
 
         $this->validate([
             'proveedor_name' => 'required|string|max:255',
-            'tel' => 'required|string|max:24',
+            'tel' => 'required|max:24',
             'email' => 'required|email',
             'contacto' => 'required|string|max:255',
             'descripcion' => 'required|string',
@@ -60,7 +61,7 @@ class ModalNuevoProveedorComponent extends Component
             'contacto' => strtolower($this->contacto),
             'descripcion' => strtolower($this->descripcion),
             'rubro' => strtolower($this->rubro),
-            'cc' => $this->cc,
+            'numeroCC' => $this->cc,
         ]);
 
         $this->dispatch('recargarTablaNuevoProveedor');
@@ -79,7 +80,7 @@ class ModalNuevoProveedorComponent extends Component
             'contacto' => $proveedor->contacto,
             'descripcion' => $proveedor->descripcion,
             'rubro' => $proveedor->rubro,
-            'cc' => $proveedor->cc,
+            'cc' => $proveedor->numeroCC,
         ]);
     }
 
@@ -96,7 +97,7 @@ class ModalNuevoProveedorComponent extends Component
                 'contacto' => $this->contacto,
                 'descripcion' => $this->descripcion,
                 'rubro' => $this->rubro,
-                'cc' => $this->cc,
+                'numeroCC' => $this->cc,
             ]);
 
             $this->reset([

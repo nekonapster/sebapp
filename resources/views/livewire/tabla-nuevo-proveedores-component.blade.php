@@ -24,7 +24,7 @@
                 <td class="px-0">{{$proveedor->contacto}}</td>
                 <td class="px-0">{{$proveedor->descripcion}}</td>
                 <td class="px-0">{{$proveedor->rubro}}</td>
-                <td class="px-0">{{$proveedor->cc}}</td>
+                <td class="px-0">{{$proveedor->numeroCC}}</td>
                 <td class="px-0"></td>
                 <td class="flex justify-evenly">
                     <button 

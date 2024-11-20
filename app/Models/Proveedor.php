@@ -9,9 +9,6 @@ class Proveedor extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mongodb';
-    protected $collection = 'my_custom_collection';
-
     protected $fillable = [
         'proveedor_name',
         'tel',
@@ -19,6 +16,7 @@ class Proveedor extends Model
         'contacto',
         'descripcion',
         'rubro',
-        'cc',
+        'numeroCC',
+        'tipo',
     ];
 }

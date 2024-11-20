@@ -17,18 +17,14 @@
                 <figure>
                     <img class="w-full" src="{{ asset('build/assets/img/ejemploTabla.png') }}" alt="example table" />
                 </figure>
-                <div class="w-full">
-                    <input wire:model="file" type="file" class="file-input file-input-bordered file-input-xs w-full" accept=".xls, .xlsx, .ods, .jpg" />
-                    
-                    <!-- Mensaje de éxito -->
-                    @error('file')
-                    <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="card-actions w-full">
-                    <button wire:click='cargarMasivaProveedores' type="button"
-                        class="btn btn-accent btn-sm mt-5 w-full">Subir</button>
-                </div>
+   
+                <form method="POST" action="{{ route('import-excel') }}" enctype="multipart/form-data" class="w-full">
+                    @csrf
+                    <input type="file" name="excel" class="file-input file-input-bordered file-input-xs w-full"
+                        accept=".xls, .xlsx, .ods," required />
+
+                    <button type="submit" class="btn btn-accent btn-sm mt-5 w-full">Subir</button>
+                </form>
 
                 <!-- Mensaje de éxito -->
                 @if(session()->has('success'))
