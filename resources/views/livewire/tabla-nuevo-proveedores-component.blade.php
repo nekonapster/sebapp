@@ -41,6 +41,7 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </button>
+                    {{-- boton vaciar tabla --}}
                     <button 
                             class=""
                             wire:click="borrarProveedor('{{$proveedor->id}}')"

@@ -3,15 +3,12 @@
         <!-- Fila 1 -->
         <input wire:model='baseGeneral_id' wire:click="$emitTo('TablaBaseGeneralComponent', 'baseGeneral_id','baseGeneral_id')" type="text" placeholder="ID" class="input input-sm input-bordered w-full"
             disabled />
-        <select wire:model='proveedor_name' name="proveedor" id="proveedor"
+        <select wire:model='proveedor_name' id="proveedor"
             class="select select-bordered select-sm w-full text-xs">
             <option value="SIN NOMBRE">PROVEEDOR</option>
-            <option value="MARTIN">MARTIN</option>
-            <option value="SEBASTIAN">SEBASTIAN</option>
-            <option value="MARIA">MARIA EMILIA</option>
-            <option value="GRACIELA">GRACIELA</option>
-            <option value="ALEJANDRO">ALEJANDRO</option>
-            <option value="ANTONIO">ANTONIO</option>
+            @foreach ($nombres as $nombre)
+            <option wire.poll value="{{$nombre}}"> {{$nombre}} </option>
+            @endforeach
         </select>
         <input wire:model='fechaFactura' type="text" placeholder="Fecha factura"
             class="input input-sm input-bordered w-full" onfocus="(this.type='date')" />
@@ -68,7 +65,8 @@
             @livewire('modal-nuevo-banco-component')
         </div>
         <div>
-            <button wire:click='datosBaseGeneral' type="submit" class="btn btn-accent">Guardar</button>
+            <button wire:click='actualizarDatosFormulario' class="btn btn-sm btn-warning mr-5">Modificar</button>
+            <button wire:click='nuevoDatoBaseGeneral' class="btn btn-sm btn-accent">Guardar</button>
         </div>
     </div>
 

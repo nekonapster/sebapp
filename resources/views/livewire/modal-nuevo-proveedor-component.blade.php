@@ -1,5 +1,5 @@
 <div>
-	<button type="button" class="btn btn-accent btn-outline" onclick="nuevoProveedor.showModal()">Proveedor</button>
+	<button type="button" class="btn btn-sm btn-accent btn-outline" onclick="nuevoProveedor.showModal()">Proveedor</button>
 
 	{{-- ! modal 'nuevo proveedor' --}}
 	<dialog id="nuevoProveedor" class="modal" wire:ignore.self>
@@ -42,7 +42,7 @@
 					</label>
 
 					<div class="flex gap-3">
-						<label class="text-xs">CC
+						<label class="text-xs w-full">CC
 							<input wire:model='cc' list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
 								class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
 						</label>
@@ -72,7 +72,7 @@
 				<div class="divider"></div>
 
 				<!-- tabla dentro del modal ↓ -->
-				<div class="mt-2 overflow-y-auto h-96">
+				<div class="mt-2 overflow-y-auto h-80">
 					@livewire('tabla-nuevo-proveedores-component')
 				</div>
 

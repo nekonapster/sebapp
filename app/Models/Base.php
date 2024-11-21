@@ -25,5 +25,11 @@ class Base extends Model
         'gastos',
         'proyecto',
         'notas',
+        'tipoPago',
+        'fechaPago',
+        'banco',
+        'cuentaBanco',
+        'nCheque',
+        'ordenPago',
     ];
 }

@@ -17,6 +17,9 @@ class TablaNuevoProveedoresComponent extends Component
         $proveedor = Proveedor::findOrFail($id);
         $proveedor->delete();
         $this->listeners = ['recargarTablaNuevoProveedor'];
+
+        // Emitir el evento con el nuevo nombre del proveedor
+        $this->dispatch('recargaSelectNombreProveedor');
     }
 
 

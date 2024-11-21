@@ -31,12 +31,11 @@ class ModalNuevoProveedorComponent extends Component
     public function mount()
     {
         $this->cargarCuentas();
-        
     }
 
     // 03. el siguiente metodo extrae un solo documento de la bd que es el que se le pasa por parametro ('numeroCC'), en la bd tenemos: numeroCC, rubro, descripcion y tipo. 
     public function cargarCuentas()
-    {   
+    {
         $this->numerosCC = CuentaContable::pluck('numeroCC');
     }
 
@@ -64,8 +63,16 @@ class ModalNuevoProveedorComponent extends Component
             'numeroCC' => $this->cc,
         ]);
 
-        $this->dispatch('recargarTablaNuevoProveedor');
+
+
         $this->reset(['id_proveedor', 'proveedor_name', 'tel', 'email', 'contacto', 'descripcion', 'rubro', 'cc']);
+        
+        // Emitir el evento con el nuevo nombre del proveedor
+        $this->dispatch('recargaSelectNombreProveedor');
+
+
+        $this->dispatch('recargarTablaNuevoProveedor');
+
     }
 
     public function loadUser($id)
@@ -82,6 +89,9 @@ class ModalNuevoProveedorComponent extends Component
             'rubro' => $proveedor->rubro,
             'cc' => $proveedor->numeroCC,
         ]);
+
+
+     
     }
 
     public function editarProveedor()
@@ -119,6 +129,8 @@ class ModalNuevoProveedorComponent extends Component
 
     public function render()
     {
+
+      
         return view('livewire.modal-nuevo-proveedor-component');
     }
 }

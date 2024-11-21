@@ -1,5 +1,5 @@
 <div>
-    <button type="button" class="btn btn-accent btn-outline" onclick="nuevoBanco.showModal()">Nuevo Banco</button>
+    <button type="button" class="btn btn-sm btn-accent btn-outline" onclick="nuevoBanco.showModal()">Nuevo Banco</button>
 
     {{-- ! modal para 'Nuevo Banco' --}}
     <dialog id="nuevoBanco" class="modal" wire:ignore.self>

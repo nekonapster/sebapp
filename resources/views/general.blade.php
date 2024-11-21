@@ -2,7 +2,7 @@
 <x-app-layout>
     <div class="card overflow-hidden shadow-sm sm:rounded-lg -mb-1">
         <div class="card-body bg-neutral rounded-xl mx-10 grid">
-            @livewire('general-component')
+            @livewire('formulario-general-component')
         </div>
     </div>
 

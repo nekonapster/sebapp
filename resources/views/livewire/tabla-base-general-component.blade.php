@@ -30,7 +30,7 @@
 				<table class="table table-xs">
 					<thead class="text-center">
 						<tr>
-							<th scope="col" class="text-start w-12">ID</th>
+							{{-- <th scope="col" class="text-start w-12">ID</th> --}}
 							<th scope="col" class="">Nº FACTURA</th>
 							<th scope="col" class="">PROV.</th>
 							{{-- <th scope="col" class="">FECHA FAC.</th> --}}
@@ -41,11 +41,11 @@
 							{{-- <th scope="col" class="">GASTOS</th> --}}
 							{{-- <th scope="col" class="">PROYECTO</th> --}}
 							{{-- <th scope="col" class="">ACTIVACION</th> --}}
-							{{-- <th scope="col" class="">PAGO</th> --}}
-							<th scope="col" class="">FECHA PAGO</th>
-							{{-- <th scope="col" class="">BANCO</th> --}}
-							{{-- <th scope="col" class="">C. BANCO</th> --}}
-							<th scope="col" class="">Nº CHEQUE</th>
+							<th scope="col" class="">t-PAGO</th>
+							<th scope="col" class="">f-PAGO</th>
+							<th scope="col" class="">BANCO</th>
+							<th scope="col" class="">c-BANCO</th>
+							<th scope="col" class="">n-CHEQUE</th>
 							<th scope="col" class="">ORDEN PAGO</th>
 							<th scope="col" class="w-48">ACCION</th>
 						</tr>
@@ -53,16 +53,21 @@
 					<tbody>
 						@foreach ($tablas as $tabla)
 						<tr wire:key='{{$tabla->id}}' class="text-center">
-							<td class="text-start">{{$tabla['_id']}}</td>
+							{{-- <td class="text-start">{{$tabla['_id']}}</td> --}}
 							<td>{{$tabla['fechaFactura']}}</td>
 							<td>{{$tabla['proveedor_name']}}</td>
 							<td>{{$tabla['fechaVencimiento']}}</td>
 							<td>{{$tabla['importe']}}</td>
-							<td>{{$fechaPago}}</td>
-							<td>{{$nCheque}}</td>
-							<td>{{$ordenPago}}</td>
+							<td>{{$tabla['tipoPago']}}</td>
+							<td>{{$tabla['fechaPago']}}</td>
+							<td>{{$tabla['banco']}}</td>
+							<td>{{$tabla['cuentaBanco']}}</td>
+							<td>{{$tabla['nCheque']}}</td>
+							<td>{{$tabla['ordenPago']}}</td>
 							<td class="py-1">
-								<button type="button" class="mx-3"><svg class="w-5 h-5 text-gray-800 dark:text-yellow-500"
+								{{-- boton editar --}}
+								<button wire:click="$dispatch('cargarEnFormulario', { id: '{{ $tabla->id }}'} )"
+								type="button" class="mx-3"><svg class="w-5 h-5 text-gray-800 dark:text-yellow-500"
 										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
 										viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
@@ -73,7 +78,9 @@
 											clip-rule="evenodd" />
 									</svg>
 								</button>
-								<button type=" button" class="mx-3" wire:confirm="Estas seguro?"><svg
+								{{-- boton borrar --}}
+								<button wire:click="borrarDatoBaseGeneral('{{$tabla->id}}')"
+								type=" button" class="mx-3" wire:confirm="Estas seguro?"><svg
 										class="w-5 h-5 text-gray-800 dark:text-red-500" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
@@ -81,7 +88,9 @@
 											clip-rule="evenodd" />
 									</svg>
 								</button>
-								<button type="button" class="mx-3" onclick="pagar.showModal()"><svg
+								{{-- boton pagar que abre un modal --}}
+								<button wire:click="$dispatch('idPagar', { id: '{{ $tabla->id }}'} )"
+										type="button" class="mx-3" onclick="pagar.showModal()"><svg
 										class="w-5 h-5 text-gray-800 dark:text-orange-600" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
