@@ -1,6 +1,6 @@
 {{-- uso poll para actualizar la pantalla y quitar el mensaje de confirm --}}
 <div>
-    <!-- Mostrar mensaje de error o confirmación usando session flash -->
+   <!-- Mostrar mensaje de error o confirmación usando session flash -->
     <div wire:poll.3>
         @if (session()->has('msg_ok'))
         <div class="alert alert-success mt-2 mb-5">{{ session('msg_ok') }}</div>
@@ -10,9 +10,10 @@
         @endif
     </div>
     <div class="flex justify-end mr-1 items-center">
-        <button wire:click='toExcel' class="ml-3 btn btn-xs btn-outline btn-accent"><span><svg
-                    class="w-4 h-4 text-gray-800 dark:text-teal-500" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <button wire:click='toExcel' wire:loading.attr='disabled'
+            class="ml-3 btn btn-xs btn-outline btn-accent"><span><svg class="w-4 h-4 text-gray-800 dark:text-teal-500"
+                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                         d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"
                         clip-rule="evenodd" />
@@ -22,7 +23,7 @@
                 </svg>
             </span>Excel</button>
         <button wire:click='toPdf' class="ml-3 btn btn-error btn-xs btn-outline  "><span><svg
-                    class="w-4 h-4 text-gray-800 dark:text-red-500" aria-hidden="true"
+                    wire:loading.attr='disabled' class="w-4 h-4 text-gray-800 dark:text-red-500" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                         d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"
@@ -96,4 +97,5 @@
             Vaciar
         </button>
     </div>
+    
 </div>

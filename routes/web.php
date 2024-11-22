@@ -21,6 +21,10 @@ Route::view('/users', 'users')
     ->middleware([CheckRole::class, 'auth'])
     ->name('users');
 
+Route::view('/dangerZone', 'dangerZone')
+    ->middleware([CheckRole::class, 'auth'])
+    ->name('dangerZone');
+
     Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');

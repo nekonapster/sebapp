@@ -19,6 +19,35 @@
 				</div>
 			</div>
 		</div>
+{{-- botones de exportar excel y pdf --}}
+		<div>
+			<button
+						wire:loading.attr='disabled'
+						wire:click='' class="ml-3 btn btn-xs btn-outline btn-accent"><span><svg
+						class="w-4 h-4 text-gray-800 dark:text-teal-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+						width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+						<path fill-rule="evenodd"
+							d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"
+							clip-rule="evenodd" />
+						<path fill-rule="evenodd"
+							d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+							clip-rule="evenodd" />
+					</svg>
+				</span>Excel</button>
+			<button
+						wire:loading.attr='disabled'
+						wire:click='' class="ml-3 btn btn-error btn-xs btn-outline  "><span><svg
+						class="w-4 h-4 text-gray-800 dark:text-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+						width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+						<path fill-rule="evenodd"
+							d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"
+							clip-rule="evenodd" />
+						<path fill-rule="evenodd"
+							d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+							clip-rule="evenodd" />
+					</svg>
+				</span>PDF</button>
+		</div>
 		<!-- End Input -->
 	</div>
 	<!-- End Header -->
@@ -54,7 +83,7 @@
 						@foreach ($tablas as $tabla)
 						<tr wire:key='{{$tabla->id}}' class="text-center">
 							{{-- <td class="text-start">{{$tabla['_id']}}</td> --}}
-							<td>{{$tabla['fechaFactura']}}</td>
+							<td>{{$tabla['nFactura']}}</td>
 							<td>{{$tabla['proveedor_name']}}</td>
 							<td>{{$tabla['fechaVencimiento']}}</td>
 							<td>{{$tabla['importe']}}</td>
@@ -66,10 +95,9 @@
 							<td>{{$tabla['ordenPago']}}</td>
 							<td class="py-1">
 								{{-- boton editar --}}
-								<button wire:click="$dispatch('cargarEnFormulario', { id: '{{ $tabla->id }}'} )"
-								type="button" class="mx-3"><svg class="w-5 h-5 text-gray-800 dark:text-yellow-500"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-										viewBox="0 0 24 24">
+								<button wire:click="$dispatch('cargarEnFormulario', { id: '{{ $tabla->id }}'} )" type="button"
+									class="mx-3"><svg class="w-5 h-5 text-gray-800 dark:text-yellow-500" aria-hidden="true"
+										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
 											d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
 											clip-rule="evenodd" />
@@ -79,9 +107,8 @@
 									</svg>
 								</button>
 								{{-- boton borrar --}}
-								<button wire:click="borrarDatoBaseGeneral('{{$tabla->id}}')"
-								type=" button" class="mx-3" wire:confirm="Estas seguro?"><svg
-										class="w-5 h-5 text-gray-800 dark:text-red-500" aria-hidden="true"
+								<button wire:click="borrarDatoBaseGeneral('{{$tabla->id}}')" type=" button" class="mx-3"
+									wire:confirm="Estas seguro?"><svg class="w-5 h-5 text-gray-800 dark:text-red-500" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
 											d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
@@ -89,9 +116,8 @@
 									</svg>
 								</button>
 								{{-- boton pagar que abre un modal --}}
-								<button wire:click="$dispatch('idPagar', { id: '{{ $tabla->id }}'} )"
-										type="button" class="mx-3" onclick="pagar.showModal()"><svg
-										class="w-5 h-5 text-gray-800 dark:text-orange-600" aria-hidden="true"
+								<button wire:click="$dispatch('idPagar', { id: '{{ $tabla->id }}'} )" type="button" class="mx-3"
+									onclick="pagar.showModal()"><svg class="w-5 h-5 text-gray-800 dark:text-orange-600" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
 											d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z"
@@ -106,9 +132,22 @@
 			</div>
 		</div>
 	</div>
-
-
+     {{-- loading --}}
+		 <div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md"> 
+			{{-- <span class=" loading loading-spinner text-accent w-14"></span> --}}
+			{{-- <span class="loading loading-infinity w-14"></span> --}}
+			<span class="loading loading-bars w-12 text-cyan-500"></span>
+</div>
 	{{--! MODAL 'PAGAR FACTURAS' --}}
 	@livewire('modalPagar-component')
 
+	{{-- boton de vaciar la tabla --}}
+	<div>
+		<button type="button" class="btn btn-sm btn-error mt-5" {{-- onclick="confirmarVaciado()" --}}
+			wire:click='vaciarTabla'
+			wire:confirm.prompt='Esta accion no es reversible, seguro que deseas continuar?|del'>
+			<x-lineawesome-skull-crossbones-solid class="w-6" />
+			Vaciar
+		</button>
+	</div>
 </div>

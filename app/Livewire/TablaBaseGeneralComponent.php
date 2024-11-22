@@ -17,14 +17,14 @@ class TablaBaseGeneralComponent extends Component
     public $cuentaBanco;
     public $nCheque;
     public $ordenPago;
-
+    public $search = '';
 
     #[On('idPagar')]
     public function idPagar($id)
     {
         $this->idPagar = $id;
 
-        $this->dispatch('test' , $id);
+        $this->dispatch('test', $id);
     }
 
 
@@ -40,9 +40,14 @@ class TablaBaseGeneralComponent extends Component
         $borrarDato->delete();
     }
 
+    public function vaciarTabla()
+    {
+        Base::truncate();
+    }
+
     public function render()
     {
-        $tablas = Base::all() ?? collect([]);
+        $tablas = Base::where('nFactura', 'like', '%' . $this->search . '%')->get();
         return view('livewire.tabla-base-general-component', [
             'tablas' => $tablas,
         ]);

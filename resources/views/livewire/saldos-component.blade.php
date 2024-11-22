@@ -103,7 +103,12 @@
                 <div class="mr-1">
                     <button type="submit" class="btn btn-accent">Guardar</button>
                 </div>
-                {{-- {{-- --}}
+                {{-- loading --}}
+                <div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md">
+                    {{-- <span class=" loading loading-spinner text-accent w-14"></span> --}}
+                    {{-- <span class="loading loading-infinity w-14"></span> --}}
+                    <span class="loading loading-bars w-12 text-cyan-500"></span>
+                </div>
             </div>
         </div>
     </form>

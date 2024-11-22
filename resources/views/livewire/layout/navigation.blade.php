@@ -36,6 +36,11 @@ new class extends Component {
                         :active="request()->routeIs('users')" wire:navigate>
                         {{ __('Users') }}
                     </x-nav-link>
+                    <x-nav-link :href="!auth()->guest() && auth()->user()->role !== 'guest' ? route('dangerZone') : '#'"
+                        :class="auth()->guest() || auth()->user()->role === 'guest' ? 'opacity-25' : ''"
+                        :active="request()->routeIs('dangerZone')" wire:navigate>
+                        {{ __('DangerZone') }}
+                    </x-nav-link>
                 </div>
             </div>
             <!-- Settings Dropdown -->

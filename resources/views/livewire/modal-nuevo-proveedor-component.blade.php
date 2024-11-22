@@ -48,7 +48,7 @@
 						</label>
 						<datalist name="cc" id="cc">
 							@foreach ($numerosCC as $numeroCC)
-							<option {{-- wire:key='{{$numeroCC->id}}' --}}value="{{$numeroCC}}"></option>
+							<option value="{{$numeroCC}}"></option>
 							@endforeach
 						</datalist>
 						<div class="mt-4">
@@ -66,7 +66,12 @@
 						<button wire:click='crearProveedor' class="btn btn-sm btn-accent">Guardar</button>
 					</div>
 				</div>
-
+				{{-- loading --}}
+				<div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md"> 
+					{{-- <span class=" loading loading-spinner text-accent w-14"></span> --}}
+					{{-- <span class="loading loading-infinity w-14"></span> --}}
+					<span class="loading loading-bars w-12 text-cyan-500"></span>
+			</div>
 				{{-- /////////////////////////////////////////////////////////////////////// --}}
 
 				<div class="divider"></div>

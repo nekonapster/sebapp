@@ -69,5 +69,5 @@
             <button wire:click='nuevoDatoBaseGeneral' class="btn btn-sm btn-accent">Guardar</button>
         </div>
     </div>
-
+       
 </div>
