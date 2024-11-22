@@ -87,15 +87,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <div>
-        <!-- Botón para vaciar la tabla con confirmación -->
-        <button type="button" class="btn btn-sm btn-error mt-5" {{-- onclick="confirmarVaciado()" --}}
-            wire:click='vaciarTablaSaldo'
-            wire:confirm.prompt='Esta accion no es reversible, seguro que deseas continuar?|del'>
-            <x-lineawesome-skull-crossbones-solid class="w-6" />
-            Vaciar
-        </button>
-    </div>
-    
+    </div> 
 </div>

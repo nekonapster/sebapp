@@ -19,11 +19,9 @@
 				</div>
 			</div>
 		</div>
-{{-- botones de exportar excel y pdf --}}
+		{{-- botones de exportar excel y pdf --}}
 		<div>
-			<button
-						wire:loading.attr='disabled'
-						wire:click='' class="ml-3 btn btn-xs btn-outline btn-accent"><span><svg
+			<button wire:loading.attr='disabled' wire:click='' class="ml-3 btn btn-xs btn-outline btn-accent"><span><svg
 						class="w-4 h-4 text-gray-800 dark:text-teal-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
 						width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 						<path fill-rule="evenodd"
@@ -34,9 +32,7 @@
 							clip-rule="evenodd" />
 					</svg>
 				</span>Excel</button>
-			<button
-						wire:loading.attr='disabled'
-						wire:click='' class="ml-3 btn btn-error btn-xs btn-outline  "><span><svg
+			<button wire:loading.attr='disabled' wire:click='' class="ml-3 btn btn-error btn-xs btn-outline  "><span><svg
 						class="w-4 h-4 text-gray-800 dark:text-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
 						width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 						<path fill-rule="evenodd"
@@ -132,22 +128,12 @@
 			</div>
 		</div>
 	</div>
-     {{-- loading --}}
-		 <div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md"> 
-			{{-- <span class=" loading loading-spinner text-accent w-14"></span> --}}
-			{{-- <span class="loading loading-infinity w-14"></span> --}}
-			<span class="loading loading-bars w-12 text-cyan-500"></span>
-</div>
+	{{-- loading --}}
+	<div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md">
+		{{-- <span class=" loading loading-spinner text-accent w-14"></span> --}}
+		{{-- <span class="loading loading-infinity w-14"></span> --}}
+		<span class="loading loading-bars w-12 text-cyan-500"></span>
+	</div>
 	{{--! MODAL 'PAGAR FACTURAS' --}}
 	@livewire('modalPagar-component')
-
-	{{-- boton de vaciar la tabla --}}
-	<div>
-		<button type="button" class="btn btn-sm btn-error mt-5" {{-- onclick="confirmarVaciado()" --}}
-			wire:click='vaciarTabla'
-			wire:confirm.prompt='Esta accion no es reversible, seguro que deseas continuar?|del'>
-			<x-lineawesome-skull-crossbones-solid class="w-6" />
-			Vaciar
-		</button>
-	</div>
 </div>
