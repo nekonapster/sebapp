@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Base;
+use App\Models\CuentaContable;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Illuminate\Support\Str;
 
 class TablaBaseGeneralComponent extends Component
 {
@@ -31,7 +31,7 @@ class TablaBaseGeneralComponent extends Component
     public function cargarEnFormulario($id)
     {
         $loadUserToForm = Base::find($id);
-        dd($loadUserToForm);
+        // dd($loadUserToForm);
     }
 
     public function borrarDatoBaseGeneral($id)
@@ -45,9 +45,24 @@ class TablaBaseGeneralComponent extends Component
         Base::truncate();
     }
 
+
+    public function baseToExcel(){
+        return redirect()->route('export-base-excel');
+    }
+    public function baseToPdf(){
+        return redirect()->route('export-base-pdf');
+    }
+
     public function render()
     {
-        $tablas = Base::where('nFactura', 'like', '%' . $this->search . '%')->get();
+        $tablas = Base::where('proveedor_name', 'like', '%' . $this->search . '%')->first();
+    
+        if ($tablas) {
+            $tablas = $tablas->get();
+        } else {
+            $tablas = collect([]);
+        }
+    
         return view('livewire.tabla-base-general-component', [
             'tablas' => $tablas,
         ]);

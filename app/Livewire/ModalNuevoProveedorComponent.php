@@ -16,14 +16,14 @@ class ModalNuevoProveedorComponent extends Component
     public $contacto;
     public $descripcion;
     public $rubro;
-    // este cc es el que lo envia a la bd cuenta_contables
+    // este cc se envia a la bd cuenta_contables
     public $cc;
     //01. listeners es una variable especial que admite un array asoc, el primer parametro es el parametro del dispatch en el componente y el segundo parametro es el metodo que disparara en el componente del listeners
     protected $listeners = [
         'ccSelectRefresh' => 'cargarCuentas',
         'editarProveedorId' => 'loadUser'
     ];
-    // este numeroCC el que lo recupera de la bd cuenta_contables
+    // este numeroCC se recupera de la bd cuenta_contables
     public $numerosCC;
 
     //02. Lo primero que se carga cuando se renderiza un componente es el metodo mount, este a su vez llama a cargarCuentas que hace una peticion de las cuentas a la BD 
@@ -125,12 +125,30 @@ class ModalNuevoProveedorComponent extends Component
         }
     }
 
+    public function handleCcChange($value)
+    {
 
+        // Busca en la base de datos el CC seleccionado
+        $cuenta = CuentaContable::where('numeroCC', (float) $value)->first();
+        // dd($cuenta);
+        
+        if ($cuenta) {
+            // Actualiza las propiedades reactivas con la información de la cuenta
+            $this->descripcion = $cuenta->descripcion;
+            $this->rubro = $cuenta->rubro;
+            // dd($this->descripcion);
+            // dd($this->rubro);
+        }
+    }
+    
 
     public function render()
     {
-
-      
+        // $cc_id = CuentaContable::pluck('id');
+        // $rubro = CuentaContable::pluck('rubro');
+        // $descripcion = CuentaContable::pluck('descripcion');
+        
         return view('livewire.modal-nuevo-proveedor-component');
+        
     }
 }

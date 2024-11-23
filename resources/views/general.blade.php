@@ -8,7 +8,7 @@
 
     <div class="mx-10">
         {{-- ! Tabla base general --}}
-        <div class="card bg-neutral text-neutral-content w-full mt-3 pb-5">
+        <div class="card bg-neutral w-full mt-3 pb-10">
             @livewire('tabla-base-general-component')
         </div>
     </div>

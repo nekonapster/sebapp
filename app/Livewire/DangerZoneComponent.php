@@ -53,7 +53,7 @@ public function mount()
                 break;
 
             default:
-                return redirect('/dangerZone');
+                // return redirect('/dangerZone');
                 break;
         }
     }

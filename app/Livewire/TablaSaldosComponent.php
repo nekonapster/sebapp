@@ -13,16 +13,21 @@ class TablaSaldosComponent extends Component
 
     public function listarTabla()
     {
-        $this->listarTablas = Saldo::all() ?? collect([]);
+        // odernar segun parametros
+        $this->listarTablas = Saldo::orderByDesc('fechaSaldos')->get() ?? collect([]);
+        // $this->listarTablas = Saldo::orderByDesc('created_at')->get() ?? collect([]);
+
+        // sin ordenamiento
+        // $this->listarTablas = Saldo::all() ?? collect([]);
     }
 
     public function toExcel()
     {
-        return redirect()->route('export-excel');
+        return redirect()->route('export-saldos-excel');
     }
     public function toPdf()
     {
-        return redirect()->route('export-pdf');
+        return redirect()->route('export-saldos-pdf');
     }
 
     public function vaciarTablaSaldo()

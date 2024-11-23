@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BaseExportController;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportController;
@@ -33,7 +34,8 @@ Route::view('/invitado', 'layouts.invitado')
     ->name('invitado');
 
     Route::post('/import-excel', [ImportExcelController::class, 'importExcel'])->name('import-excel');
-    Route::get('export-excel', [ExportController::class, 'exportToExcel'])->name('export-excel');
-    Route::get('export-pdf', [ExportController::class, 'exportToPdf'])->name('export-pdf');
-
+    Route::get('export-saldos-excel', [ExportController::class, 'exportToExcel'])->name('export-saldos-excel');
+    Route::get('export-saldos-pdf', [ExportController::class, 'exportToPdf'])->name('export-saldos-pdf');
+    Route::get('export-base-excel', [BaseExportController::class, 'exportToExcel'])->name('export-base-excel');
+    Route::get('export-base-pdf', [BaseExportController::class, 'exportToPdf'])->name('export-base-pdf');
 require __DIR__ . '/auth.php';

@@ -22,8 +22,8 @@
                         clip-rule="evenodd" />
                 </svg>
             </span>Excel</button>
-        <button wire:click='toPdf' class="ml-3 btn btn-error btn-xs btn-outline  "><span><svg
-                    wire:loading.attr='disabled' class="w-4 h-4 text-gray-800 dark:text-red-500" aria-hidden="true"
+        <button wire:click='toPdf' class="ml-3 btn btn-error btn-xs btn-outline" wire:loading.attr='disabled'><span><svg
+                     class="w-4 h-4 text-gray-800 dark:text-red-500" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                         d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"

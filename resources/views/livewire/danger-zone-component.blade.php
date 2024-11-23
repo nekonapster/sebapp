@@ -20,8 +20,7 @@
                 <tr>
                     <th>Base General</th>
                     <td>{{$contadores['basesGenerales']}}</td>
-                    <td> <button onclick="dangerZone.showModal( )" wire:click="loadTableToTruncate('1')" type="button"
-                        wire:confirm.prompt='Escribe la palabra clave para vaciar definitivamente todas las tablas|del'
+                    <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('1')" type="button"
                             class="btn btn-sm btn-error">
                             <x-lineawesome-skull-crossbones-solid class="w-6" />
                             Vaciar
@@ -82,10 +81,14 @@
             <p class="py-4">Esta a punto de eliminar todos los registros de la tabla...</p>
             <div class="modal-action">
                 <!-- if there is a button in form, it will close the modal -->
-                <button 
+                <button
                 wire:click='truncateTable' class="btn" 
-                wire:confirm.prompt='Escribe la palabra clave para vaciar definitivamente todas las tablas|del'>Confirmar</button>
+                wire:confirm.prompt='Escribe la palabra clave para vaciar definitivamente todas las tablas|
+                del'
+                >Confirmar</button>
             </div>
+
+          
         </div>
     </dialog>
     

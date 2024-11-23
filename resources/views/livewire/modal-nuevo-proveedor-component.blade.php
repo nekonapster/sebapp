@@ -7,19 +7,41 @@
 			<h3 class="font-bold text-lg">Proveedor</h3>
 			<div class="card-body card-bordered px-3">
 				<div class="grid grid-cols-4 gap-3">
-					<label class="text-xs">ID
+					{{-- <label class="text-xs">ID
 						<input wire:model='id_proveedor' type="text" placeholder="ID" class="input input-sm input-bordered w-full"
 							disabled />
-					</label>
+					</label> --}}
 					<label class="text-xs">Proveedor
 						<input wire:model='proveedor_name' type="text"
 							placeholder="@error('proveedor_name'){{ $message }} @else NOMBRE @enderror"
 							class="input input-sm input-bordered w-full @error('proveedor_name') border-red-500 text-red-500 @enderror" />
 					</label>
-
-					<label class="text-xs">Telefono
-
-						<input wire:model='tel' type="string" placeholder="@error('tel'){{ $message }} @else TELEFONO @enderror"
+					<label class="text-xs">Descripcion
+						<input wire:model='descripcion' type="text" value="{{$descripcion}}"
+							placeholder="@error('descripcion'){{ $message }} @else DESCRIPCION @enderror"
+							class="input input-sm input-bordered w-full @error('descripcion') border-red-500 text-red-500 @enderror" disabled/>
+						</label>
+						<label class="text-xs">Rubro
+							<input wire:model='rubro' type="text" placeholder="@error('rubro'){{ $message }} @else RUBRO @enderror"
+							class="input input-sm input-bordered w-full @error('rubro') border-red-500 text-red-500 @enderror" disabled/>
+						</label>
+						<div class="flex gap-3">
+							<label class="text-xs w-full">CC
+								<input wire:model='cc' wire:change="handleCcChange($event.target.value)" list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
+									class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
+							</label>
+							<datalist name="cc" id="cc">
+								@foreach ($numerosCC as $numeroCC)
+								<option value="{{$numeroCC}}"></option>
+								@endforeach
+							</datalist>
+							<div class="mt-4">
+								{{-- ! boton para modal de CC cuenta contable --}}
+								@livewire('modal-nuevo-cc-component')
+							</div>
+						</div>
+						<label class="text-xs">Telefono
+							<input wire:model='tel' type="string" placeholder="@error('tel'){{ $message }} @else TELEFONO @enderror"
 							class="input input-sm input-bordered w-full @error('tel') border-red-500 text-red-500 @enderror" />
 					</label>
 					<label class="text-xs">Email
@@ -31,31 +53,12 @@
 							placeholder="@error('contactp'){{ $message }} @else CONTACTO @enderror"
 							class="input input-sm input-bordered w-full @error('contacto') border-red-500 text-red-500 @enderror" />
 					</label>
-					<label class="text-xs">Descripcion
-						<input wire:model='descripcion' type="text"
-							placeholder="@error('descripcion'){{ $message }} @else DESCRIPCION @enderror"
-							class="input input-sm input-bordered w-full @error('descripcion') border-red-500 text-red-500 @enderror" />
-					</label>
-					<label class="text-xs">Rubro
-						<input wire:model='rubro' type="text" placeholder="@error('rubro'){{ $message }} @else RUBRO @enderror"
-							class="input input-sm input-bordered w-full @error('rubro') border-red-500 text-red-500 @enderror" />
-					</label>
-
 					<div class="flex gap-3">
-						<label class="text-xs w-full">CC
-							<input wire:model='cc' list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
-								class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
+						<label class="text-xs">Just in case...
+							<input class="input input-sm input-bordered w-full" placeholder="DISABLED" disabled/>
 						</label>
-						<datalist name="cc" id="cc">
-							@foreach ($numerosCC as $numeroCC)
-							<option value="{{$numeroCC}}"></option>
-							@endforeach
-						</datalist>
-						<div class="mt-4">
-							{{-- ! boton para modal de CC cuenta contable --}}
-							@livewire('modal-nuevo-cc-component')
-						</div>
 					</div>
+					
 				</div>
 
 				<div class="flex justify-between mt-5">
