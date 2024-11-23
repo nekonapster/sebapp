@@ -21,17 +21,17 @@ class DangerZoneComponent extends Component
 5 = saldos
 */
 
-public function mount()
-{
-    // Cargar el número de documentos de cada colección al iniciar el componente
-    $this->contador = [
-        'basesGenerales' =>  Base::count(),
-        'proveedores' => Proveedor::count(),
-        'cuentasContables' => CuentaContable::count(),
-        'bancos' => Banco::count(),
-        'saldos' => Saldo::count(),
-    ];
-}
+    public function mount()
+    {
+        // Cargar el número de documentos de cada colección al iniciar el componente
+        $this->contador = [
+            'basesGenerales' =>  Base::count(),
+            'proveedores' => Proveedor::count(),
+            'cuentasContables' => CuentaContable::count(),
+            'bancos' => Banco::count(),
+            'saldos' => Saldo::count(),
+        ];
+    }
 
     public function loadTableToTruncate($id)
     {
@@ -53,9 +53,9 @@ public function mount()
                 break;
 
             default:
-                // return redirect('/dangerZone');
                 break;
         }
+        // return redirect('/dangerZone');
     }
 
     public function truncateTable()
@@ -78,7 +78,7 @@ public function mount()
                 break;
 
             default:
-            break;
+                break;
         }
         session()->flash('msg', 'La tabla ha sido vaciada con exito');
         return redirect('/dangerZone');
@@ -88,8 +88,6 @@ public function mount()
 
     public function render()
     {
-// dd($this->collectionsCount);
-
         return view('livewire.danger-zone-component', [
             'contadores' => $this->contador,
         ]);
