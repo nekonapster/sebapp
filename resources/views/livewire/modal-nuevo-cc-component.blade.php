@@ -28,10 +28,14 @@
                     @endif
 
 
+                    <span class="text-red-500">@error('numeroCC'){{$message}}@enderror <br></span>
                     <span class="label-text">Numero</span>
-                    <input wire:model="numeroCC" type="text" class="input input-bordered w-full mb-5"
-                        placeholder="Solo numeros con un decimal" maxlength="9">
-
+                    <input wire:model="numeroCC" type="text" 
+                    class="input input-bordered w-full mb-5 @error('numeroCC') border-red-500 @enderror"
+                    placeholder="Solo numeros con un decimal"
+                    maxlength="9"
+                        >
+                        
                     <span class="label-text">Rubro</span>
                     <Select wire:model='rubro' class="select w-full select-bordered mb-5">
                         <option value="aranceles">Aranceles</option>
@@ -46,8 +50,10 @@
                     </Select>
 
                     <span class="label-text">Descripcion</span>
-                    <input wire:model='descripcion' type="text" placeholder="Description"
-                        class="input input-bordered w-full mb-5">
+                    <input wire:model='descripcion' type="text"
+                        class="input input-bordered w-full mb-5 @error('descripcion') border-red-500 @enderror"
+                        placeholder="@error('descripcion'){{$message}}@enderror"
+                        >
 
                     <div class="flex justify-start w-full input input-bordered items-center mt-3">
                         <p>Tipo</p>
@@ -69,6 +75,5 @@
                 </div>
             </div>
         </div>
-
     </dialog>
 </div>

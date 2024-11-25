@@ -77,10 +77,10 @@
 			</div>
 				{{-- /////////////////////////////////////////////////////////////////////// --}}
 
-				<div class="divider"></div>
+				<div class="divider m-0 p-0"></div>
 
 				<!-- tabla dentro del modal ↓ -->
-				<div class="mt-2 overflow-y-auto h-80">
+				<div class="overflow-y-auto h-80">
 					@livewire('tabla-nuevo-proveedores-component')
 				</div>
 

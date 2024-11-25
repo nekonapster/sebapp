@@ -15,10 +15,6 @@ class TablaSaldosComponent extends Component
     {
         // odernar segun parametros
         $this->listarTablas = Saldo::orderByDesc('fechaSaldos')->get() ?? collect([]);
-        // $this->listarTablas = Saldo::orderByDesc('created_at')->get() ?? collect([]);
-
-        // sin ordenamiento
-        // $this->listarTablas = Saldo::all() ?? collect([]);
     }
 
     public function toExcel()

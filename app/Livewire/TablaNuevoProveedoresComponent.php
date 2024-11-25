@@ -8,37 +8,37 @@ use Illuminate\Support\Str;
 
 class TablaNuevoProveedoresComponent extends Component
 {
-    public $listeners = ['recargarTablaNuevoProveedor'];
+    public $search = '';
+    public $proveedores;
 
-
-
-    public function borrarProveedor($id)
+    public function mount()
     {
-        $proveedor = Proveedor::findOrFail($id);
-        $proveedor->delete();
-        $this->listeners = ['recargarTablaNuevoProveedor'];
-
-        // Emitir el evento con el nuevo nombre del proveedor
-        $this->dispatch('recargaSelectNombreProveedor');
+        $this->search();
     }
 
-
-    public function editarProveedor($id)
+    public function updatedSearch()
     {
-        $this->dispatch('editarProveedorId', $id);
-        // dd($id);
+        $this->search();
+    }
 
+    public function search()
+    {
+        $query = Proveedor::query();
+
+        if ($this->search) {
+            $query->where('proveedor_name', 'like', '%' . $this->search . '%');
+        }
+
+        $this->proveedores = $query->get()->map(function ($proveedor) {
+            $proveedor->id_corto = Str::substr($proveedor->_id, -5); // Add short ID
+            return $proveedor;
+        });
     }
 
     public function render()
     {
-        $proveedores = Proveedor::all()->map(function ($proveedor) {
-            $proveedor->id_corto = Str::substr($proveedor->_id, -5); // Agrega un campo para los últimos 5 números
-            return $proveedor;
-        });
-
         return view('livewire.tabla-nuevo-proveedores-component', [
-            'proveedores' => $proveedores,
+            'proveedores' => $this->proveedores,
         ]);
     }
 }

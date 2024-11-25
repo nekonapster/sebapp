@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Base;
-use App\Models\CuentaContable;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -17,21 +16,13 @@ class TablaBaseGeneralComponent extends Component
     public $cuentaBanco;
     public $nCheque;
     public $ordenPago;
-    public $search = '';
+    public $search = "";
+    public $listarTablas;
 
     #[On('idPagar')]
     public function idPagar($id)
     {
         $this->idPagar = $id;
-
-        $this->dispatch('test', $id);
-    }
-
-
-    public function cargarEnFormulario($id)
-    {
-        $loadUserToForm = Base::find($id);
-        // dd($loadUserToForm);
     }
 
     public function borrarDatoBaseGeneral($id)
@@ -45,26 +36,27 @@ class TablaBaseGeneralComponent extends Component
         Base::truncate();
     }
 
-
-    public function baseToExcel(){
+    public function baseToExcel()
+    {
         return redirect()->route('export-base-excel');
     }
-    public function baseToPdf(){
+    public function baseToPdf()
+    {
         return redirect()->route('export-base-pdf');
+    }
+
+    public function listarTabla()
+    {
+        // Consulta con filtro y ordenamiento
+        $listaOrdenada = Base::where('proveedor_name', 'like', '%' . $this->search . '%');
+
+        // Aplica ordenamiento descendente en el campo deseado
+        $this->listarTablas = $listaOrdenada->orderByDesc('fechaVencimiento')->get() ?? collect([]); // Obtiene los resultados o devuelve una colección vacía
     }
 
     public function render()
     {
-        $tablas = Base::where('proveedor_name', 'like', '%' . $this->search . '%')->first();
-    
-        if ($tablas) {
-            $tablas = $tablas->get();
-        } else {
-            $tablas = collect([]);
-        }
-    
-        return view('livewire.tabla-base-general-component', [
-            'tablas' => $tablas,
-        ]);
+        $this->listarTabla();
+        return view('livewire.tabla-base-general-component');
     }
 }

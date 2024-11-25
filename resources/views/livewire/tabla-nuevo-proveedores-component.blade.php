@@ -1,9 +1,26 @@
 <div class="">
+    <div class="w-52 mb-3">
+        <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
+        <div class="relative">
+            <input wire:model.live.debounce.300ms="search" type="text" id="hs-as-table-product-review-search"
+                name="hs-as-table-product-review-search"
+                class="py-1 px-3 ps-11 input input-sm block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                placeholder="Search">
+            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
+                <svg class="flex-shrink-0 size-4 text-gray-400 dark:text-neutral-500"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                </svg>
+            </div>
+        </div>
+    </div>
     <table class="table table-xs text-center table-pin-rows" id="myTable">
         <!-- head -->
         <thead class="">
             <tr>
-                <th class="px-0 text-center">ID</th>
+                {{-- <th class="px-0 text-center">ID</th> --}}
                 <th class="px-0 text-center">PROVEEDOR</th>
                 <th class="px-0 text-center">TEL</th>
                 <th class="px-0 text-center">EMAIL</th>
@@ -17,7 +34,7 @@
         <tbody class="text-xs text-center">
             @foreach ($proveedores as $proveedor)
             <tr wire:key='{{$proveedor->id}}' class="">
-                <td class="px-0">{{$proveedor->id_corto}}</td>
+                {{-- <td class="px-0">{{$proveedor->id_corto}}</td> --}}
                 <td class="px-0">{{$proveedor->proveedor_name}}</td>
                 <td class="px-0">{{$proveedor->tel}}</td>
                 <td class="px-0">{{$proveedor->email}}</td>

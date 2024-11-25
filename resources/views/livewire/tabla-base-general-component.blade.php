@@ -75,22 +75,22 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($tablas as $tabla)
-						<tr wire:key='{{$tabla->id}}' class="text-center">
+						@foreach ($listarTablas as $listarTabla)
+						<tr wire:key='{{$listarTabla->id}}' class="text-center">
 							{{-- <td class="text-start">{{$tabla['_id']}}</td> --}}
-							<td>{{$tabla['nFactura']}}</td>
-							<td>{{$tabla['proveedor_name']}}</td>
-							<td>{{$tabla['fechaVencimiento']}}</td>
-							<td>{{$tabla['importe']}}</td>
-							<td>{{$tabla['tipoPago']}}</td>
-							<td>{{$tabla['fechaPago']}}</td>
-							<td>{{$tabla['banco']}}</td>
-							<td>{{$tabla['cuentaBanco']}}</td>
-							<td>{{$tabla['nCheque']}}</td>
-							<td>{{$tabla['ordenPago']}}</td>
+							<td>{{$listarTabla['nFactura']}}</td>
+							<td>{{$listarTabla['proveedor_name']}}</td>
+							<td>{{$listarTabla['fechaVencimiento']}}</td>
+							<td>{{$listarTabla['importe']}}</td>
+							<td>{{$listarTabla['tipoPago']}}</td>
+							<td>{{$listarTabla['fechaPago']}}</td>
+							<td>{{$listarTabla['banco']}}</td>
+							<td>{{$listarTabla['cuentaBanco']}}</td>
+							<td>{{$listarTabla['nCheque']}}</td>
+							<td>{{$listarTabla['ordenPago']}}</td>
 							<td class="py-1">
 								{{-- boton editar --}}
-								<button wire:click="$dispatch('cargarEnFormulario', { id: '{{ $tabla->id }}'} )" type="button"
+								<button wire:click="$dispatch('cargarEnFormulario', { id: '{{ $listarTabla->id }}'} )" type="button"
 									class="mx-3"><svg class="w-5 h-5 text-gray-800 dark:text-yellow-500" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
@@ -102,7 +102,7 @@
 									</svg>
 								</button>
 								{{-- boton borrar --}}
-								<button wire:click="borrarDatoBaseGeneral('{{$tabla->id}}')" type=" button" class="mx-3"
+								<button wire:click="borrarDatoBaseGeneral('{{$listarTabla->id}}')" type=" button" class="mx-3"
 									wire:confirm="Estas seguro?"><svg class="w-5 h-5 text-gray-800 dark:text-red-500" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"
@@ -111,7 +111,7 @@
 									</svg>
 								</button>
 								{{-- boton pagar que abre un modal --}}
-								<button wire:click="$dispatch('idPagar', { id: '{{ $tabla->id }}'} )" type="button" class="mx-3"
+								<button wire:click="$dispatch('idPagar', { id: '{{ $listarTabla->id }}'} )" type="button" class="mx-3"
 									onclick="pagar.showModal()"><svg class="w-5 h-5 text-gray-800 dark:text-orange-600" aria-hidden="true"
 										xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd"

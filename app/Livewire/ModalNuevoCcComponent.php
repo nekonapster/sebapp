@@ -4,20 +4,27 @@ namespace App\Livewire;
 
 use App\Models\CuentaContable;
 use App\Models\Proveedor;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ModalNuevoCcComponent extends Component
 {
 
+    #[Validate('required', message: 'El numero CC es obligatorio')]
+    #[Validate('min:8', message: 'Minimo 8 caracteres')]
+    #[Validate('numeric', message: 'Solo admite numeros')]
     public $numeroCC; 
     public $rubro = 'aranceles';
+    #[Validate('required|min:5')]
     public $descripcion;
     public $tipo = 'in';
 
 
 
     public function crearCC(){
-        
+
+        $this->validate();
+
         CuentaContable::create([
             // casteo el string a numero
             $this->numeroCC = (float) $this->numeroCC,

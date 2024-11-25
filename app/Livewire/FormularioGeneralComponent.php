@@ -5,22 +5,36 @@ namespace App\Livewire;
 use App\Models\Base;
 use App\Models\Proveedor;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class FormularioGeneralComponent extends Component
 {
+
     public $baseGeneral_id;
+    #[Validate('required|min:5')]
     public $proveedor_name;
+    #[Validate('required')]
     public $fechaFactura;
+    #[Validate('required')]
     public $fechaVencimiento;
+    #[Validate('required')]
     public $auxiliar;
+    #[Validate('required')]
     public $activacion;
+    #[Validate('required')]
     public $ptoVenta;
+    #[Validate('required')]
     public $nFactura;
+    #[Validate('required')]
     public $importe;
+    #[Validate('required')]
     public $gastos;
+    #[Validate('required')]
     public $proyecto;
+    #[Validate('required')]
     public $notas;
+    #[Validate('required')]
     public $proveedorName;
     protected $listeners = [
         'recargaSelectNombreProveedor' => 'actualizarProveedores',
@@ -87,6 +101,8 @@ class FormularioGeneralComponent extends Component
 
     public function nuevoDatoBaseGeneral()
     {
+        $this->validate();
+        
         Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
             'proveedor_name' => $this->proveedor_name,
@@ -114,6 +130,7 @@ class FormularioGeneralComponent extends Component
 
     public function render()
     {
+       
         return view('livewire.formulario-general-component', [
             'nombres' => $this->proveedorName,
         ]);
