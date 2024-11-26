@@ -64,46 +64,32 @@ class BaseExport extends Dompdf implements FromCollection, ShouldAutoSize, WithS
 
     public function styles(Worksheet $sheet)
     {
-        // Configurar la orientación de la página
+        // Configurar la orientación de la página y el tamaño del papel
         $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-
-        // Configurar el tamaño de la página a A4 
         $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4);
 
-
-        // Ajustar la escala para que todo el contenido quepa en una página
+        // Ajustar la escala para que el contenido quepa en una página
         $sheet->getPageSetup()->setFitToWidth(1);
         $sheet->getPageSetup()->setFitToHeight(1);
 
-        // Ajustar los márgenes de la página
-        $sheet->getPageMargins()->setTop(0.10);
-        $sheet->getPageMargins()->setRight(0.10);
-        $sheet->getPageMargins()->setLeft(0.10);
-        $sheet->getPageMargins()->setBottom(0.10);
+        // Ajustar márgenes de la página (en pulgadas)
+        $sheet->getPageMargins()->setTop(0);
+        $sheet->getPageMargins()->setRight(0);
+        $sheet->getPageMargins()->setLeft(0);
+        $sheet->getPageMargins()->setBottom(0);
 
-        // Configurar el área de impresión
-        $sheet->getPageSetup()->setPrintArea('A1:J' . $sheet->getHighestRow());
+        // Reducir cualquier espacio adicional dentro de las celdas
+        $sheet->getDefaultRowDimension()->setRowHeight(-1); // Ajusta el alto automáticamente
+        $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getAlignment()->setWrapText(false); // Desactiva el ajuste de texto
 
-        // Ajustar el tamaño de la fuente para que todo el contenido quepa en la página
-        $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getFont()->setSize(9);
+        // Aplicar estilo a la fuente y encabezados
+        $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(8.5);
+        $sheet->getStyle('A1:J1')->getFont()->setBold(true);
 
-        // Ajustar el ancho de cada columna automáticamente al contenido
-        foreach (range('A', 'J') as $columnID) {
-            $sheet->getColumnDimension($columnID)->setAutoSize(true);
-        }
-        
-        
-        // Ajustar el tipo de fuente
-        $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getFont()->setName('Helvetica');
-
-
-        // Centrar el contenido de todas las celdas después de ajustar el ancho 
+        // Centrar contenido dentro de las celdas
         $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 
-        return [
-            // Aplica negrita a la primera fila (encabezados)
-            1 => ['font' => ['bold' => true]],
-        ];
+        return [];
     }
 }

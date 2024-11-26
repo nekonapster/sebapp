@@ -142,6 +142,13 @@ class ModalNuevoProveedorComponent extends Component
     }
     
 
+    public function refresh()
+    {
+        // Recargar pagina cuando se escapa del modal
+        return redirect('/general');
+    }
+
+
     public function render()
     {
         // $cc_id = CuentaContable::pluck('id');

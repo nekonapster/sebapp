@@ -31,5 +31,6 @@ class Base extends Model
         'cuentaBanco',
         'nCheque',
         'ordenPago',
+        'proyectarFechas',
     ];
 }

@@ -1,5 +1,6 @@
 <div>
-	<button type="button" class="btn btn-sm btn-accent btn-outline" onclick="nuevoProveedor.showModal()">Proveedor</button>
+	<button type="button" class="btn btn-sm btn-accent btn-outline"
+		onclick="nuevoProveedor.showModal()">Proveedor</button>
 
 	{{-- ! modal 'nuevo proveedor' --}}
 	<dialog id="nuevoProveedor" class="modal" wire:ignore.self>
@@ -19,29 +20,32 @@
 					<label class="text-xs">Descripcion
 						<input wire:model='descripcion' type="text" value="{{$descripcion}}"
 							placeholder="@error('descripcion'){{ $message }} @else DESCRIPCION @enderror"
-							class="input input-sm input-bordered w-full @error('descripcion') border-red-500 text-red-500 @enderror" disabled/>
+							class="input input-sm input-bordered w-full @error('descripcion') border-red-500 text-red-500 @enderror"
+							disabled />
+					</label>
+					<label class="text-xs">Rubro
+						<input wire:model='rubro' type="text" placeholder="@error('rubro'){{ $message }} @else RUBRO @enderror"
+							class="input input-sm input-bordered w-full @error('rubro') border-red-500 text-red-500 @enderror"
+							disabled />
+					</label>
+					<div class="flex gap-3">
+						<label class="text-xs w-full">CC
+							<input wire:model='cc' wire:change="handleCcChange($event.target.value)" list="cc"
+								placeholder="@error('cc'){{ $message }} @else CC @enderror"
+								class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
 						</label>
-						<label class="text-xs">Rubro
-							<input wire:model='rubro' type="text" placeholder="@error('rubro'){{ $message }} @else RUBRO @enderror"
-							class="input input-sm input-bordered w-full @error('rubro') border-red-500 text-red-500 @enderror" disabled/>
-						</label>
-						<div class="flex gap-3">
-							<label class="text-xs w-full">CC
-								<input wire:model='cc' wire:change="handleCcChange($event.target.value)" list="cc" placeholder="@error('cc'){{ $message }} @else CC @enderror"
-									class="input input-sm input-bordered w-full @error('cc') border-red-500 text-red-500 @enderror" />
-							</label>
-							<datalist name="cc" id="cc">
-								@foreach ($numerosCC as $numeroCC)
-								<option value="{{$numeroCC}}"></option>
-								@endforeach
-							</datalist>
-							<div class="mt-4">
-								{{-- ! boton para modal de CC cuenta contable --}}
-								@livewire('modal-nuevo-cc-component')
-							</div>
+						<datalist name="cc" id="cc">
+							@foreach ($numerosCC as $numeroCC)
+							<option value="{{$numeroCC}}"></option>
+							@endforeach
+						</datalist>
+						<div class="mt-4">
+							{{-- ! boton para modal de CC cuenta contable --}}
+							@livewire('modal-nuevo-cc-component')
 						</div>
-						<label class="text-xs">Telefono
-							<input wire:model='tel' type="string" placeholder="@error('tel'){{ $message }} @else TELEFONO @enderror"
+					</div>
+					<label class="text-xs">Telefono
+						<input wire:model='tel' type="string" placeholder="@error('tel'){{ $message }} @else TELEFONO @enderror"
 							class="input input-sm input-bordered w-full @error('tel') border-red-500 text-red-500 @enderror" />
 					</label>
 					<label class="text-xs">Email
@@ -55,10 +59,10 @@
 					</label>
 					<div class="flex gap-3">
 						<label class="text-xs">Just in case...
-							<input class="input input-sm input-bordered w-full" placeholder="DISABLED" disabled/>
+							<input class="input input-sm input-bordered w-full" placeholder="DISABLED" disabled />
 						</label>
 					</div>
-					
+
 				</div>
 
 				<div class="flex justify-between mt-5">
@@ -70,11 +74,11 @@
 					</div>
 				</div>
 				{{-- loading --}}
-				<div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md"> 
+				<div wire:loading class="position absolute left-[47%] top-[77%] drop-shadow-md">
 					{{-- <span class=" loading loading-spinner text-accent w-14"></span> --}}
 					{{-- <span class="loading loading-infinity w-14"></span> --}}
 					<span class="loading loading-bars w-12 text-cyan-500"></span>
-			</div>
+				</div>
 				{{-- /////////////////////////////////////////////////////////////////////// --}}
 
 				<div class="divider m-0 p-0"></div>
@@ -83,15 +87,18 @@
 				<div class="overflow-y-auto h-80">
 					@livewire('tabla-nuevo-proveedores-component')
 				</div>
-
 				<!-- tabla dentro del modal ↑ -->
-
-				{{-- ! retiro boton 'cancelar' por mejorar el espacio --}}
-				{{-- <div class="modal-action"> --}}
-					{{-- <form method="dialog"> --}}
-						{{-- <button class="btn">Cancelar</button> --}}
-						{{-- </form> --}}
-					{{-- </div> --}}
 			</div>
 	</dialog>
+
+
+			@script
+					<script>
+						document.addEventListener('keydown', (event) => {
+							if (event.key === 'Escape') {
+									location.reload();
+							}
+					});
+					</script>
+			@endscript
 </div>

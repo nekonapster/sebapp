@@ -4,30 +4,30 @@
             {{session('msg')}}
         </div>
         @endif
-        <div class="overflow-x-auto text-center">
-            <table class="table text-center flex justify-evenly">
+        <div class="overflow-x-auto">
+            <table class="table table-sm text-center">
                 <!-- head -->
                 <thead>
                     <tr>
-                        <th class="">Nombre de la coleccion</th>
-                        <th>Numero de documentos</th>
-                        <th class="">Accion</th>
+                        <th class="w-1/6">Nombre de la coleccion</th>
+                        <th  class="w-96">Numero de documentos</th>
+                        <th class="w-1">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- row 1 -->
-                    <tr>
-                        <th>Base General</th>
-                        <td>{{$contadores['basesGenerales']}}</td>
-                        <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('1')"
+                        <tr>
+                            <td>Base General</td>
+                            <td>{{$contadores['basesGenerales']}}</td>
+                            <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('1')"
                                 type="button" class="btn btn-sm btn-error">
                                 <x-lineawesome-skull-crossbones-solid class="w-6" />
                                 Vaciar
                             </button></td>
-                    </tr>
+                        </tr>
                     <!-- row 2 -->
                     <tr>
-                        <th>Proveedores</th>
+                        <td>Proveedores</td>
                         <td>{{$contadores['proveedores']}}</td>
                         <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('2')"
                                 type="button" class="btn btn-sm btn-error">
@@ -37,7 +37,7 @@
                     </tr>
                     <!-- row 3 -->
                     <tr>
-                        <th>Cuentas Contables</th>
+                        <td>Cuentas Contables</td>
                         <td>{{$contadores['cuentasContables']}}</td>
                         <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('3')"
                                 type="button" class="btn btn-sm btn-error">
@@ -47,7 +47,7 @@
                     </tr>
                     <!-- row 4 -->
                     <tr>
-                        <th>Bancos</th>
+                        <td>Bancos</td>
                         <td>{{$contadores['bancos']}}</td>
                         <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('4')"
                                 type="button" class="btn btn-sm btn-error">
@@ -57,7 +57,7 @@
                     </tr>
                     <!-- row 5 -->
                     <tr>
-                        <th>Saldos</th>
+                        <td>Saldos</td>
                         <td>{{$contadores['saldos']}}</td>
                         <td> <button onclick="dangerZone.showModal()" wire:click="loadTableToTruncate('5')"
                                 type="button" class="btn btn-sm btn-error">
