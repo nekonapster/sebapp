@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Base;
+use App\Models\Metrica;
 use App\Models\Proveedor;
 use Carbon\Carbon;
 use Livewire\Attributes\On;
@@ -47,9 +48,10 @@ class FormularioGeneralComponent extends Component
     public $banco;
     public $cuentaBanco;
     public $nCheque;
-    public $ordenPago;    
-    public $proyectarFechas;    
-    public $activarProyectarFechas = false;    
+    public $ordenPago;
+    public $proyectarGastos;
+    public $activarProyectarGastos = false;
+    public $metrica_id;
 
     public function mount()
     {
@@ -77,11 +79,13 @@ class FormularioGeneralComponent extends Component
 
     public function actualizarDatosFormulario()
     {
+        // Encontrar el registro en la colección Base
         $loadUserToForm = Base::find($this->baseGeneral_id);
 
         if ($loadUserToForm) {
+            // Actualizar los datos de la base
             $loadUserToForm->update([
-                '_id' => $this->baseGeneral_id,
+                '_id' => $this->baseGeneral_id, // Este campo no es necesario, ya que _id no cambia
                 'proveedor_name' => $this->proveedor_name,
                 'fechaFactura' => $this->fechaFactura,
                 'fechaVencimiento' => $this->fechaVencimiento,
@@ -94,9 +98,27 @@ class FormularioGeneralComponent extends Component
                 'proyecto' => $this->proyecto,
                 'notas' => $this->notas,
             ]);
+
+            // Buscar el registro relacionado en la colección Metrica
+            $loadMetricaById = Metrica::where('base_id', $this->baseGeneral_id)->first();
+
+            if ($loadMetricaById) {
+                // Calcular el valor de proyectarGastos
+                $mesCarbon = Carbon::parse($this->fechaFactura)->month;
+                $mesesProyectados = 12 - $mesCarbon;
+                $this->proyectarGastos = $this->importe * $mesesProyectados;
+
+                // Actualizar la métrica relacionada
+                $loadMetricaById->update([
+                    'proyectarGastos' => $this->proyectarGastos,
+                    'mesActual' => $mesCarbon, // Opcional, si necesitas almacenar el mes
+                ]);
+            }
+            // Redirigir al usuario a la página anterior
             return redirect(request()->header('Referer'));
         }
     }
+
 
     public function actualizarProveedores()
     {
@@ -106,12 +128,9 @@ class FormularioGeneralComponent extends Component
     public function nuevoDatoBaseGeneral()
     {
         $this->validate();
-        
-        if ($this->activarProyectarFechas == true) {
-            $this->proyectarFechas();            
-        }
 
-        Base::create([
+
+        $base = Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
             'proveedor_name' => $this->proveedor_name,
             'fechaFactura' => $this->fechaFactura,
@@ -132,25 +151,41 @@ class FormularioGeneralComponent extends Component
             'ordenPago' => $this->ordenPago ?? '-',
         ]);
 
+        $base_id  = $base->_id;
+
+        if ($this->activarProyectarGastos == true) {
+            $this->proyectarGastos($base_id);
+        }
+
         // refresco la pagina
         return redirect('/general');
     }
 
 
-    public function proyectarFechas(){
-        $fechaString = $this->fechaFactura;
-        $fechaCarbon = Carbon::parse($fechaString);
-        $mes = $fechaCarbon->month;   
+    public function proyectarGastos($base_id)
+    {
+        $base_id = $base_id;
+        $mesCarbon = Carbon::parse($this->fechaFactura)->month;
 
-        $diferenciaAnual = 12 - $mes;
-        $this->proyectarFechas = $this->importe * $diferenciaAnual;
-        dd($this->proyectarFechas);
+        $mesesProyectados = 12 - $mesCarbon;
+        $this->proyectarGastos = $this->importe * $mesesProyectados;
+
+        Metrica::create([
+            'proyectarGastos' => $this->proyectarGastos,
+            'mesActual' => $mesCarbon,
+            'base_id' => $base_id,
+        ]);
+
+        return redirect('/general');
     }
+
+
+
 
 
     public function render()
     {
-       
+
         return view('livewire.formulario-general-component', [
             'nombres' => $this->proveedorName,
         ]);

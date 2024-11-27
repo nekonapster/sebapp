@@ -10,7 +10,8 @@ class Metrica extends Model
     use HasFactory;
 
     protected $fillable = [
-        'proyectarFechas',
+        'base_id',
         'mesActual',
+        'proyectarGastos',
     ];
 }

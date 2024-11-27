@@ -16,7 +16,7 @@ new #[Layout('layouts.guest')] class extends Component {
     public string $password_confirmation = '';
 
     // si el email aparece en esta lista entonces los roles seran "admin" para el resto "guest"
-    public array $adminEmails = ['sebastian@admin.com', 'martin@admin.com'];
+    public array $adminEmails = ['sebastiandimarco3@gmail.com', 'martin@admin.com'];
 
     /**
      * Handle an incoming registration request.

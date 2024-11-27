@@ -8,9 +8,6 @@ use Livewire\Component;
 
 class ModalCrearUsuariosComponent extends Component
 {
-
-
-
     #[Validate('required|min:4|max:255')]
     public $name = '';
 

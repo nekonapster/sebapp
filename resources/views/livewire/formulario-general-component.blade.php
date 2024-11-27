@@ -101,7 +101,7 @@
         <div class="m-0 p-0">
             <button wire:click='actualizarDatosFormulario' class="btn btn-sm btn-warning mr-5">Modificar</button>
             <button wire:click='nuevoDatoBaseGeneral' class="btn btn-sm btn-accent pr-10">Guardar</button>
-            <input  wire:model='activarProyectarFechas' type="checkbox" class="checkbox checkbox-accent relative top-0 right-8" />
+            <input  wire:model='activarProyectarGastos' type="checkbox" class="checkbox checkbox-accent relative top-0 right-8" />
         </div>
     </div>
 </div>
