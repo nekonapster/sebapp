@@ -45,7 +45,7 @@ class ModalPagarComponent extends Component
         ]);
 
         return redirect('/general');
-    }
+    }   
 
 
     public function render()

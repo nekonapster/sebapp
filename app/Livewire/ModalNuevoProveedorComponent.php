@@ -21,7 +21,8 @@ class ModalNuevoProveedorComponent extends Component
     //01. listeners es una variable especial que admite un array asoc, el primer parametro es el parametro del dispatch en el componente y el segundo parametro es el metodo que disparara en el componente del listeners
     protected $listeners = [
         'ccSelectRefresh' => 'cargarCuentas',
-        'editarProveedorIdFrom_tablaNuevoProveedoresComponent' => 'loadUser'
+        'editarProveedorIdFrom_tablaNuevoProveedoresComponent' => 'loadUser',
+        'borrarProveedorFrom_tablaNuevoProveedorComponent' =>'borrarProveedor'
     ];
     // este numeroCC se recupera de la bd cuenta_contables
     public $numerosCC;
@@ -63,11 +64,11 @@ class ModalNuevoProveedorComponent extends Component
             'numeroCC' => $this->cc,
         ]);
         $this->reset(['id_proveedor', 'proveedor_name', 'tel', 'email', 'contacto', 'descripcion', 'rubro', 'cc']);
-
+        
         // Emitir el evento con el nuevo nombre del proveedor
         $this->dispatch('recargaSelectNombreProveedor');
 
-        $this->dispatch('recargarTablaNuevoProveedor');
+        $this->dispatch('recargarTablafrom_ModalNuevoProveedorComponent');
     }
 
     public function loadUser($id)
@@ -112,10 +113,17 @@ class ModalNuevoProveedorComponent extends Component
                 'cc',
             ]);
 
-            $this->dispatch('recargarTablaNuevoProveedor');
         }
+        $this->dispatch('recargarTablaNuevoProveedor');
     }
 
+    public function borrarProveedor($id)
+    {
+        $proveedor = Proveedor::findOrFail($id);
+        $proveedor->delete();
+        $this->dispatch('recargarTablaNuevoProveedor');
+    }
+    
     public function handleCcChange($value)
     {
 
@@ -127,8 +135,6 @@ class ModalNuevoProveedorComponent extends Component
             // Actualiza las propiedades reactivas con la información de la cuenta
             $this->descripcion = $cuenta->descripcion;
             $this->rubro = $cuenta->rubro;
-            // dd($this->descripcion);
-            // dd($this->rubro);
         }
     }
 
@@ -142,10 +148,6 @@ class ModalNuevoProveedorComponent extends Component
 
     public function render()
     {
-        // $cc_id = CuentaContable::pluck('id');
-        // $rubro = CuentaContable::pluck('rubro');
-        // $descripcion = CuentaContable::pluck('descripcion');
-
-        return view('livewire.modal-nuevo-proveedor-component');
+       return view('livewire.modal-nuevo-proveedor-component');
     }
 }

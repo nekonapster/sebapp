@@ -1,4 +1,4 @@
-<div class="">
+<div>
     <div class="w-52 mb-3">
         <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
         <div class="relative">
