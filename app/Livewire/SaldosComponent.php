@@ -58,20 +58,20 @@ class SaldosComponent extends Component
     ];
 
     public $messages = [
-        'provincia.a893.required' => 'Escriba un numero',
-        'provincia.a430.required' =>'Escriba un numero',
-        'provincia.parroquia.required' =>'Escriba un numero',
-        'provincia.adm.required' =>'Escriba un numero',
-        'santander.sant1.required' =>'Escriba un numero',
-        'santander.sant2.required' =>'Escriba un numero',
-        'santander.sant3.required' =>'Escriba un numero',
-        'santanderP.893.required' =>'Escriba un numero',
-        'santanderP.430.required' =>'Escriba un numero',
-        'santanderP.1486.required' =>'Escriba un numero',
-        'fci.fciA.required' =>'Escriba un numero',
-        'fci.fciPlus.required' =>'Escriba un numero',
-        'digital.mercadoPago.required' =>'Escriba un numero',
-        'efectivo.caja.required' =>'Escriba un numero',
+        'provincia.a893.required' => 'Obligatorio',
+        'provincia.a430.required' =>'Obligatorio',
+        'provincia.parroquia.required' =>'Obligatorio',
+        'provincia.adm.required' =>'Obligatorio',
+        'santander.sant1.required' =>'Obligatorio',
+        'santander.sant2.required' =>'Obligatorio',
+        'santander.sant3.required' =>'Obligatorio',
+        'santanderP.893.required' =>'Obligatorio',
+        'santanderP.430.required' =>'Obligatorio',
+        'santanderP.1486.required' =>'Obligatorio',
+        'fci.fciA.required' =>'Obligatorio',
+        'fci.fciPlus.required' =>'Obligatorio',
+        'digital.mercadoPago.required' =>'Obligatorio',
+        'efectivo.caja.required' =>'Obligatorio',
     ];
     //////////////////////////
 

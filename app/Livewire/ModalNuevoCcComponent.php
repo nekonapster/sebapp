@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\CuentaContable;
-use App\Models\Proveedor;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 

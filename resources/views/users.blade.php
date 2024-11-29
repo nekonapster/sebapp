@@ -1,6 +1,6 @@
 {{-- COMPONENTE DE USUARIOS --}}
 <x-app-layout>
-    <div class="py-5 bg-neutral mx-10 rounded-xl">
+    <div class="py-5 bg-base-200 mx-10 rounded-xl">
         <div class="max-w-10xl mx-auto sm:px-6 lg:px-4">
             <div class="overflow-hidden sm:rounded-lg">
                 <div class="flex items-center gap-6 justify-between">

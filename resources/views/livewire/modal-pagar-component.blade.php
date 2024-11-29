@@ -5,7 +5,7 @@
 				<div class="grid grid-cols-2 gap-4">
 
 					<!-- Tipo de Pago -->
-					<div>
+					<div class="text-base-content">
 						<label  for="tipoPago" class="text-sm font-medium">Tipo de Pago</label>
 						<select wire:model='tipoPago' id="tipoPago" name="tipoPago" class="select select-bordered select-sm pt-0  w-full">
 							<option value="" disabled>Seleccionar</option>

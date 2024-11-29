@@ -98,10 +98,10 @@
             {{-- ! modal modal nuevo banco --}}
             @livewire('modal-nuevo-banco-component')
         </div>
-        <div class="m-0 p-0">
+        <div class="flex justify-end items-center">
             <button wire:click='actualizarDatosFormulario' class="btn btn-sm btn-warning mr-5">Modificar</button>
-            <button wire:click='nuevoDatoBaseGeneral' class="btn btn-sm btn-accent pr-10">Guardar</button>
-            <input  wire:model='activarProyectarGastos' type="checkbox" class="checkbox checkbox-accent relative top-0 right-8" />
+            <button wire:click='nuevoDatoBaseGeneral' class="btn btn-sm btn-accent pr-10 -mr-7">Guardar</button>
+            <input  wire:model='activarProyectarGastos' type="checkbox" class="checkbox checkbox-accent relative mr-1" />
         </div>
     </div>
 </div>

@@ -25,11 +25,12 @@ class ModalPagarComponent extends Component
         $this->bancos = Banco::select('nombre_banco', 'cuentaAsociada')->get();
     }
 
-    #[On('test')]
+    #[On('idFrom_TablaBaseGeneralComponent')]
     public function loadPagar($id)
     {
         $this->idPagar = ($id);
     }
+    
     public function pagar()
     {
         $datosPagar = Base::find($this->idPagar);

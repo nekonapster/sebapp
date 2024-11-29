@@ -9,11 +9,9 @@ use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use phpDocumentor\Reflection\Types\This;
 
 class FormularioGeneralComponent extends Component
 {
-
     public $baseGeneral_id;
     #[Validate('required|min:5', message: 'Obligatorio')]
     public $proveedor_name;

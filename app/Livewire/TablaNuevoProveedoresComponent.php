@@ -10,6 +10,7 @@ class TablaNuevoProveedoresComponent extends Component
 {
     public $search = '';
     public $proveedores;
+    public $listeners = ['recargarTablaNuevoProveedor'];
 
     public function mount()
     {
@@ -34,6 +35,19 @@ class TablaNuevoProveedoresComponent extends Component
             return $proveedor;
         });
     }
+
+    public function editarProveedor($id)
+    {
+        $this->dispatch('editarProveedorIdFrom_tablaNuevoProveedoresComponent', $id);
+    }
+ 
+    public function borrarProveedor($id)
+    {
+        $proveedor = Proveedor::findOrFail($id);
+        $proveedor->delete();
+        $this->listeners = ['recargarTablaNuevoProveedor'];
+    }
+
 
     public function render()
     {

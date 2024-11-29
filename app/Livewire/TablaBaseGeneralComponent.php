@@ -23,6 +23,7 @@ class TablaBaseGeneralComponent extends Component
     public function idPagar($id)
     {
         $this->idPagar = $id;
+        $this->dispatch('idFrom_TablaBaseGeneralComponent', id:  $this->idPagar);
     }
 
     public function borrarDatoBaseGeneral($id)

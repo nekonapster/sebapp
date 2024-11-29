@@ -1,13 +1,13 @@
 <div class="px-5">
 	<div
-		class="py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
+		class="py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-base-300">
 		<!-- Input -->
 		<div class="sm:col-span-1">
 			<label for="hs-as-table-product-review-search" class="sr-only">Search</label>
 			<div class="relative">
 				<input wire:model.live.debounce.300ms="search" type="text" id="hs-as-table-product-review-search"
 					name="hs-as-table-product-review-search"
-					class="py-2 px-3 ps-11 block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 input-sm"
+					class="py-2 px-3 ps-11 block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 input-sm"
 					placeholder="Search">
 				<div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
 					<svg class="flex-shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@
 
 	{{-- !table --}}
 			<div class="min-w-full inline-block align-middle overflow-y-auto h-72 ">
-				<table class="table table-xs table-pin-rows">
+				<table class="table table-xs table-pin-rows bg-base-100">
 					<thead class="text-center">
 						<tr>
 							{{-- <th scope="col" class="text-start w-12">ID</th> --}}

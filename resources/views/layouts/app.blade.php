@@ -17,8 +17,8 @@
     @livewireStyles
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <html data-theme="dark">
+
+    <html data-theme="dark">   
 
     </html>
 

@@ -1,14 +1,14 @@
 {{-- TABLAS PARA CRUD EN USUARIOS ZONA DE EDITAR Y BORRAR--}}
 <div>
     <div
-        class="px-6 py-4 grid gap-3 md:flex md:justify- md:items-center border-b border-gray-200 dark:border-neutral-700">
+        class="px-6 py-4 grid gap-3 md:flex md:justify- md:items-center border-b border-base-content">
         <!-- Input -->
         <div class="sm:col-span-1">
             <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
             <div class="relative">
                 <input wire:model.live.debounce.300ms="search" type="text" id="hs-as-table-product-review-search"
                     name="hs-as-table-product-review-search"
-                    class="py-1 px-3 ps-11 input input-sm block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    class="py-1 px-3 ps-11 input input-sm block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-base-300 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="Search">
                 <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
                     <svg class="flex-shrink-0 size-4 text-gray-400 dark:text-neutral-500"
@@ -20,36 +20,34 @@
                 </div>
             </div>
         </div>
-
-
         <!-- End Input -->
     </div>
     <!-- End Header -->
-    <div class="-m-1.5 overflow-x-auto">
-        <div class="p-1.5 min-w-full inline-block align-middle">
-            <div class="overflow-hidden">
-                <table class="table table-xs min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+
+
+        <div class="overflow-x-auto min-w-full inline-block align-middle">
+                <table class="table table-xs bg-base-100 mt-5">
                     <thead>
-                        <tr class="">
+                        <tr>
                             <th scope="col"
-                                class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                class="px-6 py-3 text-start text-xs font-medium">
                                 name
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                class="px-6 py-3 text-center text-xs font-medium">
                                 rol
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                class="px-6 py-3 text-center text-xs font-medium">
                                 email
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500 w-44">
+                                class="px-6 py-3 text-center text-xs font-medium w-44">
                                 action
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200 text-center dark:divide-neutral-700">
+                    <tbody class="text-center">
                         @foreach ($listaUsuarios as $listaUsuario)
                         <tr wire:key="{{$listaUsuario->id}}">
                             <td
@@ -104,9 +102,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
-
 
     {{-- modal EDIT --}}
     @livewire('modal-editar-usuario-component')
