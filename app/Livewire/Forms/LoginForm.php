@@ -11,6 +11,8 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use \App\Models\User as UsuarioEnMongo;
+use GuzzleHttp\Cookie\SetCookie;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginForm extends Form
 {

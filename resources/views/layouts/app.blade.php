@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
+    data-theme="{{ Auth::user()->theme }}">
+    {{-- @dd(Auth::user()->theme) --}}
 
 <head>
     <meta charset="utf-8">
@@ -18,10 +20,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-   
-    <html data-theme="dark">   
+    <script src="{{ asset('js/theme.js') }}" defer></script>
 
-    </html>
+
+</html>
 
 </head>
 
@@ -43,6 +45,8 @@
     </div>
 
     @livewireScripts
+
+   
 </body>
 
 </html>
