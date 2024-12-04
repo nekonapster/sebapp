@@ -11,28 +11,23 @@ class ThemeComponent extends Component
     public $themeFromView;
     public $cambioTheme;
 
-
-    public function mount(){
+    public function mount()
+    {
         $user = Auth::user();
-        $agregarTheme = User::find($user->id);
-        $theme = $agregarTheme->theme;
-        $this->cambioTheme= $theme;
-        // $this->dispatch('themeChanged', $this->cambioTheme);
+        $this->cambioTheme = $user->theme;
+        // dd($this->cambioTheme);
     }
     
     public function cambioEstado()
     {
-        $this->cambioTheme = $this->themeFromView ? 'retro' : 'dark';
-        
+        $this->cambioTheme = $this->themeFromView ? 'retro' : '';
+        // dd($this->cambioTheme);
+
         $user = Auth::user();
-        $agregarTheme = User::find($user->id);
-        
-        if ($user->theme == null || !empty($user->theme)) {
-            $agregarTheme->update([
-                'theme' => $this->cambioTheme,
-            ]);
-        }
-        // $this->dispatch('themeChanged', $this->cambioTheme);
+        $tema = User::find($user->id);
+        $tema->update([
+            'theme' => $this->cambioTheme,
+        ]);
     }
 
     public function render()
