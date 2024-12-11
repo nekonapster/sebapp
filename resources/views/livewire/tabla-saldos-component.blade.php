@@ -62,7 +62,7 @@
             <tbody>
                 @foreach ($listarTablas as $listarTabla)
                 <tr wire:key='{{$listarTabla->id}}' class="text-center">
-                    <th>{{$listarTabla->userName}}</th>
+                     <th>{{$listarTabla->userName}}</th>
                     <th>{{$listarTabla->created_at}}</th>
                     <th>{{$listarTabla->fechaSaldos}}</th>
                     <th>{{$listarTabla->bancoProvincia["a893"]}} $</th>

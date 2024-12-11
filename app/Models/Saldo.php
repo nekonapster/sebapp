@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
 use MongoDB\Laravel\Eloquent\Model;
 
 class Saldo extends Model
@@ -22,13 +21,15 @@ class Saldo extends Model
         'fechaSaldos'
     ];
 
-    protected $casts = [
-        'bancoProvincia' => 'array',
-        'santander'=> 'array',
-        'santanderP'=> 'array',
-        'fci'=> 'array',
-        'digital'=> 'array',
-        'efectivo'=> 'array',
-        'calcularTotal'
-    ];
+    // protected $casts = [
+    //     'bancoProvincia' => 'integer',
+    //     'santander' => 'array',
+    //     'santanderP' => 'array',
+    //     'fci' => 'array',
+    //     'digital' => 'array',
+    //     'efectivo' => 'array',
+    //     'calcularTotal' => 'integer',
+    //     'fechaSaldos' => 'datetime',
+    // ];
 }
+

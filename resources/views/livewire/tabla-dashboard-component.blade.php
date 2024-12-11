@@ -1,6 +1,6 @@
 <div class="mx-10 mt-3 stats bg-base-200 px-5 shadow-md">
   <div class="stats my-5">
-    <table class="table table-xs table-pin-rows text-base-content">
+    {{-- <table class="table table-xs table-pin-rows text-base-content">
       <!-- head -->
       <thead>
         <tr class="text-center text-xl">
@@ -22,6 +22,6 @@
           </tr>
           @endfor
       </tbody>
-    </table>
+    </table> --}}
   </div>
 </div>

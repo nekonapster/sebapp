@@ -16,7 +16,13 @@
     </div>
 
     <div class="grid grid-cols-1 w-full overflow-x-auto h-96">
-        @livewire('tabla-dashboard-component')
+        {{-- @livewire('tabla-dashboard-component') --}}
+        <div class="mx-10 mt-3 stats bg-base-200 px-5 shadow-md">
+            <div class="stats my-5 {{-- px-3 py-3 --}}">
+              {{-- TABLAS DE ALGUNA LIBRERIA --}}
+              <x-datatable/>
+            </div>
+        </div>
     </div>
 
     <script>
