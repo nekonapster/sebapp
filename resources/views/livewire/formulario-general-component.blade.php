@@ -4,13 +4,17 @@
         <input wire:model='baseGeneral_id'
             wire:click="$emitTo('TablaBaseGeneralComponent', 'baseGeneral_id','baseGeneral_id')" type="text"
             placeholder="ID" class="input input-sm input-bordered w-full" disabled />
-        <select wire:model='proveedor_name' id="proveedor"
+
+        <select wire:model='selectedProveedor' id="proveedor"
             class="select select-bordered select-sm w-full text-xs @error('proveedor_name')border-red-500 @enderror">
             <option value="xx">@error('proveedor_name') {{$message}} @else PROVEEDOR @enderror</option>
-            @foreach ($nombres as $nombre)
-            <option wire.poll value="{{$nombre}}"> {{$nombre}} </option>
+            @foreach ($proveedores as $proveedor)
+            <option wire:key='{{$proveedor->id}}' wire.poll value="{{$proveedor->proveedor_name}}%{{$proveedor->id}}"> {{$proveedor->proveedor_name}} </option>
             @endforeach
         </select>
+
+
+        
         <input wire:model='fechaFactura' type="text"
             placeholder="@error('fechaFactura'){{$message}} @else Fecha factura @enderror"
             class="input input-sm input-bordered w-full @error('fechaFactura')border-red-500 @enderror"
@@ -23,6 +27,7 @@
         <div class="grid grid-cols-2 w-80 gap-0">
             <select wire:model='auxiliar' placeholder="@error('auxiliar'){{$message}} @else Auximliar @enderror"
                 class="select select-bordered select-sm w-full text-xs @error('auxiliar')border-red-500 @enderror">
+                <option value="">Auxiliar</option>
                 <option value="1000">1000 - INICIAL</option>
                 <option value="2000">2000 - PRIMARIO</option>
                 <option value="2100">2100 - PRIMARIO JS - FATIMA</option>
@@ -69,7 +74,7 @@
         <input wire:model='nFactura' type=" text"
             placeholder="@error('nFactura'){{$message}} @else Nº factura @enderror"
             class="input input-sm input-bordered w-full  @error('nFactura')border-red-500 @enderror" />
-        <input wire:model='importe' type=" number" step="0.1"
+        <input wire:model='importe' type="number" step="0.1"
             placeholder="@error('importe'){{$message}} @else Importe @enderror"
             class="input input-sm input-bordered w-full  @error('importe')border-red-500 @enderror" />
 

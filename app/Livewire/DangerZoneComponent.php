@@ -81,7 +81,7 @@ class DangerZoneComponent extends Component
                 break;
         }
         session()->flash('msg', 'La tabla ha sido vaciada con exito');
-        return redirect('/dangerZone');
+        return $this->redirect('/dangerZone', navigate:true);
     }
 
 

@@ -19,12 +19,13 @@ class ModalPagarComponent extends Component
     public $cuentaBanco;
     public $nCheque;
     public $ordenPago;
-
+    
+    
     public function mount()
     {
         $this->bancos = Banco::select('nombre_banco', 'cuentaAsociada')->get();
     }
-
+    
     #[On('idFrom_TablaBaseGeneralComponent')]
     public function loadPagar($id)
     {
@@ -42,9 +43,10 @@ class ModalPagarComponent extends Component
             'cuentaBanco' => $this->cuentaBanco,
             'nCheque' => $this->nCheque,
             'ordenPago' => $this->ordenPago,
+            'estado' => true
         ]);
 
-        return redirect('/general');
+        return $this->redirect('/general', navigate:true);
     }   
 
 

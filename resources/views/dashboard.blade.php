@@ -1,62 +1,46 @@
 {{-- COMPONENTE DEL PANEL --}}
 <x-app-layout>
-    <div class="grid grid-cols-2 gap-3 mx-10" id="base">
-        <div class="bg-base-200 rounded-lg p-3 w-full">
+    <div class="grid grid-cols-2 mx-10 gap-3" id="base">
+        <div class="bg-base-200 rounded-lg p-3">
             @livewire('dashboard-component')
-
-            {{-- <div class="divider"></div> --}}
-
         </div>
 
-        <div class="grid grid-cols-2 w-full">
-            <div class="col-span-2 bg-base-200 h-full rounded-lg">
-                <canvas id="grafica" class="w-full mt-10"></canvas>
-            </div>
+        <div class="px-3 py-3 stats row-span-2 bg-base-200  shadow-md">
+                @livewire('tables-component')
         </div>
+        
+        <div class="bg-base-200 h-80 rounded-lg">
+            <canvas id="grafica" class="mx-10"></canvas>
+        </div>
+        
     </div>
 
-    <div class="grid grid-cols-1 w-full overflow-x-auto h-96">
-        {{-- @livewire('tabla-dashboard-component') --}}
-        <div class="mx-10 mt-3 stats bg-base-200 px-5 shadow-md">
-            <div class="stats my-5 {{-- px-3 py-3 --}}">
-              {{-- TABLAS DE ALGUNA LIBRERIA --}}
-              <x-datatable/>
-            </div>
-        </div>
-    </div>
+
 
     <script>
         document.addEventListener('livewire:navigated', () => {
     const ctx3 = document.getElementById('grafica');
     new Chart(ctx3, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre', 'Noviembre', 'Diciembre'],
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep','Oct', 'Nov', 'Dic'],
             datasets: [
                 {
-                    label: 'Jardin',
-                    data: [12, 19, 3, 5, 2, 3, 13, 12, 19, 3, 5, 2, 3],
-                    fill: true,
-                    borderColor: 'rgb(75, 192, 192)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                    tension: 0.1
-                },
-                {
-                    label: 'Primaria',
+                    label: 'Ingresos',
                     data: [25, 15, 22, 20, 28, 18, 11, 25, 15, 22, 20, 28, 18],
-                    fill: true,
-                    borderColor: 'rgb(255, 99, 132)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    tension: 0.1
+                    // fill: true,
+                    borderColor: 'rgb(0, 178, 159)',
+                    backgroundColor: 'rgb(0, 178, 159)',
+                    // tension: 0.1
                 },
                 {
-                    label: 'Secundaria',
-                    data: [10, 25, 15, 3, 20, 28, 10, 10, 25, 15, 3, 20, 28],
-                    fill: true,
-                    borderColor: 'rgb(255, 206, 86)',
-                    backgroundColor: 'rgba(255, 206, 86)',
-                    tension: 0.1
-                }
+                    label: 'Egresos',
+                    data: [12, 19, 3, 5, 2, 3, 13, 12, 19, 3, 5, 2, 3],
+                    // fill: true,
+                    borderColor: 'rgb(231, 165, 0)',
+                    backgroundColor: 'rgb(231, 165, 0)',
+                    // tension: 0.1
+                },
             ],
         },
         options: {
@@ -68,6 +52,6 @@
         }
     });
 });
-
     </script>
+
 </x-app-layout>

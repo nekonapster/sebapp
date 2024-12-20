@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Ramsey\Uuid\Type\Integer;
 
 class FormularioGeneralComponent extends Component
 {
@@ -21,7 +22,7 @@ class FormularioGeneralComponent extends Component
     public $fechaVencimiento;
     #[Validate('required', message: 'Obligatorio')]
     public $auxiliar;
-    #[Validate('required', message: 'Obligatorio')]
+    // #[Validate('required', message: 'Obligatorio')]
     public $activacion;
     #[Validate('required', message: 'Obligatorio')]
     public $ptoVenta;
@@ -50,6 +51,13 @@ class FormularioGeneralComponent extends Component
     public $proyectarGastos;
     public $activarProyectarGastos = false;
     public $metrica_id;
+    public $estado = false;
+    public $proveedores;
+    // contiene tanto el nombre como el id del proveedor que viene desde el select.
+    public $selectedProveedor;
+    // de lo anterior el id viene a esta variable y el name va a su variable mas arriba.
+    public $proveedor_id;
+
 
     public function mount()
     {
@@ -112,8 +120,7 @@ class FormularioGeneralComponent extends Component
                     'mesActual' => $mesCarbon, // Opcional, si necesitas almacenar el mes
                 ]);
             }
-            // Redirigir al usuario a la página anterior
-            return redirect(request()->header('Referer'));
+            return $this->redirect('/general', navigate: true);
         }
     }
 
@@ -121,12 +128,15 @@ class FormularioGeneralComponent extends Component
     public function actualizarProveedores()
     {
         $this->proveedorName = Proveedor::pluck('proveedor_name');
+        $this->proveedores = Proveedor::all();
     }
 
     public function nuevoDatoBaseGeneral()
     {
         $this->validate();
 
+        $proveedor = Proveedor::find($this->proveedor_id);
+        $numeroCC_delProveedor = $proveedor ? $proveedor->numeroCC : null;
 
         $base = Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
@@ -147,7 +157,14 @@ class FormularioGeneralComponent extends Component
             'cuentaBanco' => $this->cuentaBanco ?? '-',
             'nCheque' => $this->nCheque ?? '-',
             'ordenPago' => $this->ordenPago ?? '-',
+            'estado' => $this->estado,
+            'proveedor_id' => $this->proveedor_id,
+            'cc' => $numeroCC_delProveedor
         ]);
+
+
+
+        $this->dispatch('estado_fromFormularioGeneralComponent', estado: $this->estado);
 
         $base_id  = $base->_id;
 
@@ -156,7 +173,7 @@ class FormularioGeneralComponent extends Component
         }
 
         // refresco la pagina
-        return redirect('/general');
+        return $this->redirect('/general', navigate: true);
     }
 
 
@@ -174,18 +191,24 @@ class FormularioGeneralComponent extends Component
             'base_id' => $base_id,
         ]);
 
-        return redirect('/general');
+        return $this->redirect('/general', navigate: true);
     }
 
 
-
-
+    // detecta el cambio del select y separa los datos que llegan desde el value en name e id.
+    public function updatedSelectedProveedor($value)
+    {
+        if ($value) {
+            // Divide el valor usando "%" como separador
+            [$this->proveedor_name, $this->proveedor_id] = explode('%', $value);
+        }
+    }
 
     public function render()
     {
-
         return view('livewire.formulario-general-component', [
-            'nombres' => $this->proveedorName,
+            // 'nombres' => $this->proveedorName,
+            'proveedores' => $this->proveedores
         ]);
     }
 }

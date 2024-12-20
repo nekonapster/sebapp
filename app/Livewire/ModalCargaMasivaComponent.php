@@ -19,7 +19,7 @@ class ModalCargaMasivaComponent extends Component
         $this->validate([
             'file' => 'mimes:xlsx,xls|max:2048', // Máximo 2MB
         ]);
-        return redirect('/general');
+        return $this->redirect('/general', navigate:true);
     }
 
     public function render()

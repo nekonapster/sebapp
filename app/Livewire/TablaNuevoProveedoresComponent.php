@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Proveedor;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 
 class TablaNuevoProveedoresComponent extends Component
@@ -15,15 +14,14 @@ class TablaNuevoProveedoresComponent extends Component
 
     public function mount()
     {
-        $this->search();
+        $this->search(); // Carga la tabla inicial filtrada
     }
-    
     
     #[On('recargarTablafrom_ModalNuevoProveedorComponent')]
-    public function actualizaTabla(){
-        $this->proveedores = Proveedor::all();
+    public function actualizaTabla()
+    {
+        $this->search(); // Recarga la tabla con búsqueda actual
     }
-    
     
     public function updatedSearch()
     {
@@ -33,32 +31,24 @@ class TablaNuevoProveedoresComponent extends Component
     public function search()
     {
         $query = Proveedor::query();
-        
+
         if ($this->search) {
+            // Busca por nombre de proveedor
             $query->where('proveedor_name', 'like', '%' . $this->search . '%');
         }
-        
-        $this->proveedores = $query->get()->map(function ($proveedor) {
-            $proveedor->id_corto = Str::substr($proveedor->_id, -5); // Add short ID
-            return $proveedor;
-        });
-      
-        // llamo a la funcion para actualizar la tabla del modal
-        $this->actualizaTabla();
+
+        $this->proveedores = $query->get();
     }
 
     public function editarProveedor($id)
     {
         $this->dispatch('editarProveedorIdFrom_tablaNuevoProveedoresComponent', $id);
-        $this->listeners = ['recargarTablaNuevoProveedor'];
     }
- 
+
     public function borrarProveedor($id)
     {
         $this->dispatch('borrarProveedorFrom_tablaNuevoProveedorComponent', $id);
-        $this->listeners = ['recargarTablaNuevoProveedor'];
     }
-
 
     public function render()
     {

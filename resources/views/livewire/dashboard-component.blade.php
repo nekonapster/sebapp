@@ -1,7 +1,7 @@
-<div class="grid columns-2 gap-5">
+<div class="grid columns-2 gap-2">
     {{-- INGRESOS DEL MES --}}
     <div class="ingresos flex justify-center gap-5">
-        <div class="stats shadow w-80 sm:w-72 h-40">
+        <div class="stats shadow w-72 h-36">
             <div class="stat">
                 <div class="stat-figure text-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -16,7 +16,7 @@
             </div>
         </div>
         {{-- EGRESOS DEL MES --}}
-        <div class="stats shadow w-80 sm:w-72">
+        <div class="stats shadow w-72 ">
             <div class="stat">
                 <div class="stat-figure text-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -33,7 +33,7 @@
     </div>
     {{-- SALDOS CUENTAS --}}
     <div class="ingresos flex justify-center gap-5">
-        <div class="stats shadow w-80 sm:w-72 h-40">
+        <div class="stats shadow w-72  h-36">
             <div class="stat">
                 <div class="stat-figure text-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -49,7 +49,7 @@
         </div>
 
         {{-- EGRESOS PAGAR DEL MES --}}
-        <div class="stats shadow w-80 sm:w-72">
+        <div class="stats shadow w-72 ">
             <div class="stat">
                 <div class="stat-figure text-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

@@ -25,14 +25,14 @@ class ModalNuevoBancoComponent extends Component
         ]);
 
         // refresco la pagina
-        return redirect('/general');
+        return $this->redirect('/general', navigate:true);
     }
 
 
     public function refresh()
     {
         // Recargar pagina cuando se escapa del modal
-        return redirect('/general');
+        return $this->redirect('/general', navigate:true);
     }
 
 

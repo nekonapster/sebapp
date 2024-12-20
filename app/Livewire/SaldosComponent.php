@@ -114,7 +114,7 @@ class SaldosComponent extends Component
         ]);
 
         // refresco la pagina
-        return redirect('/saldos');
+        return $this->redirect('/saldos', navigate:true);
     }
 
 

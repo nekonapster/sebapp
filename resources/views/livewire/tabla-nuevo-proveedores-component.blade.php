@@ -5,7 +5,7 @@
             <input wire:model.live.debounce.300ms="search" type="text" id="hs-as-table-product-review-search"
                 name="hs-as-table-product-review-search"
                 class="py-1 px-3 ps-11 input input-sm block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                placeholder="Search">
+                placeholder="Search by proveedor">
             <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
                 <svg class="flex-shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
