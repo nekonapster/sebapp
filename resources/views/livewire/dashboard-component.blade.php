@@ -11,8 +11,8 @@
                     </svg>
                 </div>
                 <div class="stat-title">Ingresos del mes</div>
-                <div class="stat-value sm:text-3xl">220.000 u$s</div>
-                <div class="stat-desc">Diciembre</div>
+                <div class="stat-value sm:text-3xl">{{$ingresosDelMes}} u$s</div>
+                <div class="stat-desc">{{$mesActual}}</div>
             </div>
         </div>
         {{-- EGRESOS DEL MES --}}
@@ -26,8 +26,8 @@
                     </svg>
                 </div>
                 <div class="stat-title">Egresos del mes</div>
-                <div class="stat-value sm:text-3xl">158.000 u$s</div>
-                <div class="stat-desc">Diciembre</div>
+                <div class="stat-value sm:text-3xl">{{$egresosDelMes}} u$s</div>
+                <div class="stat-desc">{{$mesActual}}</div>
             </div>
         </div>
     </div>
@@ -43,8 +43,8 @@
                     </svg>
                 </div>
                 <div class="stat-title">Saldos cuentas</div>
-                <div class="stat-value sm:text-3xl">310.000 u$s</div>
-                <div class="stat-desc">Diciembre</div>
+                <div class="stat-value sm:text-3xl">{{$saldosCuentas}} u$s</div>
+                <div class="stat-desc">{{$mesActual}}</div>
             </div>
         </div>
 
@@ -59,8 +59,8 @@
                     </svg>
                 </div>
                 <div class="stat-title">Egresos a pagar del mes</div>
-                <div class="stat-value sm:text-3xl">81.000 u$s</div>
-                <div class="stat-desc">Diciembre</div>
+                <div class="stat-value sm:text-3xl">{{$egresos_aPagar}} u$s</div>
+                <div class="stat-desc">{{$mesActual}}</div>
             </div>
         </div>
     </div>

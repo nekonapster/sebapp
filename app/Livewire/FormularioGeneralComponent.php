@@ -28,7 +28,7 @@ class FormularioGeneralComponent extends Component
     public $ptoVenta;
     #[Validate('required', message: 'Obligatorio')]
     public $nFactura;
-    #[Validate('required', message: 'Obligatorio')]
+    // #[Validate('required', message: 'Obligatorio')]
     public $importe;
     #[Validate('required', message: 'Obligatorio')]
     public $gastos;
@@ -159,7 +159,8 @@ class FormularioGeneralComponent extends Component
             'ordenPago' => $this->ordenPago ?? '-',
             'estado' => $this->estado,
             'proveedor_id' => $this->proveedor_id,
-            'cc' => $numeroCC_delProveedor
+            'cc' => $numeroCC_delProveedor,
+            // 'fechaCreacion' => Carbon::now()->toDateString()
         ]);
 
 

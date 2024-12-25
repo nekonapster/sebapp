@@ -9,12 +9,13 @@
             class="select select-bordered select-sm w-full text-xs @error('proveedor_name')border-red-500 @enderror">
             <option value="xx">@error('proveedor_name') {{$message}} @else PROVEEDOR @enderror</option>
             @foreach ($proveedores as $proveedor)
-            <option wire:key='{{$proveedor->id}}' wire.poll value="{{$proveedor->proveedor_name}}%{{$proveedor->id}}"> {{$proveedor->proveedor_name}} </option>
+            <option wire:key='{{$proveedor->id}}' wire.poll value="{{$proveedor->proveedor_name}}%{{$proveedor->id}}">
+                {{$proveedor->proveedor_name}} </option>
             @endforeach
         </select>
 
 
-        
+
         <input wire:model='fechaFactura' type="text"
             placeholder="@error('fechaFactura'){{$message}} @else Fecha factura @enderror"
             class="input input-sm input-bordered w-full @error('fechaFactura')border-red-500 @enderror"
@@ -24,9 +25,10 @@
             class="input input-sm input-bordered w-full  @error('fechaVencimiento')border-red-500 @enderror" onfocus="
             (this.type='date' )" />
 
-        <div class="grid grid-cols-2 w-80 gap-0">
+{{-- ! TODO --}}
+        <div class="flex justify-start">
             <select wire:model='auxiliar' placeholder="@error('auxiliar'){{$message}} @else Auximliar @enderror"
-                class="select select-bordered select-sm w-full text-xs @error('auxiliar')border-red-500 @enderror">
+                class="select select-bordered select-sm text-xs sm:w-20 xl:w-32 lg:w-40 p-1 lg:mr-1 @error('auxiliar')border-red-500 @enderror">
                 <option value="">Auxiliar</option>
                 <option value="1000">1000 - INICIAL</option>
                 <option value="2000">2000 - PRIMARIO</option>
@@ -53,14 +55,14 @@
                 <option value="7060">7060 - PASTORAL</option>
                 <option value="7070">7070 - EXTRAPROGRAMATICOS</option>
             </select>
-<div class="flex justify-start">
-    <label class="cursor-pointer label text-sm md:text-xs -mt-1 px-0 mx-0 ml-5">
-        Activacion
-        <input wire:model='activacion' type="checkbox"
-        class="checkbox checkbox-secondary px-0 ml-2  @error('activacion')border-red-500 @enderror"
-        placeholder=" @error('activacion'){{$message}} @else Activacion @enderror" />
-    </label>
-</div>
+            <div class="flex justify-start">
+                <label class="cursor-pointer label text-sm md:text-xs -mt-1 px-0 mx-0 ml-3">
+                    Activacion
+                    <input wire:model='activacion' type="checkbox"
+                        class="checkbox checkbox-secondary px-0 ml-2  @error('activacion')border-red-500 @enderror"
+                        placeholder=" @error('activacion'){{$message}} @else Activacion @enderror" />
+                </label>
+            </div>
         </div>
     </div>
 
@@ -106,7 +108,7 @@
         <div class="flex justify-end items-center">
             <button wire:click='actualizarDatosFormulario' class="btn btn-sm btn-warning mr-5">Modificar</button>
             <button wire:click='nuevoDatoBaseGeneral' class="btn btn-sm btn-accent pr-10 -mr-7">Guardar</button>
-            <input  wire:model='activarProyectarGastos' type="checkbox" class="checkbox checkbox-accent relative mr-1" />
+            <input wire:model='activarProyectarGastos' type="checkbox" class="checkbox checkbox-accent relative mr-1" />
         </div>
     </div>
 </div>
