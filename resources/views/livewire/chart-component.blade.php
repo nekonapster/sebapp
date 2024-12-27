@@ -28,8 +28,8 @@
                             {{$ingresosDelMes['diciembre'][$fechaActual->day] ?? 0}}
                         ],
                         // fill: true,
-                        borderColor: 'rgb(0, 178, 159)',
-                        backgroundColor: 'rgb(0, 178, 159)',
+                        // borderColor: 'rgba(0, 178, 159, 1)',
+                        backgroundColor: 'rgba(0, 178, 159, 1)',
                         // tension: 0.1
                     },
                     {
@@ -49,8 +49,8 @@
                             {{$egresosDelMes['diciembre'][$fechaActual->day] ?? 0}}
                         ],
                         // fill: true,
-                        borderColor: 'rgb(231, 165, 0)',
-                        backgroundColor: 'rgb(231, 165, 0)',
+                        // borderColor: 'rgba(231, 165, 0, 1)',
+                        backgroundColor: 'rgba(255, 82, 217, 1)',
                         // tension: 0.1
                     },
                 ],
