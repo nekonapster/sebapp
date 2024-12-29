@@ -1,16 +1,15 @@
 APP_NAME=Laravel
-APP_ENV=local
+APP_ENV=production
 APP_KEY=base64:N7N9xS2RP4MGziRiaELf1+g3gTSpeSPOZ/fQ5ti8MDg=
-APP_DEBUG=true
+APP_DEBUG=false
 APP_TIMEZONE=UTC
-APP_URL=http://localhost
+APP_URL=https://sebapp-azr6.onrender.com
 
 APP_LOCALE=es
 APP_FALLBACK_LOCALE=en
 APP_FAKER_LOCALE=en_US
 
 APP_MAINTENANCE_DRIVER=file
-# APP_MAINTENANCE_STORE=database
 
 BCRYPT_ROUNDS=12
 
@@ -20,7 +19,7 @@ LOG_DEPRECATIONS_CHANNEL=null
 LOG_LEVEL=debug
 
 DB_CONNECTION=mongodb
-DB_URI=mongodb://localhost:27017/
+DB_URI=mongodb+srv://sebapp:BexyUCDavw7tkdyD@clustersebapp.rmwvi.mongodb.net/?retryWrites=true&w=majority&appName=ClusterSebapp
 DB_DATABASE=sebapp
 
 
@@ -35,28 +34,9 @@ FILESYSTEM_DISK=local
 QUEUE_CONNECTION=database
 
 CACHE_STORE=database
-CACHE_PREFIX=
 
 MEMCACHED_HOST=127.0.0.1
-PORT=8000
 
-# REDIS_CLIENT=phpredis
-# REDIS_HOST=127.0.0.1
-# REDIS_PASSWORD=null
-# REDIS_PORT=6379
-
-# MAIL_MAILER=smtp
-# MAIL_HOST=sandbox.smtp.mailtrap.io
-# MAIL_PORT=2525
-# MAIL_USERNAME=372d88df5cd070
-# MAIL_PASSWORD=36488c889ce992
-# MAIL_FROM_ADDRESS="sebapp@test.com"
-# MAIL_FROM_NAME="sebapp"
-
-# AWS_ACCESS_KEY_ID=
-# AWS_SECRET_ACCESS_KEY=
-# AWS_DEFAULT_REGION=us-east-1
-# AWS_BUCKET=
-# AWS_USE_PATH_STYLE_ENDPOINT=false
+PORT=1000
 
 VITE_APP_NAME="${APP_NAME}"
