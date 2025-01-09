@@ -15,8 +15,9 @@
                     columnas tienen que tener encabezados</span></p>
             <div class="card-body items-center w-[500px] ">
                 <figure>
-                    <img class="w-full" src="{{ asset('build/assets/img/ejemploTabla.png') }}" alt="example table" />
+                    <img class="w-full" src="https://i.imgur.com/lavp2UO.png" alt="example table" />
                 </figure>
+                
    
                 <form method="POST" action="{{ route('import-excel') }}" enctype="multipart/form-data" class="w-full">
                     @csrf

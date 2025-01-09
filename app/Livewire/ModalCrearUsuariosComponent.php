@@ -39,7 +39,9 @@ class ModalCrearUsuariosComponent extends Component
     
     public function cerrarModal()
     {
-        $this->dispatch('modalClosed');
+        // actualizo tabla cuando cierro el modal
+        return $this->redirect('/users', navigate:true);
+        // $this->dispatch('modalClosed');
     }
 
     public function render()

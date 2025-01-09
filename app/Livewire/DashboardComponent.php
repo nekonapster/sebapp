@@ -30,11 +30,15 @@ class DashboardComponent extends Component
         $this->inicioMes = Carbon::now()->startOfMonth();
         $this->finMes  = Carbon::now()->endOfMonth();
         
+        
         $this->ingresosMes();
         $this->egresosMes();
         $this->saldosCuentas();
         $this->egresos_aPagar();
+        
     }
+
+
 
     // ingresos del mes = sum de 4xxx que esten en pagadas (true)
     public function ingresosMes()
@@ -70,7 +74,7 @@ class DashboardComponent extends Component
     // saldos cuentas = el valor diario de 'calcularTotal' en 'saldos'. 
     public function saldosCuentas()
     {
-        $this->saldosCuentas = Saldo::whereDate('created_at', $this->hoy)
+        $this->saldosCuentas = Saldo::whereDate('created_at', Carbon::today())
             ->sum('calcularTotal');
     }
 

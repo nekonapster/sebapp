@@ -10,17 +10,19 @@ class ModalNuevoCcComponent extends Component
 {
 
     #[Validate('required', message: 'El numero CC es obligatorio')]
-    #[Validate('min:8', message: 'Minimo 8 caracteres')]
     #[Validate('numeric', message: 'Solo admite numeros')]
-    public $numeroCC; 
+    #[Validate('digits:8', message: 'El numero CC debe tener exactamente 8 caracteres')]
+    public $numeroCC;
     public $rubro = 'aranceles';
-    #[Validate('required|min:5')]
+    #[Validate('required', message: 'El campo es obligatorio')]
+    #[Validate('min:5', message: 'Minimo 5 caracteres')]
     public $descripcion;
     public $tipo = 'in';
 
 
 
-    public function crearCC(){
+    public function crearCC()
+    {
 
         $this->validate();
 
@@ -28,18 +30,18 @@ class ModalNuevoCcComponent extends Component
             // casteo el string a numero
             $this->numeroCC = (float) $this->numeroCC,
             'numeroCC' => $this->numeroCC,
-            'rubro' =>$this->rubro,
-            'descripcion' =>strtolower($this->descripcion),
-            'tipo' =>$this->tipo,
+            'rubro' => $this->rubro,
+            'descripcion' => strtolower($this->descripcion),
+            'tipo' => $this->tipo,
         ]);
-        
-        $this->reset(['numeroCC', 'rubro', 'descripcion', 'tipo' ]);
+
+        $this->reset(['numeroCC', 'rubro', 'descripcion', 'tipo']);
 
         session()->flash('msg_CC', 'Cuenta contable creada con exito!');
-        $this->dispatch('msgCC_close'); 
+        $this->dispatch('msgCC_close');
         $this->dispatch('ccSelectRefresh');
     }
-    
+
 
 
     public function render()

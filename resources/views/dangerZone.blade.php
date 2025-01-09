@@ -18,7 +18,7 @@
             <footer class="footer footer-center bg-base-neutral text-base-content p-0">
                 <aside>
                     <div class="flex">
-                        <span class="px-1">Copyright © 2024 - All right reserved by Nekonapster </span> <x-rpg-cat class="w-5"/>
+                        <span class="px-1">Copyright © {{ now()->year }} - All right reserved by Nekonapster </span> <x-rpg-cat class="w-5"/>
                     </div>
                 </aside>
               </footer>

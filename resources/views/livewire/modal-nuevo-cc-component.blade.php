@@ -28,32 +28,34 @@
                     @endif
 
 
-                    <span class="text-red-500">@error('numeroCC'){{$message}}@enderror <br></span>
                     <span class="label-text">Numero</span>
-                    <input wire:model="numeroCC" type="text" 
-                    class="input input-bordered w-full mb-5 @error('numeroCC') border-red-500 @enderror"
-                    placeholder="Solo numeros con un decimal"
-                    maxlength="9"
-                        >
-                        
+                    <span class="text-red-500"> <br> @error('numeroCC'){{$message}}@enderror </span>
+                    <input wire:model="numeroCC" type="text" {{-- pattern="\d{8}" --}} minlength="8" maxlength="8" class="input input-bordered w-full mb-5 
+                        @error('numeroCC') border-red-500 @enderror" placeholder="Solo numeros sin decimal" required>
+
                     <span class="label-text">Rubro</span>
                     <Select wire:model='rubro' class="select w-full select-bordered mb-5">
-                        <option value="aranceles">Aranceles</option>
-                        <option value="materiales y suministros">Materiales y suministros</option>
-                        <option value="operativos">Operativos</option>
-                        <option value="mantenimiento">Mantenimiento</option>
-                        <option value="seguros">Seguros</option>
-                        <option value="muebles y utiles">Muebles y utiles</option>
-                        <option value="servicios profesionales">Servicios profesionales</option>
-                        <option value="servicios">Servicios</option>
-                        <option value="personal">Personal</option>
+                        <option value="Actividades Escolares">Actividades Escolares</option>
+                        <option value="Aportes">Aportes</option>
+                        <option value="Aranceles">Aranceles</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                        <option value="Materiales y suministros">Materiales y suministros</option>
+                        <option value="Movilidad y Viáticos">Movilidad y Viáticos</option>
+                        <option value="Muebles y Utiles">Muebles y Utiles</option>
+                        <option value="Operativos">Operativos</option>
+                        <option value="Otros egresos">Otros egresos</option>
+                        <option value="Otros ingresos">Otros ingresos</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Seguros">Seguros</option>
+                        <option value="Servicios">Servicios</option>
+                        <option value="Servicios profesionales">Servicios profesionales</option>
                     </Select>
 
                     <span class="label-text">Descripcion</span>
+                    <span class="text-error"> <br> @error('descripcion'){{$message}}@enderror</span>
                     <input wire:model='descripcion' type="text"
                         class="input input-bordered w-full mb-5 @error('descripcion') border-red-500 @enderror"
-                        placeholder="@error('descripcion'){{$message}}@enderror"
-                        >
+                        placeholder="Minimo 5 caracteres">
 
                     <div class="flex justify-start w-full input input-bordered items-center mt-3">
                         <p>Tipo</p>
