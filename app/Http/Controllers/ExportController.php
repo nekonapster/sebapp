@@ -26,52 +26,52 @@ class ExportController extends Controller
         $sheet = $spreadsheet->getActiveSheet();
 
         // Establecer los encabezados
-        $sheet->setCellValue('A1', 'USER');
-        $sheet->setCellValue('B1', 'CARGADO');
-        $sheet->setCellValue('C1', 'FECHA');
-        $sheet->setCellValue('D1', 'A893');
-        $sheet->setCellValue('E1', 'A430');
-        $sheet->setCellValue('F1', 'PARROQUIA');
-        $sheet->setCellValue('G1', 'ADM');
-        $sheet->setCellValue('H1', 'SANT1');
-        $sheet->setCellValue('I1', 'SANT2');
-        $sheet->setCellValue('J1', 'SANT3');
-        $sheet->setCellValue('K1', '893');
-        $sheet->setCellValue('L1', '430');
-        $sheet->setCellValue('M1', '1486');
-        $sheet->setCellValue('N1', 'CA430');
-        $sheet->setCellValue('O1', 'ASOC1');
-        $sheet->setCellValue('P1', 'ASOC2');
-        $sheet->setCellValue('Q1', 'FCI');
-        $sheet->setCellValue('R1', 'FCIp');
-        $sheet->setCellValue('S1', 'MP');
-        $sheet->setCellValue('T1', 'CAJA');
-        $sheet->setCellValue('U1', 'TOTAL');
+        // $sheet->setCellValue('A1', 'USER');
+        // $sheet->setCellValue('B1', 'CARGADO');
+        $sheet->setCellValue('A1', 'FECHA');
+        $sheet->setCellValue('B1', 'A893');
+        $sheet->setCellValue('C1', 'A430');
+        $sheet->setCellValue('D1', 'PARROQUIA');
+        $sheet->setCellValue('E1', 'ADM');
+        $sheet->setCellValue('F1', 'SANT1');
+        $sheet->setCellValue('G1', 'SANT2');
+        $sheet->setCellValue('H1', 'SANT3');
+        $sheet->setCellValue('I1', '893');
+        $sheet->setCellValue('J1', '430');
+        $sheet->setCellValue('K1', '1486');
+        $sheet->setCellValue('L1', 'CA430');
+        $sheet->setCellValue('M1', 'ASOC1');
+        $sheet->setCellValue('N1', 'ASOC2');
+        $sheet->setCellValue('O1', 'FCI');
+        $sheet->setCellValue('P1', 'FCIp');
+        $sheet->setCellValue('Q1', 'MP');
+        $sheet->setCellValue('R1', 'CAJA');
+        $sheet->setCellValue('S1', 'TOTAL');
 
         // Llenamos las columnas con los datos de la BD
         $row = 2;  // Comenzamos en la fila 2 para dejar la fila 1 como encabezado
         foreach ($saldos as $saldo) {
-            $sheet->setCellValue('A' . $row, $saldo->userName);
-            $sheet->setCellValue('B' . $row, $saldo->updated_at);
-            $sheet->setCellValue('C' . $row, $saldo->fechaSaldos);
-            $sheet->setCellValue('D' . $row, $saldo->bancoProvincia['a893']);
-            $sheet->setCellValue('E' . $row, $saldo->bancoProvincia['a430']);
-            $sheet->setCellValue('F' . $row, $saldo->bancoProvincia['parroquia']);
-            $sheet->setCellValue('G' . $row, $saldo->bancoProvincia['adm']);
-            $sheet->setCellValue('H' . $row, $saldo->santander['sant1']);
-            $sheet->setCellValue('I' . $row, $saldo->santander['sant2']);
-            $sheet->setCellValue('J' . $row, $saldo->santander['sant3']);
-            $sheet->setCellValue('K' . $row, $saldo->santanderP['893']);
-            $sheet->setCellValue('L' . $row, $saldo->santanderP['430']);
-            $sheet->setCellValue('M' . $row, $saldo->santanderP['1486']);
-            $sheet->setCellValue('N' . $row, $saldo->ciudad['cA430']);
-            $sheet->setCellValue('O' . $row, $saldo->ciudad['asoc1']);
-            $sheet->setCellValue('P' . $row, $saldo->ciudad['asoc2']);
-            $sheet->setCellValue('Q' . $row, $saldo->fci['fciA']);
-            $sheet->setCellValue('R' . $row, $saldo->fci['fciPlus']);
-            $sheet->setCellValue('S' . $row, $saldo->digital['mercadoPago']);
-            $sheet->setCellValue('T' . $row, $saldo->efectivo['caja']);
-            $sheet->setCellValue('U' . $row, $saldo->calcularTotal);
+            // $sheet->setCellValue('A' . $row, $saldo->userName);
+            // $sheet->setCellValue('B' . $row, $saldo->updated_at);
+            $sheet->setCellValue('A' . $row, $saldo->fechaSaldos);
+            $sheet->setCellValue('B' . $row, $saldo->bancoProvincia['a893']);
+            $sheet->setCellValue('C' . $row, $saldo->bancoProvincia['a430']);
+            $sheet->setCellValue('D' . $row, $saldo->bancoProvincia['parroquia']);
+            $sheet->setCellValue('E' . $row, $saldo->bancoProvincia['adm']);
+            $sheet->setCellValue('F' . $row, $saldo->santander['sant1']);
+            $sheet->setCellValue('G' . $row, $saldo->santander['sant2']);
+            $sheet->setCellValue('H' . $row, $saldo->santander['sant3']);
+            $sheet->setCellValue('I' . $row, $saldo->santanderP['893']);
+            $sheet->setCellValue('J' . $row, $saldo->santanderP['430']);
+            $sheet->setCellValue('K' . $row, $saldo->santanderP['1486']);
+            $sheet->setCellValue('L' . $row, $saldo->ciudad['cA430']);
+            $sheet->setCellValue('M' . $row, $saldo->ciudad['asoc1']);
+            $sheet->setCellValue('N' . $row, $saldo->ciudad['asoc2']);
+            $sheet->setCellValue('O' . $row, $saldo->fci['fciA']);
+            $sheet->setCellValue('P' . $row, $saldo->fci['fciPlus']);
+            $sheet->setCellValue('Q' . $row, $saldo->digital['mercadoPago']);
+            $sheet->setCellValue('R' . $row, $saldo->efectivo['caja']);
+            $sheet->setCellValue('S' . $row, $saldo->calcularTotal);
             $row++;
         }
 
@@ -91,20 +91,20 @@ class ExportController extends Controller
     
     public function exportToPdf()
     {
-
         // Establecemos y formateamos fecha
         $currentDate = date('d-m-Y');
 
         // Recuperamos los saldos de la base de datos
         $saldos = Saldo::all();
+        
+        // <th>USER</th>
+        // <th>CARGADO</th>
 
         // Crear el contenido HTML para el PDF
         $html = '<h1>Reporte de Saldos</h1>';
-        $html .= '<table border="1" style="width:100%; border-collapse: collapse; font-size:11px;  text-align: center">
+        $html .= '<table border="1" style="width:100%; border-collapse: collapse; font-size:8px;  text-align: center">
                 <thead style="background-color:black; color:white">
                     <tr>
-                        <th>USER</th>
-                        <th>CARGADO</th>
                         <th>FECHA</th>
                         <th>A893</th>
                         <th>A430</th>
@@ -133,9 +133,10 @@ class ExportController extends Controller
         // formateo la fecha que viene de la base de datos (de la bd se devuelve un date)
             $fechaCreacionFormateada = date_format($saldo->created_at, 'd-m-Y H:i:s');
 
+            // <td>' . $saldo->userName . '</td>
+            // <td>' . $fechaCreacionFormateada . '</td>
+
             $html .= '<tr>
-                    <td>' . $saldo->userName . '</td>
-                    <td>' . $fechaCreacionFormateada . '</td>
                     <td>' . $saldo->fechaSaldos . '</td>
                     <td>' . $saldo->bancoProvincia['a893'] . '</td>
                     <td>' . $saldo->bancoProvincia['a430'] . '</td>
