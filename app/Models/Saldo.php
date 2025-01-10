@@ -14,6 +14,7 @@ class Saldo extends Model
         'bancoProvincia',
         'santander',
         'santanderP',
+        'ciudad',
         'fci',
         'digital',
         'efectivo',

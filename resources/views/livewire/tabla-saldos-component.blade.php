@@ -52,6 +52,11 @@
                      <th>893</th>
                      <th>430</th>
                      <th>1486</th>
+
+                     <th>CA430</th>
+                     <th>ASOC 1</th>
+                     <th>ASOC 2</th>
+                     
                      <th>FCI-A</th>
                      <th>FCI-P</th>
                      <th>MP</th>
@@ -77,6 +82,10 @@
                      <th>{{$listarTabla->santanderP["893"]}}</th>
                      <th>{{$listarTabla->santanderP["430"]}}</th>
                      <th>{{$listarTabla->santanderP["1486"]}}</th>
+              
+                     <th>{{$listarTabla->ciudad["cA430"]}}</th>
+                     <th>{{$listarTabla->ciudad["asoc1"]}}</th>
+                     <th>{{$listarTabla->ciudad["asoc2"]}}</th>
  
                      <th>{{$listarTabla->fci["fciA"]}}</th>
                      <th>{{$listarTabla->fci["fciPlus"]}}</th>

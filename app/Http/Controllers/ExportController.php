@@ -36,14 +36,17 @@ class ExportController extends Controller
         $sheet->setCellValue('H1', 'SANT1');
         $sheet->setCellValue('I1', 'SANT2');
         $sheet->setCellValue('J1', 'SANT3');
-        $sheet->setCellValue('K1', 'FCI');
-        $sheet->setCellValue('L1', 'FCIp');
-        $sheet->setCellValue('M1', '893');
-        $sheet->setCellValue('N1', '430');
-        $sheet->setCellValue('O1', '1486');
-        $sheet->setCellValue('P1', 'MP');
-        $sheet->setCellValue('Q1', 'CAJA');
-        $sheet->setCellValue('R1', 'TOTAL');
+        $sheet->setCellValue('K1', '893');
+        $sheet->setCellValue('L1', '430');
+        $sheet->setCellValue('M1', '1486');
+        $sheet->setCellValue('N1', 'CA430');
+        $sheet->setCellValue('O1', 'ASOC1');
+        $sheet->setCellValue('P1', 'ASOC2');
+        $sheet->setCellValue('Q1', 'FCI');
+        $sheet->setCellValue('R1', 'FCIp');
+        $sheet->setCellValue('S1', 'MP');
+        $sheet->setCellValue('T1', 'CAJA');
+        $sheet->setCellValue('U1', 'TOTAL');
 
         // Llenamos las columnas con los datos de la BD
         $row = 2;  // Comenzamos en la fila 2 para dejar la fila 1 como encabezado
@@ -58,14 +61,17 @@ class ExportController extends Controller
             $sheet->setCellValue('H' . $row, $saldo->santander['sant1']);
             $sheet->setCellValue('I' . $row, $saldo->santander['sant2']);
             $sheet->setCellValue('J' . $row, $saldo->santander['sant3']);
-            $sheet->setCellValue('K' . $row, $saldo->fci['fciA']);
-            $sheet->setCellValue('L' . $row, $saldo->fci['fciPlus']);
-            $sheet->setCellValue('M' . $row, $saldo->santanderP['893']);
-            $sheet->setCellValue('N' . $row, $saldo->santanderP['430']);
-            $sheet->setCellValue('O' . $row, $saldo->santanderP['1486']);
-            $sheet->setCellValue('P' . $row, $saldo->digital['mercadoPago']);
-            $sheet->setCellValue('Q' . $row, $saldo->efectivo['caja']);
-            $sheet->setCellValue('R' . $row, $saldo->calcularTotal);
+            $sheet->setCellValue('K' . $row, $saldo->santanderP['893']);
+            $sheet->setCellValue('L' . $row, $saldo->santanderP['430']);
+            $sheet->setCellValue('M' . $row, $saldo->santanderP['1486']);
+            $sheet->setCellValue('N' . $row, $saldo->ciudad['cA430']);
+            $sheet->setCellValue('O' . $row, $saldo->ciudad['asoc1']);
+            $sheet->setCellValue('P' . $row, $saldo->ciudad['asoc2']);
+            $sheet->setCellValue('Q' . $row, $saldo->fci['fciA']);
+            $sheet->setCellValue('R' . $row, $saldo->fci['fciPlus']);
+            $sheet->setCellValue('S' . $row, $saldo->digital['mercadoPago']);
+            $sheet->setCellValue('T' . $row, $saldo->efectivo['caja']);
+            $sheet->setCellValue('U' . $row, $saldo->calcularTotal);
             $row++;
         }
 
@@ -107,11 +113,14 @@ class ExportController extends Controller
                         <th>SANT1</th>
                         <th>SANT2</th>
                         <th>SANT3</th>
-                        <th>FCI</th>
-                        <th>FCIp</th>
                         <th>893</th>
                         <th>430</th>
                         <th>1486</th>
+                        <th>CA430</th>
+                        <th>ASOC1</th>
+                        <th>ASOC2</th>
+                        <th>FCI</th>
+                        <th>FCIp</th>
                         <th>MP</th>
                         <th>CAJA</th>
                         <th>TOTAL</th>
@@ -135,11 +144,14 @@ class ExportController extends Controller
                     <td>' . $saldo->santander['sant1'] . '</td>
                     <td>' . $saldo->santander['sant2'] . '</td>
                     <td>' . $saldo->santander['sant3'] . '</td>
-                    <td>' . $saldo->fci['fciA'] . '</td>
-                    <td>' . $saldo->fci['fciPlus'] . '</td>
                     <td>' . $saldo->santanderP['893'] . '</td>
                     <td>' . $saldo->santanderP['430'] . '</td>
                     <td>' . $saldo->santanderP['1486'] . '</td>
+                    <td>' . $saldo->ciudad['cA430'] . '</td>
+                    <td>' . $saldo->ciudad['asoc1'] . '</td>
+                    <td>' . $saldo->ciudad['asoc2'] . '</td>
+                    <td>' . $saldo->fci['fciA'] . '</td>
+                    <td>' . $saldo->fci['fciPlus'] . '</td>
                     <td>' . $saldo->digital['mercadoPago'] . '</td>
                     <td>' . $saldo->efectivo['caja'] . '</td>
                     <td><strong>' . $saldo->calcularTotal . '</strong></td>

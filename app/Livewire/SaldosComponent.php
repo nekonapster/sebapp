@@ -25,6 +25,13 @@ class SaldosComponent extends Component
         '430' => '',
         '1486' => '',
     ];
+    
+    public $ciudad = [
+        'cA430' => '',
+        'asoc1' => '',
+        'asoc2' => '',
+    ];
+
     public $fci = [
         'fciA' => '',
         'fciPlus' => '',
@@ -51,6 +58,9 @@ class SaldosComponent extends Component
         'santanderP.893' => 'required',
         'santanderP.430' => 'required',
         'santanderP.1486' => 'required',
+        'ciudad.cA430' => 'required',
+        'ciudad.asoc1' => 'required',
+        'ciudad.asoc2' => 'required',
         'fci.fciA' => 'required',
         'fci.fciPlus' => 'required',
         'digital.mercadoPago' => 'required',
@@ -68,6 +78,9 @@ class SaldosComponent extends Component
         'santanderP.893.required' =>'Obligatorio',
         'santanderP.430.required' =>'Obligatorio',
         'santanderP.1486.required' =>'Obligatorio',
+        'ciudad.cA430.required' =>'Obligatorio',
+        'ciudad.asoc1.required' =>'Obligatorio',
+        'ciudad.asoc2.required' =>'Obligatorio',
         'fci.fciA.required' =>'Obligatorio',
         'fci.fciPlus.required' =>'Obligatorio',
         'digital.mercadoPago.required' =>'Obligatorio',
@@ -78,7 +91,7 @@ class SaldosComponent extends Component
     public function calcularTotal()
     {
         // unifico todos los array
-        $this->conjuntoSaldos = array_merge($this->provincia, $this->santander, $this->santanderP, $this->fci, $this->digital, $this->efectivo);
+        $this->conjuntoSaldos = array_merge($this->provincia, $this->santander, $this->santanderP, $this->ciudad, $this->fci, $this->digital, $this->efectivo);
 
         // sumo los valores del array unificado
         $this->mostrarTotal = round(array_sum($this->conjuntoSaldos), 3);
@@ -107,6 +120,7 @@ class SaldosComponent extends Component
             'bancoProvincia' => $this->provincia,
             'santander' => $this->santander,
             'santanderP' => $this->santanderP,
+            'ciudad' => $this->ciudad,
             'fci' => $this->fci,
             'digital' => $this->digital,
             'efectivo' => $this->efectivo,

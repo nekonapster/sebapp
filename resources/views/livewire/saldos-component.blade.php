@@ -57,6 +57,22 @@
                     class="input input-sm input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.1486') border-error text-red-500 @enderror"
                     step="0.01" />
             </fieldset>
+        
+            <fieldset class="border border-base-300 rounded-xl p-3 max-w-48">
+                <legend class="text-base">CIUDAD</legend>
+                <input wire:model='ciudad.cA430' type="number"
+                    placeholder="@error('ciudad.cA430') {{ $message }} @else CA430 @enderror"
+                    class="input input-sm input-bordered border-base-100  max-w-36 mb-2 @error('ciudad.cA430') border-error text-red-500 @enderror"
+                    step="0.01" />
+                <input wire:model='ciudad.asoc1' type="number"
+                    placeholder="@error('ciudad.asoc1') {{ $message }} @else Asoc 1 @enderror"
+                    class="input input-sm input-bordered border-base-100  max-w-36 mb-2 @error('ciudad.asoc1') border-error text-red-500 @enderror"
+                    step="0.01" />
+                <input wire:model='ciudad.asoc2' type="number"
+                    placeholder="@error('ciudad.asoc2') {{ $message }} @else Asoc 2 @enderror"
+                    class="input input-sm input-bordered border-base-100  max-w-36 mb-2 @error('ciudad.asoc2') border-error text-red-500 @enderror"
+                    step="0.01" />
+            </fieldset>
 
             <fieldset class="border border-base-300 rounded-xl p-3 max-w-48">
                 <legend class="text-base">FCI</legend>
