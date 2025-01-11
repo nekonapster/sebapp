@@ -44,7 +44,7 @@
                 </div>
                 <div class="stat-title">Saldos cuentas</div>
                 <div class="stat-value sm:text-3xl">
-                    @if (strpos($saldosCuentas, 0) !== false) <span class="text-red-600 text-xl">Pendiente de cargar</span> 
+                    @if ($saldosCuentas == false) <span class="text-red-600 text-xl">Pendiente de cargar</span> 
                     @else {{$saldosCuentas}}@endif
                 </div>
                 <div class="stat-desc">{{$hoy}}</div>

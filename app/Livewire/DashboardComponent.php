@@ -76,7 +76,7 @@ class DashboardComponent extends Component
     {
         $this->saldosCuentas = Saldo::whereDate('created_at', Carbon::today())
             ->sum('calcularTotal');
-    }
+    }   
 
     // egresos a pagar del mes = sum de 5xxx que esten impagas (false)
     public function egresos_aPagar()
@@ -98,6 +98,8 @@ class DashboardComponent extends Component
     {
         // formateo la fecha en mayusculas, español y formato
         $this->hoy = strtoupper(Carbon::now()->translatedFormat('d F'));
+
+        // dd($this->saldosCuentas);
 
         return view('livewire.dashboard-component', [
             'ingresosDelMes' => $this->ingresosDelMes,
