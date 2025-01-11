@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\Saldo;
 use Livewire\Component;
 
+use function Termwind\parse;
+
 class SaldosComponent extends Component
 {
     public $fechaSaldos;
@@ -88,14 +90,35 @@ class SaldosComponent extends Component
     ];
     //////////////////////////
 
+     // Convierte un string formateado a un número flotante
+     public function parseNumber($number)
+     {
+         // Reemplaza comas (separadores de miles)
+         $number = str_replace(',', '', $number); // Elimina las comas de miles
+     
+         // Convierte la cadena resultante a flotante
+         return (float) $number;
+     }
+     
+    //agrupo los array de string, los formateo en numeros de tipo float y los redondeo a 3 decimales. 
     public function calcularTotal()
     {
         // unifico todos los array
-        $this->conjuntoSaldos = array_merge($this->provincia, $this->santander, $this->santanderP, $this->ciudad, $this->fci, $this->digital, $this->efectivo);
+        $conjunto = array_merge(
+            $this->provincia, 
+            $this->santander, 
+            $this->santanderP, 
+            $this->ciudad, 
+            $this->fci, 
+            $this->digital,
+            $this->efectivo
+        );
 
+        // Convierte cada valor formateado a un número flotante
+        $this->conjuntoSaldos = array_map(fn($valor) => $this->parseNumber($valor), $conjunto);
+   
         // sumo los valores del array unificado
         $this->mostrarTotal = round(array_sum($this->conjuntoSaldos), 3);
-        ds($this->mostrarTotal);
     }
 
     public function toBd()

@@ -2,7 +2,8 @@
     <form wire:submit='toBd'>
         <div class="flex">
             <input wire:model='fechaSaldos' type="date" placeholder=" {{ __('Date') }} "
-                class="input input-sm input-bordered border-base-100 w-40 mb-3 ml-1" onfocus="(this.type='date')" required />
+                class="input input-sm input-bordered border-base-100 w-40 mb-3 ml-1" onfocus="(this.type='date')"
+                required />
         </div>
 
         <div class="flex justify-evenly">
@@ -57,7 +58,7 @@
                     class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.1486') border-error text-red-500 @enderror"
                     step="0.01" />
             </fieldset>
-        
+
             <fieldset class="border border-base-300 rounded-xl p-3 max-w-48">
                 <legend class="text-base">CIUDAD</legend>
                 <input wire:model='ciudad.cA430' type=""
@@ -112,8 +113,7 @@
                 <div>
                     <button wire:click.prevent='calcularTotal' class="btn btn-sm btn-accent mr-3 ml-1">Calcular
                         total</button>
-                    <input wire:model='mostrarTotal' type="" placeholder="CALCULADO" 
-                    disabled
+                    <input wire:model='mostrarTotal' type="" placeholder="CALCULADO" disabled
                         class="input input-sm input-bordered border-base-100  w-40" />
                 </div>
                 {{-- <div class="divider divider-primary"></div> --}}
@@ -133,20 +133,19 @@
 
 @script
 <script>
-$(".formatNumber").on({
-  "focus": function(event) {
+    $(".formatNumber").on({"focus": function(event) {
     $(event.target).select();
   },
   "keyup": function(event) {
     $(event.target).val(function(index, value) {
       // Permitir solo números y un único punto decimal
-      value = value.replace(/[^0-9,]/g, ""); // Reemplaza todo excepto dígitos y puntos
-      const parts = value.split(",");
+      value = value.replace(/[^0-9.]/g, ""); // Reemplaza todo excepto dígitos y puntos
+      const parts = value.split(".");
       // Limitar los decimales a uno y formatear con comas
       if (parts.length > 2) {
-        value = parts[0] + "," + parts[1].slice(0, 2); // Limitar a dos decimales
+        value = parts[0] + "." + parts[1].slice(0, 2); // Limitar a dos decimales
       }
-      return value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     });
   }
 });
