@@ -29,33 +29,33 @@
 
             <fieldset class="border border-base-300 rounded-xl p-3 max-w-48">
                 <legend class="text-base">SANTANDER P.</legend>
-                <input wire:model='santander.sant1' type=""
-                    placeholder="@error('santander.sant1') {{ $message }} @else Sant 1 @enderror"
-                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santander.sant1') border-error text-red-500 @enderror"
+                <input wire:model='santanderP.sant1' type=""
+                    placeholder="@error('santanderP.sant1') {{ $message }} @else Sant 1 @enderror"
+                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.sant1') border-error text-red-500 @enderror"
                     step="0.01" />
-                <input wire:model='santander.sant2' type=""
-                    placeholder="@error('santander.sant2') {{ $message }} @else Sant 2 @enderror"
-                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santander.sant2') border-error text-red-500 @enderror"
+                <input wire:model='santanderP.sant2' type=""
+                    placeholder="@error('santanderP.sant2') {{ $message }} @else Sant 2 @enderror"
+                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.sant2') border-error text-red-500 @enderror"
                     step="0.01" />
-                <input wire:model='santander.sant3' type=""
-                    placeholder="@error('santander.sant3') {{ $message }} @else Sant 3 @enderror"
-                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santander.sant3') border-error text-red-500 @enderror"
+                <input wire:model='santanderP.sant3' type=""
+                    placeholder="@error('santanderP.sant3') {{ $message }} @else Sant 3 @enderror"
+                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.sant3') border-error text-red-500 @enderror"
                     step="0.01" />
             </fieldset>
 
             <fieldset class="border border-base-300 rounded-xl p-3 max-w-48">
                 <legend class="text-base">SANTANDER A.</legend>
-                <input wire:model='santanderP.893' type=""
-                    placeholder="@error('santanderP.893') {{ $message }} @else 893 @enderror"
-                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.893') border-error text-red-500 @enderror"
+                <input wire:model='santanderA.893' type=""
+                    placeholder="@error('santanderA.893') {{ $message }} @else 893 @enderror"
+                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderA.893') border-error text-red-500 @enderror"
                     step="0.01" />
-                <input wire:model='santanderP.430' type=""
-                    placeholder="@error('santanderP.430') {{ $message }} @else 430 @enderror"
-                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.430') border-error text-red-500 @enderror"
+                <input wire:model='santanderA.430' type=""
+                    placeholder="@error('santanderA.430') {{ $message }} @else 430 @enderror"
+                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderA.430') border-error text-red-500 @enderror"
                     step="0.01" />
-                <input wire:model='santanderP.1486' type=""
-                    placeholder="@error('santanderP.1486') {{ $message }} @else 1486 @enderror"
-                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderP.1486') border-error text-red-500 @enderror"
+                <input wire:model='santanderA.1486' type=""
+                    placeholder="@error('santanderA.1486') {{ $message }} @else 1486 @enderror"
+                    class="input input-sm formatNumber input-bordered border-base-100  max-w-36 mb-2 @error('santanderA.1486') border-error text-red-500 @enderror"
                     step="0.01" />
             </fieldset>
 
@@ -113,8 +113,8 @@
                 <div>
                     <button wire:click.prevent='calcularTotal' class="btn btn-sm btn-accent mr-3 ml-1">Calcular
                         total</button>
-                    <input wire:model='mostrarTotal' type="" placeholder="CALCULADO" disabled
-                        class="input input-sm input-bordered border-base-100  w-40" />
+                    <input wire:model='mostrarTotal' type="" placeholder="{{ number_format($mostrarTotal, 2, '.', ',') }}"
+                        disabled class="input input-sm input-bordered border-base-100  w-40" />
                 </div>
                 {{-- <div class="divider divider-primary"></div> --}}
                 <div class="mr-1">

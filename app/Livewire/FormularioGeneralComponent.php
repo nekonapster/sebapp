@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Ramsey\Uuid\Type\Integer;
 
 class FormularioGeneralComponent extends Component
 {
@@ -28,7 +27,7 @@ class FormularioGeneralComponent extends Component
     public $ptoVenta;
     #[Validate('required', message: 'Obligatorio')]
     public $nFactura;
-    // #[Validate('required', message: 'Obligatorio')]
+    #[Validate('required', message: 'Obligatorio')]
     public $importe;
     #[Validate('required', message: 'Obligatorio')]
     public $gastos;
@@ -62,6 +61,16 @@ class FormularioGeneralComponent extends Component
     public function mount()
     {
         $this->actualizarProveedores();
+    }
+
+    // Convierte un string formateado a un número flotante
+    public function parseNumber($number)
+    {
+        // Reemplaza comas (separadores de miles)
+        $number = str_replace(',', '', $number); // Elimina las comas de miles
+
+        // Convierte la cadena resultante a flotante
+        return (float) $number;
     }
 
     // carga los datos en el formulario segun el id que nos llega
@@ -99,7 +108,7 @@ class FormularioGeneralComponent extends Component
                 'activacion' => $this->activacion,
                 'ptoVenta' => $this->ptoVenta,
                 'nFactura' => $this->nFactura,
-                'importe' => $this->importe,
+                'importe' => $this->parseNumber($this->importe),
                 'gastos' => $this->gastos,
                 'proyecto' => $this->proyecto,
                 'notas' => $this->notas,
@@ -131,9 +140,13 @@ class FormularioGeneralComponent extends Component
         $this->proveedores = Proveedor::all();
     }
 
+
+
+
     public function nuevoDatoBaseGeneral()
     {
         $this->validate();
+
 
         $proveedor = Proveedor::find($this->proveedor_id);
         $numeroCC_delProveedor = $proveedor ? $proveedor->numeroCC : null;
@@ -147,7 +160,7 @@ class FormularioGeneralComponent extends Component
             'activacion' => $this->activacion,
             'ptoVenta' => strtolower($this->ptoVenta),
             'nFactura' => strtolower($this->nFactura),
-            'importe' => $this->importe,
+            'importe' => $this->parseNumber($this->importe),
             'gastos' => $this->gastos,
             'proyecto' => $this->proyecto,
             'notas' => strtolower($this->notas),
@@ -208,7 +221,6 @@ class FormularioGeneralComponent extends Component
     public function render()
     {
         return view('livewire.formulario-general-component', [
-            // 'nombres' => $this->proveedorName,
             'proveedores' => $this->proveedores
         ]);
     }

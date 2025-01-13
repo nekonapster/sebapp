@@ -87,7 +87,8 @@
 					<td>{{$listarTabla['nFactura']}}</td>
 					<td>{{$listarTabla['proveedor_name']}}</td>
 					<td>{{$listarTabla['fechaVencimiento']}}</td>
-					<td>{{$listarTabla['importe']}}</td>
+					{{-- parseo directamente al mostrarlo --}}
+					<td>{{ number_format($listarTabla['importe'], 2, '.', ',') }}</td>
 					<td>{{$listarTabla['tipoPago']}}</td>
 					<td>{{$listarTabla['fechaPago']}}</td>
 					<td>{{$listarTabla['banco']}}</td>

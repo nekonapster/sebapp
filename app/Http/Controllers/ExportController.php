@@ -58,12 +58,12 @@ class ExportController extends Controller
             $sheet->setCellValue('C' . $row, $saldo->bancoProvincia['a430']);
             $sheet->setCellValue('D' . $row, $saldo->bancoProvincia['parroquia']);
             $sheet->setCellValue('E' . $row, $saldo->bancoProvincia['adm']);
-            $sheet->setCellValue('F' . $row, $saldo->santander['sant1']);
-            $sheet->setCellValue('G' . $row, $saldo->santander['sant2']);
-            $sheet->setCellValue('H' . $row, $saldo->santander['sant3']);
-            $sheet->setCellValue('I' . $row, $saldo->santanderP['893']);
-            $sheet->setCellValue('J' . $row, $saldo->santanderP['430']);
-            $sheet->setCellValue('K' . $row, $saldo->santanderP['1486']);
+            $sheet->setCellValue('F' . $row, $saldo->santanderP['sant1']);
+            $sheet->setCellValue('G' . $row, $saldo->santanderP['sant2']);
+            $sheet->setCellValue('H' . $row, $saldo->santanderP['sant3']);
+            $sheet->setCellValue('I' . $row, $saldo->santanderA['893']);
+            $sheet->setCellValue('J' . $row, $saldo->santanderA['430']);
+            $sheet->setCellValue('K' . $row, $saldo->santanderA['1486']);
             $sheet->setCellValue('L' . $row, $saldo->ciudad['cA430']);
             $sheet->setCellValue('M' . $row, $saldo->ciudad['asoc1']);
             $sheet->setCellValue('N' . $row, $saldo->ciudad['asoc2']);
@@ -102,7 +102,7 @@ class ExportController extends Controller
 
         // Crear el contenido HTML para el PDF
         $html = '<h1>Reporte de Saldos</h1>';
-        $html .= '<table border="1" style="width:100%; border-collapse: collapse; font-size:8px;  text-align: center">
+        $html .= '<table border="1" style="width:100%; border-collapse: collapse; font-size:6px;  text-align: center">
                 <thead style="background-color:black; color:white">
                     <tr>
                         <th>FECHA</th>
@@ -142,12 +142,12 @@ class ExportController extends Controller
                     <td>' . $saldo->bancoProvincia['a430'] . '</td>
                     <td>' . $saldo->bancoProvincia['parroquia'] . '</td>
                     <td>' . $saldo->bancoProvincia['adm'] . '</td>
-                    <td>' . $saldo->santander['sant1'] . '</td>
-                    <td>' . $saldo->santander['sant2'] . '</td>
-                    <td>' . $saldo->santander['sant3'] . '</td>
-                    <td>' . $saldo->santanderP['893'] . '</td>
-                    <td>' . $saldo->santanderP['430'] . '</td>
-                    <td>' . $saldo->santanderP['1486'] . '</td>
+                    <td>' . $saldo->santanderP['sant1'] . '</td>
+                    <td>' . $saldo->santanderP['sant2'] . '</td>
+                    <td>' . $saldo->santanderP['sant3'] . '</td>
+                    <td>' . $saldo->santanderA['893'] . '</td>
+                    <td>' . $saldo->santanderA['430'] . '</td>
+                    <td>' . $saldo->santanderA['1486'] . '</td>
                     <td>' . $saldo->ciudad['cA430'] . '</td>
                     <td>' . $saldo->ciudad['asoc1'] . '</td>
                     <td>' . $saldo->ciudad['asoc2'] . '</td>
@@ -155,7 +155,7 @@ class ExportController extends Controller
                     <td>' . $saldo->fci['fciPlus'] . '</td>
                     <td>' . $saldo->digital['mercadoPago'] . '</td>
                     <td>' . $saldo->efectivo['caja'] . '</td>
-                    <td><strong>' . $saldo->calcularTotal . '</strong></td>
+                    <td><strong>' . number_format($saldo->calcularTotal, 2, '.', ',') . '</strong></td>
                   </tr>';
         }
 

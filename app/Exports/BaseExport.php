@@ -33,7 +33,7 @@ class BaseExport extends Dompdf implements FromCollection, ShouldAutoSize, WithS
                 'nFactura' => $item->nFactura,
                 'proveedor_name' => $item->proveedor_name,
                 'fechaVencimiento' => $item->fechaVencimiento,
-                'importe' => $item->importe,
+                'importe' => number_format($item->importe, 2, '.', ','),
                 'tipoPago' => $item->tipoPago,
                 'fechaPago' => $item->fechaPago,
                 'banco' => $item->banco,
@@ -83,7 +83,7 @@ class BaseExport extends Dompdf implements FromCollection, ShouldAutoSize, WithS
         $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getAlignment()->setWrapText(false); // Desactiva el ajuste de texto
 
         // Aplicar estilo a la fuente y encabezados
-        $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(8.5);
+        $sheet->getStyle('A1:J' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(8);
         $sheet->getStyle('A1:J1')->getFont()->setBold(true);
 
         // Centrar contenido dentro de las celdas

@@ -25,7 +25,7 @@
             class="input input-sm input-bordered w-full  @error('fechaVencimiento')border-red-500 @enderror" onfocus="
             (this.type='date' )" />
 
-{{-- ! TODO --}}
+        {{-- ! TODO --}}
         <div class="flex justify-start">
             <select wire:model='auxiliar' placeholder="@error('auxiliar'){{$message}} @else Auximliar @enderror"
                 class="select select-bordered select-sm text-xs sm:w-20 xl:w-32 lg:w-40 p-1 lg:mr-1 @error('auxiliar')border-red-500 @enderror">
@@ -76,9 +76,9 @@
         <input wire:model='nFactura' type=" text"
             placeholder="@error('nFactura'){{$message}} @else Nº factura @enderror"
             class="input input-sm input-bordered w-full  @error('nFactura')border-red-500 @enderror" />
-        <input wire:model='importe' type="number" step="0.1"
+        <input wire:model='importe' type="" step="0.1"
             placeholder="@error('importe'){{$message}} @else Importe @enderror"
-            class="input input-sm input-bordered w-full  @error('importe')border-red-500 @enderror" />
+            class="input input-sm formatNumber input-bordered w-full  @error('importe')border-red-500 @enderror" />
 
         <!-- Fila 5 -->
         <select wire:model='gastos' name=" gastos" id="gastos" class="select select-bordered select-sm w-full text-xs">
@@ -112,3 +112,26 @@
         </div>
     </div>
 </div>
+
+
+@script
+<script>
+    $(".formatNumber").on({"focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      // Permitir solo números y un único punto decimal
+      value = value.replace(/[^0-9.]/g, ""); // Reemplaza todo excepto dígitos y puntos
+      const parts = value.split(".");
+      // Limitar los decimales a uno y formatear con comas
+      if (parts.length > 2) {
+        value = parts[0] + "." + parts[1].slice(0, 2); // Limitar a dos decimales
+      }
+      return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    });
+  }
+});
+
+</script>
+@endscript

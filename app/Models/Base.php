@@ -37,14 +37,15 @@ class Base extends Model
         // 'fechaCreacion'
     ];
 
-
+    // casting to float or null
     protected $casts = [
-        'importe' => 'double',
+        'importe' => 'float' ?? null,
     ];
 
     // Setter para convertir a número antes de guardar
     public function setImporteAttribute($value)
     {
-        $this->attributes['importe'] = is_numeric($value) ? (float) $value : null; // Convierte a float o guarda null si no es válido
+        // Convierte a float o guarda null si no es válido
+        $this->attributes['importe'] = is_numeric($value) ? (float) $value : null; 
     }
 }
