@@ -11,8 +11,11 @@ class ProveedorImport implements ToCollection, WithHeadingRow
 {
     public function collection(Collection $rows)
     {
-        // Conectar a MongoDB
-        $client = new Client('mongodb://localhost:27017');
+        // Conectar a MongoDB local
+        // $client = new Client('mongodb://localhost:27017');
+        
+        // Conectar a MongoDB produccion
+        $client = new Client('mongodb+srv://sebapp:4aJs3EZTtjneamPO@clustersebapp.rmwvi.mongodb.net/');
         $database = $client->selectDatabase('sebapp');
 
         // Acceder a las colecciones
