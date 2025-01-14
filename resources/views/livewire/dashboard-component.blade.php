@@ -11,7 +11,7 @@
                     </svg>
                 </div>
                 <div class="stat-title">Ingresos del mes</div>
-                <div class="stat-value sm:text-3xl">{{$ingresosDelMes}}</div>
+                <div class="stat-value sm:text-2xl">{{number_format($ingresosDelMes, 2, '.', ',')}}</div>
                 <div class="stat-desc">{{$hoy}}</div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                     </svg>
                 </div>
                 <div class="stat-title">Egresos del mes</div>
-                <div class="stat-value sm:text-3xl">{{$egresosDelMes}}</div>
+                <div class="stat-value sm:text-2xl">{{number_format($egresosDelMes, 2, '.', ',')}}</div>
                 <div class="stat-desc">{{$hoy}}</div>
             </div>
         </div>
@@ -43,9 +43,9 @@
                     </svg>
                 </div>
                 <div class="stat-title">Saldos cuentas</div>
-                <div class="stat-value sm:text-3xl">
+                <div class="stat-value sm:text-2xl">
                     @if ($saldosCuentas == false) <span class="text-red-600 text-xl">Pendiente de cargar</span> 
-                    @else {{$saldosCuentas}}@endif
+                    @else {{number_format($saldosCuentas, 2, '.', ',')}}@endif
                 </div>
                 <div class="stat-desc">{{$hoy}}</div>
             </div>
@@ -62,7 +62,7 @@
                     </svg>
                 </div>
                 <div class="stat-title">Egresos a pagar del mes</div>
-                <div class="stat-value sm:text-3xl">{{$egresos_aPagar}}</div>
+                <div class="stat-value sm:text-2xl">{{number_format($egresos_aPagar, 2, '.', ',')}}</div>
                 <div class="stat-desc">{{$hoy}}</div>
             </div>
         </div>

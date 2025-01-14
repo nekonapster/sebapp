@@ -43,7 +43,7 @@
                     <td class="py-1">{{$facturasPendiente->proveedor_name}}</td>
                     <td class="py-1">{{$facturasPendiente->nFactura}}</td>
                     <td class="py-1 text-red-500">{{$facturasPendiente->fechaVencimiento}}</td>
-                    <td class="py-1">{{$facturasPendiente->importe}} $</td>
+                    <td class="py-1">{{$facturasPendiente->importe}}</td>
                     <td class="py-1">
                         <button wire:click="elegirFactura('{{$facturasPendiente->proveedor_name}}')"
                             class="btn btn-accent btn-sm px-7 rounded-2xl" type="button">ir</button>
