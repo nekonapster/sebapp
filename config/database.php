@@ -36,6 +36,11 @@ return [
             'dsn' => env('DB_URI'),
             'database' => env('DB_DATABASE'),
             ],
+        'mongodb_atlas' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI'),
+            'database' => env('DB_DATABASE'),
+            ],
 
         'atlas' => [
             'driver' => 'mongodb',

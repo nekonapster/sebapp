@@ -31,7 +31,7 @@ class FormularioGeneralComponent extends Component
     public $importe;
     #[Validate('required', message: 'Obligatorio')]
     public $gastos;
-    #[Validate('required', message: 'Obligatorio')]
+    // #[Validate('required', message: 'Obligatorio')]
     public $proyecto;
     #[Validate('required', message: 'Obligatorio')]
     public $notas;

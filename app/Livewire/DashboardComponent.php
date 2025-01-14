@@ -44,7 +44,7 @@ class DashboardComponent extends Component
     public function ingresosMes()
     {
         $this->ingresosDelMes = Base::where('cc', 'like', '4%')
-            ->where('estado', true)
+            ->where('estado', false)
             ->whereBetween(
                 'created_at',
                 [

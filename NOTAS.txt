@@ -1,3 +1,19 @@
 Elimino main y remplazo bkp por main. 
 Renombre bkp por main.
 Deploy 13/01/2025
+
+
+
+CORRECCIONES PENDIENTES
+.error de theme en pc. de sebastian.
+.los nav. no se ven bien con la combinacion de colores en el pc de sebastian
+
+CORRECCIONES 14/01/25
+.Hacer push de las correcciones siguientes a las 19hs.
+	-pongo comas en los numeros del dash
+	-elimino el simbolo del $
+.quitar el required de "proyecto" en base general
+.regenerar clave de acceso en mongo atlas y ponerla en .env 
+.las CC que tienen 4xxxxx no aparecden en ingresos del mes. esto es porque una de las condiciones es que sea TRUE. Se pasan a FALSE
+.listar proveedores en el desplegable en orden alfabetico.
+.ver que hacemos con proyectar facturas.
