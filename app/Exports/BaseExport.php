@@ -3,18 +3,19 @@
 namespace App\Exports;
 
 use App\Models\Base;
-use Dompdf\Dompdf;
+use App\Models\CuentaContable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class BaseExport extends Dompdf implements FromCollection, ShouldAutoSize, WithStyles, WithHeadings
+class BaseExport implements FromCollection, ShouldAutoSize, WithStyles, WithHeadings
 {
     public function collection()
     {
-        $datos = Base::select(
+        // Obtener ambas colecciones y fusionarlas, como en la solución anterior.
+        $baseGeneralDatos = Base::select(
             'nFactura',
             'proveedor_name',
             'fechaVencimiento',
@@ -27,40 +28,62 @@ class BaseExport extends Dompdf implements FromCollection, ShouldAutoSize, WithS
             'ordenPago'
         )->get();
 
-        // Mapear los datos para eliminar el campo `_id` si MongoDB lo incluye automáticamente
-        return $datos->map(function ($item) {
-            return [
-                'nFactura' => $item->nFactura,
-                'proveedor_name' => $item->proveedor_name,
-                'fechaVencimiento' => $item->fechaVencimiento,
-                'importe' => number_format($item->importe, 2, '.', ','),
-                'tipoPago' => $item->tipoPago,
-                'fechaPago' => $item->fechaPago,
-                'banco' => $item->banco,
-                'cuentaBanco' => $item->cuentaBanco,
-                'nCheque' => $item->nCheque,
-                'ordenPago' => $item->ordenPago,
-            ];
-        });
+        $cuentasContablesDatos = CuentaContable::select(
+            'numeroCC',
+            'rubro',
+            'descripcion',
+            'tipo'
+        )->get();
 
-        $datos->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        $maxFilas = max($baseGeneralDatos->count(), $cuentasContablesDatos->count());
+
+        $datosCombinados = collect();
+
+        for ($i = 0; $i < $maxFilas; $i++) {
+            $base = $baseGeneralDatos->get($i) ?? [];
+            $cuenta = $cuentasContablesDatos->get($i) ?? [];
+
+            $datosCombinados->push([
+                'nFactura' => $base['nFactura'] ?? null,
+                'proveedor_name' => $base['proveedor_name'] ?? null,
+                'fechaVencimiento' => $base['fechaVencimiento'] ?? null,
+                'importe' => isset($base['importe']) ? number_format($base['importe'], 2, '.', ',') : null,
+                'tipoPago' => $base['tipoPago'] ?? null,
+                'fechaPago' => $base['fechaPago'] ?? null,
+                'banco' => $base['banco'] ?? null,
+                'cuentaBanco' => $base['cuentaBanco'] ?? null,
+                'nCheque' => $base['nCheque'] ?? null,
+                'ordenPago' => $base['ordenPago'] ?? null,
+                'numeroCC' => $cuenta['numeroCC'] ?? null,
+                'rubro' => $cuenta['rubro'] ?? null,
+                'descripcion' => $cuenta['descripcion'] ?? null,
+                'tipo' => $cuenta['tipo'] ?? null,
+            ]);
+        }
+
+        return $datosCombinados;
     }
 
     public function headings(): array
     {
         return [
-            'Nº factura',
-            'Proveedor',
-            'Fecha vencimiento',
+            'nFactura',
+            'Proveedor Name',
+            'Fecha Vencimiento',
             'Importe',
-            'Tipo pago',
-            'Fecha pago',
+            'Tipo Pago',
+            'Fecha Pago',
             'Banco',
-            'Cuenta banco',
-            'Nº cheque',
-            'Orden pago'
+            'Cuenta Banco',
+            'nCheque',
+            'Orden Pago',
+            'Numero CC',
+            'Rubro',
+            'Descripcion',
+            'Tipo',
         ];
     }
+
 
     public function styles(Worksheet $sheet)
     {
