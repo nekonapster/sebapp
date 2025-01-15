@@ -14,6 +14,6 @@ CORRECCIONES 14/01/25
 	-elimino el simbolo del $ ✓
 .quitar el required de "proyecto" en base general ✓
 .las CC que tienen 4xxxxx no aparecden en ingresos del mes. esto es porque una de las condiciones es que sea TRUE. Se pasan a FALSE ✓
-.regenerar clave de acceso en mongo atlas y ponerla en .env 
+.regenerar clave de acceso en mongo atlas y ponerla en .env ✓
 .listar proveedores en el desplegable en orden alfabetico.
 .ver que hacemos con proyectar facturas.

@@ -172,7 +172,8 @@ class FormularioGeneralComponent extends Component
             'ordenPago' => $this->ordenPago ?? '-',
             'estado' => $this->estado,
             'proveedor_id' => $this->proveedor_id,
-            'cc' => $numeroCC_delProveedor,
+            // casting a string
+            'cc' => (string) $numeroCC_delProveedor,
             // 'fechaCreacion' => Carbon::now()->toDateString()
         ]);
 

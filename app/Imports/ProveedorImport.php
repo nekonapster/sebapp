@@ -32,7 +32,8 @@ class ProveedorImport implements ToCollection, WithHeadingRow
                 'contacto' => $row['contacto'] ?? null,
                 'descripcion' => $row['descripcion'] ?? null,
                 'rubro' => $row['rubro'] ?? null,
-                'numeroCC' => $row['cc'] ?? null,                    
+                // casteo en string los numeros que se suben de forma masiva para que no falle el calculo del dashboard
+                'numeroCC' => (string) $row['cc'] ?? null,                    
                 'tipo' => $row['tipo'] ?? null,                
             ]);
 
@@ -45,7 +46,7 @@ class ProveedorImport implements ToCollection, WithHeadingRow
                             'rubro' => $row['rubro'] ?? null,
                             'descripcion' => $row['descripcion'] ?? null,
                             'tipo' => $row['tipo'] ?? null,
-                            'numeroCC' => $row['cc'], // Aseguramos que 'numeroCC' se mantenga actualizado
+                            'numeroCC' => (string) $row['cc'], // Aseguramos que 'numeroCC' se mantenga actualizado
                         ]
                     ], // Operación de actualización
                     ['upsert' => true] // Si no existe, lo inserta

@@ -39,12 +39,12 @@ class DashboardComponent extends Component
     }
 
 
-
-    // ingresos del mes = sum de 4xxx que esten en pagadas (true)
+    // ingresos del mes = sum de 4xxx que esten en pagadas (false)
     public function ingresosMes()
     {
         $this->ingresosDelMes = Base::where('cc', 'like', '4%')
-            ->where('estado', false)
+             //Borro la condicion de estado a false. 
+            // ->where('estado', false)
             ->whereBetween(
                 'created_at',
                 [

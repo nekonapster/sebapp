@@ -47,5 +47,6 @@ class Base extends Model
     {
         // Convierte a float o guarda null si no es válido
         $this->attributes['importe'] = is_numeric($value) ? (float) $value : null; 
+        $this->attributes['cc'] = is_numeric($value) ? (int) $value : null; 
     }
 }

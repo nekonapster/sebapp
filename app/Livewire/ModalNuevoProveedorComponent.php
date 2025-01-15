@@ -22,7 +22,7 @@ class ModalNuevoProveedorComponent extends Component
     protected $listeners = [
         'ccSelectRefresh' => 'cargarCuentas',
         'editarProveedorIdFrom_tablaNuevoProveedoresComponent' => 'loadUser',
-        'borrarProveedorFrom_tablaNuevoProveedorComponent' =>'borrarProveedor'
+        'borrarProveedorFrom_tablaNuevoProveedorComponent' => 'borrarProveedor'
     ];
     // este numeroCC se recupera de la bd cuenta_contables
     public $numerosCC;
@@ -35,9 +35,16 @@ class ModalNuevoProveedorComponent extends Component
     }
 
     // 03. el siguiente metodo extrae todas las CC de la bd que es el que se le pasa por parametro ('numeroCC'), en la bd tenemos: numeroCC, rubro, descripcion y tipo. 
+    // solo si queremos manejar int en numeroCC
+    // public function cargarCuentas()
+    // {
+    //     $this->numerosCC = CuentaContable::pluck('numeroCC');
+    // }
+
+    // convierto a string antes de cargarCuentas
     public function cargarCuentas()
     {
-        $this->numerosCC = CuentaContable::pluck('numeroCC');
+        $this->numerosCC = CuentaContable::pluck('numeroCC')->map(fn($cc) => (string) $cc);
     }
 
     public function crearProveedor()
@@ -62,9 +69,11 @@ class ModalNuevoProveedorComponent extends Component
             'descripcion' => strtolower($this->descripcion),
             'rubro' => strtolower($this->rubro),
             'numeroCC' => $this->cc,
+            'tipo' => (str_starts_with($this->cc, '4')) ? 'in' : 'out',
         ]);
+
         $this->reset(['id_proveedor', 'proveedor_name', 'tel', 'email', 'contacto', 'descripcion', 'rubro', 'cc']);
-        
+
         // Emitir el evento con el nuevo nombre del proveedor
         $this->dispatch('recargaSelectNombreProveedor');
 
@@ -100,6 +109,7 @@ class ModalNuevoProveedorComponent extends Component
                 'descripcion' => $this->descripcion,
                 'rubro' => $this->rubro,
                 'numeroCC' => $this->cc,
+                'tipo' => (str_starts_with($this->cc, '4')) ? 'in' : 'out',
             ]);
 
             $this->reset([
@@ -112,7 +122,6 @@ class ModalNuevoProveedorComponent extends Component
                 'rubro',
                 'cc',
             ]);
-
         }
         $this->dispatch('recargarTablaNuevoProveedor');
     }
@@ -123,31 +132,26 @@ class ModalNuevoProveedorComponent extends Component
         $proveedor->delete();
         $this->dispatch('recargarTablaNuevoProveedor');
     }
-    
+
     public function handleCcChange($value)
     {
-
-        // Busca en la base de datos el CC seleccionado
-        $cuenta = CuentaContable::where('numeroCC', (float) $value)->first();
-        // dd($cuenta);
+        $cuenta = CuentaContable::where('numeroCC', $value)->first();
 
         if ($cuenta) {
-            // Actualiza las propiedades reactivas con la información de la cuenta
             $this->descripcion = $cuenta->descripcion;
             $this->rubro = $cuenta->rubro;
         }
     }
 
-
     public function refresh()
     {
         // Recargar pagina cuando se escapa del modal
-        return $this->redirect('/general', navigate:true);
+        return $this->redirect('/general', navigate: true);
     }
 
 
     public function render()
     {
-       return view('livewire.modal-nuevo-proveedor-component');
+        return view('livewire.modal-nuevo-proveedor-component');
     }
 }
