@@ -1,5 +1,5 @@
-<div>
-    <canvas id="grafica" class="mx-10"></canvas>
+<div class="flex justify-center w-fit h-full mx-auto">
+    <canvas id="grafica" class=""></canvas>
 </div>
 
 @script
