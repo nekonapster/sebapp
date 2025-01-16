@@ -44,7 +44,7 @@
                 </div>
                 <div class="stat-title">Saldos cuentas</div>
                 <div class="stat-value sm:text-2xl">
-                    @if ($saldosCuentas == false) <span class="text-red-600 text-xl">Pendiente de cargar</span> 
+                    @if ($saldosCuentas == false) <span class="text-red-600 text-xl">Pendiente de cargar</span>
                     @else {{number_format($saldosCuentas, 2, '.', ',')}}@endif
                 </div>
                 <div class="stat-desc">{{$hoy}}</div>
@@ -67,4 +67,19 @@
             </div>
         </div>
     </div>
+
+    <div class="font-bold ml-1 text-gray-500">Proyectar Facturas: PROXIMAMENTE</div>
+    <div class="flex justify-between">
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+        <div class="skeleton h-5 w-20 shadow"></div>
+    </div>
+        {{-- ! RESERVADO para agregar datos sobre las proyecciones --}}
+    {{-- <div role="alert" class="alert shadow bg-base-100">
+    </div> --}}
 </div>
