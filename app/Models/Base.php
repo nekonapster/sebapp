@@ -33,8 +33,8 @@ class Base extends Model
         'proyectarFechas',
         'estado',
         'proveedor_id',
-        'cc'
-        // 'fechaCreacion'
+        'cc',
+        'retenciones'
     ];
 
     // casting to float or null

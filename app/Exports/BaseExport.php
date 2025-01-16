@@ -38,6 +38,7 @@ class BaseExport implements FromCollection, ShouldAutoSize, WithStyles, WithHead
                 'rubro' => $proveedor->rubro ?? null, // Si existe el proveedor, usa su rubro
                 'descripcion' => $proveedor->descripcion ?? null, // Si existe el proveedor, usa su descripción
                 'tipo' => $proveedor->tipo ?? null, // Si existe el proveedor, usa su tipo
+                'retenciones' =>$base->retenciones
             ]);
         }
 
@@ -61,6 +62,7 @@ class BaseExport implements FromCollection, ShouldAutoSize, WithStyles, WithHead
             'Rubro',
             'Descripcion',
             'Tipo',
+            'Retenciones',
         ];
     }
 
@@ -82,15 +84,15 @@ class BaseExport implements FromCollection, ShouldAutoSize, WithStyles, WithHead
 
         // Reducir cualquier espacio adicional dentro de las celdas
         $sheet->getDefaultRowDimension()->setRowHeight(-1); // Ajusta el alto automáticamente
-        $sheet->getStyle('A1:N' . $sheet->getHighestRow())->getAlignment()->setWrapText(false); // Desactiva el ajuste de texto
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getAlignment()->setWrapText(false); // Desactiva el ajuste de texto
 
         // Aplicar estilo a la fuente y encabezados
-        $sheet->getStyle('A1:N' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(8);
-        $sheet->getStyle('A1:N1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(8);
+        $sheet->getStyle('A1:O1')->getFont()->setBold(true);
 
         // Centrar contenido dentro de las celdas
-        $sheet->getStyle('A1:N' . $sheet->getHighestRow())->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A1:N' . $sheet->getHighestRow())->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 
         return [];
     }

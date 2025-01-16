@@ -19,6 +19,7 @@ class ModalPagarComponent extends Component
     public $cuentaBanco;
     public $nCheque;
     public $ordenPago;
+    public $retenciones = false;
     
     
     public function mount()
@@ -43,7 +44,8 @@ class ModalPagarComponent extends Component
             'cuentaBanco' => $this->cuentaBanco,
             'nCheque' => $this->nCheque,
             'ordenPago' => $this->ordenPago,
-            'estado' => true
+            'estado' => true,
+            'retenciones' => $this->retenciones ? 'si' : 'no' ,
         ]);
 
         return $this->redirect('/general', navigate:true);
