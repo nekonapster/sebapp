@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use MongoDB\Laravel\Eloquent\Model;
 
 class FormularioGeneralComponent extends Component
 {
@@ -140,9 +141,6 @@ class FormularioGeneralComponent extends Component
         $this->proveedores = Proveedor::all();
     }
 
-
-
-
     public function nuevoDatoBaseGeneral()
     {
         $this->validate();
@@ -174,7 +172,6 @@ class FormularioGeneralComponent extends Component
             'proveedor_id' => $this->proveedor_id,
             // casting a string
             'cc' => (string) $numeroCC_delProveedor,
-            // 'fechaCreacion' => Carbon::now()->toDateString()
         ]);
 
 
@@ -221,6 +218,9 @@ class FormularioGeneralComponent extends Component
 
     public function render()
     {
+        // ORDEN ALFABETICO DE LOS PROVEEDORES POR SU NOMBRE
+        $this->proveedores = Proveedor::orderBy('proveedor_name', 'asc')->get();
+
         return view('livewire.formulario-general-component', [
             'proveedores' => $this->proveedores
         ]);
