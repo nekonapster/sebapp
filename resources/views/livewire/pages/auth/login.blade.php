@@ -88,10 +88,11 @@ new #[Layout('layouts.guest')] class extends Component {
         </div>
     </form>
 
-    <a href="{{ route('invitado') }}">
+    {{-- boton para usuarios invitados, no hace falta ningun tipo de registo --}}
+    {{-- <a href="{{ route('invitado') }}">
         <x-primary-button class="btn btn-sm btn-block mt-3" :overrideClass="true">
             {{ __('Guest') }}
         </x-primary-button>
-    </a>
+    </a> --}}
 
 </div>
