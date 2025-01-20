@@ -14,9 +14,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-    </html>
+</html>
 
-    <title>{{ __('Guest') }}</title>
+<title>{{ __('Guest') }}</title>
 </head>
 
 <body>
@@ -26,12 +26,17 @@
         <div class="lg:mx-auto xl:mx-auto">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="">
-                    @livewire('tabla-invitado-component')
+                    {{-- @livewire('tabla-invitado-component') --}}
+                    <p class="text-center text-2xl">En construcción <br> 
+                        <span class="loading loading-infinity loading-lg"></span>
+                    </p>
+                    
                 </div>
             </div>
+
         </div>
-        
-        
+
+
         <div class="flex justify-end">
             <a href="{{ route('login') }}">
                 <x-primary-button :overrideClass="true" class="btn btn-success mt-3 flex justify-end">
