@@ -20,18 +20,23 @@
 </head>
 
 <body>
-    <div class="p-3 bg-neutral rounded-lg my-16 mx-10">
+    <div class="p-3  rounded-lg my-16 mx-10">
 
 
         <div class="lg:mx-auto xl:mx-auto">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="">
-                    {{-- @livewire('tabla-invitado-component') --}}
-                    <p class="text-center text-2xl">En construcción <br> 
-                        <span class="loading loading-infinity loading-lg"></span>
-                    </p>
-                    
+                <div class="bg-neutral">
+                    @livewire('tabla-invitado-component')
                 </div>
+                {{-- <div class="columns-2 mt-5 gap-5">
+                    <div class="bg-neutral p-5 rounded-lg">
+                        @livewire('tabla-usuario-component')
+                    </div>
+
+                    <div class="bg-neutral p-5 mb-20 rounded-lg">
+                        @livewire('tabla-saldos-component')
+                    </div>
+                </div> --}}
             </div>
 
         </div>
