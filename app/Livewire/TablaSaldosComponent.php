@@ -11,11 +11,33 @@ class TablaSaldosComponent extends Component
     public $listarTablas;
     public $msg;
 
+    // public function listarTabla()
+    // {
+    //     // odernar segun parametros
+    //     $this->listarTablas = Saldo::orderByDesc('fechaSaldos')->get() ?? collect([]);
+    // }
+
     public function listarTabla()
-    {
-        // odernar segun parametros
-        $this->listarTablas = Saldo::orderByDesc('fechaSaldos')->get() ?? collect([]);
-    }
+{
+    $this->listarTablas = Saldo::raw(function ($collection) {
+        return $collection->aggregate([
+            [
+                '$addFields' => [
+                    // Convierte el string "dd-mm-yyyy" a tipo Date
+                    'fechaOrdenar' => [
+                        '$dateFromString' => [
+                            'dateString' => '$fechaSaldos',
+                            'format' => '%d-%m-%Y' // Define el formato de tu string
+                        ]
+                    ]
+                ]
+            ],
+            [
+                '$sort' => ['fechaOrdenar' => -1] // Ordena descendente
+            ]
+        ]);
+    });
+}
 
     public function toExcel()
     {
