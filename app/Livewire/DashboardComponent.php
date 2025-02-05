@@ -78,21 +78,16 @@ class DashboardComponent extends Component
             ->sum('calcularTotal');
     }   
 
-    // egresos a pagar del mes = sum de 5xxx que esten impagas (false)
+    // egresos a pagar del mes = sum de 5xxx que esten impagas (false) y con fecha de vencimiento menor o igual al último día del mes
     public function egresos_aPagar()
     {
-        $this->egresos_aPagar = Base::where('cc', 'like', '5%')
-            ->where('estado', false)
-            ->whereBetween(
-                'created_at',
-                [
-                    $this->inicioMes,
-                    $this->finMes,
-                ]
-            )
-            ->sum('importe');
+        $fechaLimite = now()->endOfMonth()->toDateString(); // Último día del mes actual en formato YYYY-MM-DD
+    
+        $this->egresos_aPagar = Base::where('cc', 'like', '5%') // Filtra por código que comienza con "5"
+            ->where('estado', false) // Filtra facturas con estado false
+            ->where('fechaVencimiento', '<=', $fechaLimite) // Filtra facturas hasta el último día del mes
+            ->sum('importe'); // Suma los importes de las facturas filtradas
     }
-
 
     public function render()
     {

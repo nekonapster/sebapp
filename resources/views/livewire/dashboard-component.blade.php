@@ -61,7 +61,7 @@
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
-                <div class="stat-title">Egresos a pagar del mes</div>
+                <div class="stat-title">Facturas pendientes de pago</div>
                 <div class="stat-value sm:text-2xl">{{number_format($egresos_aPagar, 2, '.', ',')}}</div>
                 <div class="stat-desc">{{$hoy}}</div>
             </div>
