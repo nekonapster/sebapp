@@ -63,7 +63,6 @@ class ChartComponent extends Component
     
             for ($dia = 1; $dia <= $diasDelMes; $dia++) {
                 $saldo = Base::where('cc', 'like', '5%')
-                    ->where('estado', true)
                     ->whereBetween('created_at', [$inicioMes, $finMes])
                     ->sum('importe');
                 $egresosDiarios[$dia] = $saldo;
