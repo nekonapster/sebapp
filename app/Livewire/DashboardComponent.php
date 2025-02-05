@@ -78,7 +78,7 @@ class DashboardComponent extends Component
             ->sum('calcularTotal');
     }   
 
-    // egresos a pagar del mes = sum de 5xxx que esten impagas (false) y con fecha de vencimiento menor o igual al último día del mes
+    // Facturas pendientes de pago = sum de 5xxx que esten impagas (false) y con fecha de vencimiento menor o igual al último día del mes
     public function egresos_aPagar()
     {
         $fechaLimite = now()->endOfMonth()->toDateString(); // Último día del mes actual en formato YYYY-MM-DD
