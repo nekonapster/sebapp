@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Base;
 use Livewire\Component;
+use Illuminate\Support\Str;
+
 
 class TablesComponent extends Component
 {
@@ -19,15 +21,32 @@ class TablesComponent extends Component
     /**
      * Método de búsqueda en la colección 'base'
      */
+    // public function search()
+    // {
+    //     $this->facturasPendientes = Base::query()
+    //         ->where('estado', false) // Solo facturas pendientes
+    //         ->when($this->search, function ($query) {
+    //             $query->where('proveedor_name', 'like', '%' . $this->search . '%');
+    //         })
+    //         ->get();
+    // }
+
     public function search()
-    {
-        $this->facturasPendientes = Base::query()
-            ->where('estado', false) // Solo facturas pendientes
-            ->when($this->search, function ($query) {
-                $query->where('proveedor_name', 'like', '%' . $this->search . '%');
-            })
-            ->get();
-    }
+{
+    $this->facturasPendientes = Base::query()
+        ->where('estado', false) // Solo facturas pendientes
+        ->when($this->search, function ($query) {
+            $query->where('proveedor_name', 'like', '%' . $this->search . '%');
+        })
+        ->get()
+        ->map(function ($factura) {
+            if (Str::startsWith($factura->cc, '4')) { 
+                $factura->fechaVencimiento = 'No aplica'; 
+            }
+            return $factura;
+        });
+}
+
 
     /**
      * Escucha automáticamente cuando cambia 'search'

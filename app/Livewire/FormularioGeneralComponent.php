@@ -134,13 +134,14 @@ class FormularioGeneralComponent extends Component
         }
     }
 
-
+    // Actualiza la lista de proveedores
     public function actualizarProveedores()
     {
         $this->proveedorName = Proveedor::pluck('proveedor_name');
         $this->proveedores = Proveedor::all();
     }
 
+    // crea un nuevo dato en la base de datos
     public function nuevoDatoBaseGeneral()
     {
         $this->validate();
@@ -149,7 +150,7 @@ class FormularioGeneralComponent extends Component
         $proveedor = Proveedor::find($this->proveedor_id);
         $numeroCC_delProveedor = $proveedor ? $proveedor->numeroCC : null;
 
-        $base = Base::create([
+            $base = Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
             'proveedor_name' => $this->proveedor_name,
             'fechaFactura' => $this->fechaFactura,
@@ -188,7 +189,7 @@ class FormularioGeneralComponent extends Component
         return $this->redirect('/general', navigate: true);
     }
 
-
+    // proyecta los gastos de un dato en la base de datos
     public function proyectarGastos($base_id)
     {
         $base_id = $base_id;

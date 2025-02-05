@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        {{-- EGRESOS PAGAR DEL MES --}}
+        {{-- FACTURAS PENDIENTES DE PAGO --}}
         <div class="stats shadow w-full h-36">
             <div class="stat">
                 <div class="stat-figure text-secondary">
