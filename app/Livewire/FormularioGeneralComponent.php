@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use MongoDB\Laravel\Eloquent\Model;
 
 class FormularioGeneralComponent extends Component
 {
@@ -149,12 +148,16 @@ class FormularioGeneralComponent extends Component
 
         $proveedor = Proveedor::find($this->proveedor_id);
         $numeroCC_delProveedor = $proveedor ? $proveedor->numeroCC : null;
+        
+        // Formatear las fechas antes de guardarlas
+        $fechaFacturaFormateada = Carbon::parse($this->fechaFactura)->format('d-m-Y');
+        $fechaVencimientoFormateada = Carbon::parse($this->fechaVencimiento)->format('d-m-Y');
 
             $base = Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
             'proveedor_name' => $this->proveedor_name,
-            'fechaFactura' => $this->fechaFactura,
-            'fechaVencimiento' => $this->fechaVencimiento,
+            'fechaFactura' => $fechaFacturaFormateada,
+            'fechaVencimiento' =>  $fechaVencimientoFormateada,
             'auxiliar' => strtolower($this->auxiliar),
             'activacion' => $this->activacion,
             'ptoVenta' => strtolower($this->ptoVenta),

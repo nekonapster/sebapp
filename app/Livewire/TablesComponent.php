@@ -41,7 +41,7 @@ class TablesComponent extends Component
         ->get()
         ->map(function ($factura) {
             if (Str::startsWith($factura->cc, '4')) { 
-                $factura->fechaVencimiento = 'No aplica'; 
+                $factura->fechaVencimiento = 'No aplica'; // Si el número del CC empieza por '4', se sustituye la fecha de vencimiento por la leyenda  'no aplica' 
             }
             return $factura;
         });
