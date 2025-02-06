@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Banco;
 use App\Models\Base;
+use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -46,12 +47,15 @@ class ModalPagarComponent extends Component
     {
 
         $this->validate();
-        
+
+        $fechaPagoFormateada = Carbon::parse($this->fechaPago)->format('d-m-Y');
+
+
         $datosPagar = Base::find($this->idPagar);
         
         $datosPagar->update([
             'tipoPago' => $this->tipoPago,
-            'fechaPago' => $this->fechaPago,
+            'fechaPago' => $fechaPagoFormateada,
             'banco' => $this->banco,
             'cuentaBanco' => $this->cuentaBanco,
             'nCheque' => $this->nCheque,
