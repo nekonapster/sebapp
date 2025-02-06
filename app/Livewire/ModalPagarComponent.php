@@ -5,20 +5,29 @@ namespace App\Livewire;
 use App\Models\Banco;
 use App\Models\Base;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ModalPagarComponent extends Component
 {
 
+    #[Validate('required', message: 'Obligatorio')]
     public $bancos;
-
+    #[Validate('required', message: 'Obligatorio')]
     public $idPagar;
+    #[Validate('required', message: 'Obligatorio')]
     public $tipoPago;
+    #[Validate('required', message: 'Obligatorio')]
     public $fechaPago;
+    #[Validate('required', message: 'Obligatorio')]
     public $banco;
+    #[Validate('required', message: 'Obligatorio')]
     public $cuentaBanco;
+    #[Validate('required', message: 'Obligatorio')]
     public $nCheque;
+    #[Validate('required', message: 'Obligatorio')]
     public $ordenPago;
+
     public $retenciones = false;
     
     
@@ -35,6 +44,9 @@ class ModalPagarComponent extends Component
     
     public function pagar()
     {
+
+        $this->validate();
+        
         $datosPagar = Base::find($this->idPagar);
         
         $datosPagar->update([
