@@ -11,10 +11,7 @@ class ProveedorImport implements ToCollection, WithHeadingRow
 {
     public function collection(Collection $rows)
     {
-        // Conectar a MongoDB local
-        // $client = new Client('mongodb://localhost:27017');
-        
-        // Conectar a MongoDB produccion
+        // Conectar a MongoDB
         $client = new Client(env('DB_URI'));
         $database = $client->selectDatabase(env('DB_DATABASE'));
 
@@ -22,37 +19,50 @@ class ProveedorImport implements ToCollection, WithHeadingRow
         $proveedoresCollection = $database->selectCollection('proveedors');
         $cuentasContablesCollection = $database->selectCollection('cuenta_contables');
 
-        // Insertar datos en la colección 'proveedors' y los números de cuenta en 'cuentas_contables'
         foreach ($rows as $row) {
+            // Convertir todos los valores en minúsculas y asegurarse de que existen
+            $proveedorName = isset($row['proveedor']) ? strtolower(trim($row['proveedor'])) : null;
+            $tel = isset($row['tel']) ? (string) $row['tel'] : null;
+            $email = isset($row['email']) ? strtolower(trim($row['email'])) : null;
+            $contacto = isset($row['contacto']) ? strtolower(trim($row['contacto'])) : null;
+            $descripcion = isset($row['descripcion']) ? strtolower(trim($row['descripcion'])) : null;
+            $rubro = isset($row['rubro']) ? strtolower(trim($row['rubro'])) : null;
+            $tipo = isset($row['tipo']) ? strtolower(trim($row['tipo'])) : null;
+            
+            // Validar que numeroCC tenga exactamente 8 dígitos
+            $numeroCC = isset($row['cc']) ? (string) trim($row['cc']) : null;
+            if ($numeroCC && (!preg_match('/^\d{8}$/', $numeroCC))) {
+                // Si no es válido, omitir este registro y continuar con el siguiente
+                continue;
+            }
+
             // Insertar en la colección 'proveedors'
             $proveedoresCollection->insertOne([
-                'proveedor_name' => $row['proveedor'] ?? null,
-                'tel' => (string) $row['tel'] ?? null,
-                'email' => $row['email'] ?? null,
-                'contacto' => $row['contacto'] ?? null,
-                'descripcion' => $row['descripcion'] ?? null,
-                'rubro' => $row['rubro'] ?? null,
-                // casteo en string los numeros que se suben de forma masiva para que no falle el calculo del dashboard
-                'numeroCC' => (string) $row['cc'] ?? null,                    
-                'tipo' => $row['tipo'] ?? null,                
+                'proveedor_name' => $proveedorName,
+                'tel' => $tel,
+                'email' => $email,
+                'contacto' => $contacto,
+                'descripcion' => $descripcion,
+                'rubro' => $rubro,
+                'numeroCC' => $numeroCC,                    
+                'tipo' => $tipo,                
             ]);
 
-            // Insertar solo el numeroCC en la colección 'cuentas_contables'
-            if ($row['cc']) {
+            // Insertar o actualizar en la colección 'cuentas_contables'
+            if ($numeroCC) {
                 $cuentasContablesCollection->updateOne(
-                    ['numeroCC' => $row['cc']], // Filtra por el numero de cuenta contable
+                    ['numeroCC' => $numeroCC], // Filtra por número de cuenta contable
                     [
                         '$set' => [
-                            'rubro' => $row['rubro'] ?? null,
-                            'descripcion' => $row['descripcion'] ?? null,
-                            'tipo' => $row['tipo'] ?? null,
-                            'numeroCC' => (string) $row['cc'], // Aseguramos que 'numeroCC' se mantenga actualizado
+                            'rubro' => $rubro,
+                            'descripcion' => $descripcion,
+                            'tipo' => $tipo,
+                            'numeroCC' => $numeroCC, // Aseguramos que 'numeroCC' se mantenga actualizado
                         ]
-                    ], // Operación de actualización
+                    ],
                     ['upsert' => true] // Si no existe, lo inserta
                 );
             }
-            
         }
     }
 }

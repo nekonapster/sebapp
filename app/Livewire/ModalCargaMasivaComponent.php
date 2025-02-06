@@ -3,9 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Imports\ProveedorImport;
 use Livewire\WithFileUploads;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ModalCargaMasivaComponent extends Component
 {

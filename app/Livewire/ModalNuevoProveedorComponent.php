@@ -102,14 +102,14 @@ class ModalNuevoProveedorComponent extends Component
         if ($proveedor) {
             $proveedor->update([
                 'id_proveedor' => $this->id_proveedor,
-                'proveedor_name' => $this->proveedor_name,
+                'proveedor_name' => strtolower($this->proveedor_name),
                 'tel' => $this->tel,
-                'email' => $this->email,
-                'contacto' => $this->contacto,
-                'descripcion' => $this->descripcion,
-                'rubro' => $this->rubro,
+                'email' => strtolower($this->email),
+                'contacto' => strtolower($this->contacto),
+                'descripcion' => strtolower($this->descripcion),
+                'rubro' => strtolower($this->rubro),
                 'numeroCC' => $this->cc,
-                'tipo' => (str_starts_with($this->cc, '4')) ? 'in' : 'out',
+                'tipo' => strtolower((str_starts_with($this->cc, '4')) ? 'in' : 'out'),
             ]);
 
             $this->reset([

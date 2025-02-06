@@ -151,7 +151,7 @@ class SaldosComponent extends Component
             // formateo la fecha a dia-mes-año
             $fechaSaldos = date_format($fechaConvertida, 'd-m-Y'),
 
-            'userName' => $usuario->name,
+            'userName' => strtolower($usuario->name),
             'calcularTotal' => $this->mostrarTotal,
             'bancoProvincia' => $this->provincia,
             'santanderP' => $this->santanderP,

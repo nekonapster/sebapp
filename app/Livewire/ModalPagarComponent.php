@@ -54,14 +54,14 @@ class ModalPagarComponent extends Component
         $datosPagar = Base::find($this->idPagar);
         
         $datosPagar->update([
-            'tipoPago' => $this->tipoPago,
+            'tipoPago' => strtolower($this->tipoPago),
             'fechaPago' => $fechaPagoFormateada,
-            'banco' => $this->banco,
-            'cuentaBanco' => $this->cuentaBanco,
-            'nCheque' => $this->nCheque,
-            'ordenPago' => $this->ordenPago,
+            'banco' => strtolower($this->banco),
+            'cuentaBanco' => strtolower($this->cuentaBanco),
+            'nCheque' => strtolower($this->nCheque),
+            'ordenPago' => strtolower($this->ordenPago),
             'estado' => true,
-            'retenciones' => $this->retenciones ? 'si' : 'no' ,
+            'retenciones' => strtolower($this->retenciones ? 'si' : 'no') ,
         ]);
 
         return $this->redirect('/general', navigate:true);

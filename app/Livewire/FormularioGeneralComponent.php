@@ -13,7 +13,7 @@ use Livewire\Component;
 class FormularioGeneralComponent extends Component
 {
     public $baseGeneral_id;
-    #[Validate('required|min:5', message: 'Obligatorio')]
+    #[Validate('required', message: 'Obligatorio')]
     public $proveedor_name;
     #[Validate('required', message: 'Obligatorio')]
     public $fechaFactura;
@@ -155,7 +155,7 @@ class FormularioGeneralComponent extends Component
 
             $base = Base::create([
             'baseGeneral_id' => $this->baseGeneral_id ?? '',
-            'proveedor_name' => $this->proveedor_name,
+            'proveedor_name' => strtolower($this->proveedor_name),
             'fechaFactura' => $fechaFacturaFormateada,
             'fechaVencimiento' =>  $fechaVencimientoFormateada,
             'auxiliar' => strtolower($this->auxiliar),
@@ -164,7 +164,7 @@ class FormularioGeneralComponent extends Component
             'nFactura' => strtolower($this->nFactura),
             'importe' => $this->parseNumber($this->importe),
             'gastos' => $this->gastos,
-            'proyecto' => $this->proyecto,
+            'proyecto' => strtolower($this->proyecto),
             'notas' => strtolower($this->notas),
             'tipoPago' => $this->tipoPago ?? '-',
             'fechaPago' => $this->fechaPago ?? '-',
@@ -172,7 +172,7 @@ class FormularioGeneralComponent extends Component
             'cuentaBanco' => $this->cuentaBanco ?? '-',
             'nCheque' => $this->nCheque ?? '-',
             'ordenPago' => $this->ordenPago ?? '-',
-            'estado' => $this->estado,
+            'estado' => strtolower($this->estado),
             'proveedor_id' => $this->proveedor_id,
             // casting a string
             'cc' => (string) $numeroCC_delProveedor,

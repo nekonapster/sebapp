@@ -28,11 +28,11 @@ class ModalNuevoCcComponent extends Component
 
         CuentaContable::create([
             // casteo el string a numero
-            $this->numeroCC = (int) $this->numeroCC,
+            $this->numeroCC = (string) $this->numeroCC,
             'numeroCC' => $this->numeroCC,
-            'rubro' => $this->rubro,
+            'rubro' => strtolower($this->rubro),
             'descripcion' => strtolower($this->descripcion),
-            'tipo' => $this->tipo,
+            'tipo' => strtolower($this->tipo),
         ]);
 
         $this->reset(['numeroCC', 'rubro', 'descripcion', 'tipo']);
