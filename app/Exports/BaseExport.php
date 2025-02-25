@@ -70,11 +70,11 @@ class BaseExport implements FromCollection, ShouldAutoSize, WithStyles, WithHead
     {
         // Configurar la orientación de la página y el tamaño del papel
         $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-        $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4);
+        $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4_EXTRA_PAPER);
 
         // Ajustar la escala para que el contenido quepa en una página
-        $sheet->getPageSetup()->setFitToWidth(1);
-        $sheet->getPageSetup()->setFitToHeight(1);
+        $sheet->getPageSetup()->setFitToWidth(0);
+        $sheet->getPageSetup()->setFitToHeight(0);
 
         // Ajustar márgenes de la página (en pulgadas)
         $sheet->getPageMargins()->setTop(0);
@@ -84,10 +84,10 @@ class BaseExport implements FromCollection, ShouldAutoSize, WithStyles, WithHead
 
         // Reducir cualquier espacio adicional dentro de las celdas
         $sheet->getDefaultRowDimension()->setRowHeight(-1); // Ajusta el alto automáticamente
-        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getAlignment()->setWrapText(false); // Desactiva el ajuste de texto
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getAlignment()->setWrapText(true); // Desactiva el ajuste de texto
 
         // Aplicar estilo a la fuente y encabezados
-        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(8);
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getFont()->setName('Helvetica')->setSize(6);
         $sheet->getStyle('A1:O1')->getFont()->setBold(true);
 
         // Centrar contenido dentro de las celdas

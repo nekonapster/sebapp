@@ -21,7 +21,7 @@ class FormularioGeneralComponent extends Component
     public $fechaVencimiento;
     #[Validate('required', message: 'Obligatorio')]
     public $auxiliar;
-    // #[Validate('required', message: 'Obligatorio')]
+
     public $activacion;
     #[Validate('required', message: 'Obligatorio')]
     public $ptoVenta;
@@ -31,7 +31,7 @@ class FormularioGeneralComponent extends Component
     public $importe;
     #[Validate('required', message: 'Obligatorio')]
     public $gastos;
-    // #[Validate('required', message: 'Obligatorio')]
+
     public $proyecto;
     #[Validate('required', message: 'Obligatorio')]
     public $notas;
